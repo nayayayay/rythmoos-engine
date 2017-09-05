@@ -47,8 +47,8 @@ class Renderer {
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 
     // Render each element of the scene
-    for (const element of this.scene.elements) {
-      element(this.context);
+    for (const shape of this.scene.shapes) {
+      shape.render(this.context);
     }
 
     // Request the next animation frame
