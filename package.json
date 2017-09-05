@@ -2,11 +2,12 @@
   "name": "rythmoos-engine",
   "version": "0.1.0",
   "description": "Rythmoos' game engine.",
-  "main": "src/index.js",
+  "main": "build/lib/index.js",
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "mocha",
-    "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "tsc --sourceMap false --outDir build/lib && webpack",
+    "doc": "typedoc --out docs src --mode file"
   },
   "repository": {
     "type": "git",

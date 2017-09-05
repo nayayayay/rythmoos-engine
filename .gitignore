@@ -1,3 +1,7 @@
+# Project
+build/debug/
+playground/
+
 # Logs
 logs
 *.log
