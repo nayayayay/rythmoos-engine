@@ -11,7 +11,7 @@ module.exports = [
       library: 'RythmoosEngine'
     },
     resolve: {
-      extensions: ['ts', 'js']
+      extensions: ['.ts', '.js']
     },
     devtool: 'source-map',
     module: {
@@ -31,7 +31,7 @@ module.exports = [
       library: 'RythmoosEngine'
     },
     resolve: {
-      extensions: ['ts', 'js']
+      extensions: ['.ts', '.js']
     },
     module: {
       rules: [
@@ -49,7 +49,7 @@ module.exports = [
       library: 'RythmoosEngine'
     },
     resolve: {
-      extensions: ['ts', 'js']
+      extensions: ['.ts', '.js']
     },
     module: {
       rules: [
