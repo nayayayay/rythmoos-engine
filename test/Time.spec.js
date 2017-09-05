@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const Time = require('./lib/Time').default;
+const { Time } = require('./lib');
 
 describe('Time spec', () => {
   it('should update the timers correctly', () => {

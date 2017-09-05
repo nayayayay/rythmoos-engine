@@ -1,4 +1,4 @@
-import Shape from './shapes/Shape';
+import { Shape } from '../shapes';
 
 /**
  * Represent a scene to render onto the canvas.

@@ -1,5 +1,5 @@
+import { Renderer } from '../rendering';
 import Scene from './Scene';
-import Renderer from './Renderer';
 
 /**
  * The Stage contains everything that is used from the Scene to the Renderer.

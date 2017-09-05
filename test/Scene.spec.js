@@ -1,6 +1,5 @@
 const { expect } = require('chai');
-const Scene = require('./lib/Scene').default;
-const Shape = require('./lib/shapes/Shape').default;
+const { Scene, Shape } = require('./lib');
 
 describe('Scene spec', () => {
   const scene = new Scene();

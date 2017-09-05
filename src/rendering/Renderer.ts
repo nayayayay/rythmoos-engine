@@ -1,5 +1,5 @@
-import Scene from './Scene';
-import Time from './Time';
+import { Scene } from '../root';
+import { Time } from '../timing';
 
 /**
  * Render a Scene to the canvas.
