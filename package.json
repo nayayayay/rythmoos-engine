@@ -1,6 +1,6 @@
 {
   "name": "rythmoos-engine",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Rythmoos' game engine.",
   "main": "src/index.js",
   "scripts": {
@@ -18,5 +18,15 @@
   "bugs": {
     "url": "https://github.com/ChibiFR/rythmoos-engine/issues"
   },
-  "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme"
+  "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "source-map-loader": "^0.2.1",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.5.2",
+    "webpack": "^3.5.5"
+  }
 }

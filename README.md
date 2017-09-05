@@ -1,2 +1,2 @@
-# rythmoos-engine
+# rythmoos-engine (in process)
 Rythmoos' game engine.
