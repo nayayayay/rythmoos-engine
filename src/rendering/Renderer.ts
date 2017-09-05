@@ -1,5 +1,6 @@
 import { Scene } from '../root';
-import { Time } from '../timing';
+import { Time, HighResTimeStamp } from '../timing';
+import AnimationFrame from './AnimationFrame';
 
 /**
  * Render a Scene to the canvas.
@@ -7,7 +8,7 @@ import { Time } from '../timing';
 class Renderer {
   public context: CanvasRenderingContext2D;
   public scene: Scene;
-  protected animationFrame: number|null;
+  protected animationFrame: AnimationFrame;
 
   /**
    * @param context The 2D context to render to.
@@ -24,7 +25,7 @@ class Renderer {
    */
   public start(): void {
     if (this.animationFrame === null) {
-      this.animationFrame = requestAnimationFrame((frame: number) => {
+      this.animationFrame = requestAnimationFrame((frame: HighResTimeStamp) => {
         this.render(frame);
       });
     }
@@ -43,7 +44,7 @@ class Renderer {
    * Render a frame and request for the next one.
    * @param frame 
    */
-  public render(frame: number): void {
+  public render(frame: HighResTimeStamp): void {
     // Update Time
     Time._setFrame(frame);
 
@@ -56,7 +57,7 @@ class Renderer {
     }
 
     // Request the next animation frame
-    this.animationFrame = requestAnimationFrame((frame: number) => {
+    this.animationFrame = requestAnimationFrame((frame: HighResTimeStamp) => {
       this.render(frame);
     });
   }

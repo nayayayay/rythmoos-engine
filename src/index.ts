@@ -1,6 +1,6 @@
-import { Renderer } from './rendering';
+import { Renderer, AnimationFrame } from './rendering';
 import { Stage, Scene } from './root';
-import { Time } from './timing';
+import { Time, HighResTimeStamp } from './timing';
 import {
   Point,
   Shape,
@@ -12,8 +12,8 @@ import {
 } from './shapes';
 
 export {
-  Renderer,
+  Renderer, AnimationFrame,
   Stage, Scene,
-  Time,
+  Time, HighResTimeStamp,
   Point, Shape, IShape, Circle, Label, Square, Rectangle
 };

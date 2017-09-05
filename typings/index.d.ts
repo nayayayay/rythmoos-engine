@@ -1,20 +1,10 @@
 declare module 'rythmoos-engine' {
+  // Root
   export class Stage {
     public canvas: HTMLCanvasElement;
     public renderer: Renderer;
 
     constructor(canvas: HTMLCanvasElement);
-  }
-
-  export class Renderer {
-    public context: CanvasRenderingContext2D;
-    public scene: Scene;
-    protected animationFrame: null|number;
-
-    constructor(context: CanvasRenderingContext2D, scene?: Scene);
-    public start(): void;
-    public stop(): void;
-    public render(frame: number): void;
   }
 
   export class Scene {
@@ -25,17 +15,35 @@ declare module 'rythmoos-engine' {
     public removeShape(shapeName: string): void;
   }
 
-  export abstract class Time {
-    public static readonly deltaTime: number;
-    public static readonly time: number;
-    public static readonly fps: number;
-    protected static _deltaTime: number;
-    protected static _time: number;
-    protected static _fps: number;
+  // Rendering
+  export type AnimationFrame = null|number;
 
-    public static _setFrame(frame: number): void;
+  export class Renderer {
+    public context: CanvasRenderingContext2D;
+    public scene: Scene;
+    protected animationFrame: AnimationFrame;
+
+    constructor(context: CanvasRenderingContext2D, scene?: Scene);
+    public start(): void;
+    public stop(): void;
+    public render(frame: number): void;
   }
 
+  // Timing
+  export type HighResTimeStamp = number;
+
+  export abstract class Time {
+    public static readonly deltaTime: HighResTimeStamp;
+    public static readonly time: HighResTimeStamp;
+    public static readonly fps: HighResTimeStamp;
+    protected static _deltaTime: HighResTimeStamp;
+    protected static _time: HighResTimeStamp;
+    protected static _fps: HighResTimeStamp;
+
+    public static _setFrame(frame: HighResTimeStamp): void;
+  }
+
+  // Shapes
   export type Point = {
     x: number,
     y: number
