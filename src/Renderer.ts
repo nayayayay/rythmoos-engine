@@ -1,4 +1,5 @@
 import Scene from './Scene';
+import Time from './Time';
 
 /**
  * Render a Scene to the canvas.
@@ -43,6 +44,9 @@ class Renderer {
    * @param frame 
    */
   public render(frame: number): void {
+    // Update Time
+    Time._setFrame(frame);
+
     // Clear the canvas
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 

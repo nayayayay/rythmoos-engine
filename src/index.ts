@@ -6,6 +6,7 @@ import Rectangle from './shapes/Rectangle';
 import Square from './shapes/Square';
 import Circle from './shapes/Circle';
 import Label from './shapes/Label';
+import Time from './Time';
 
 export {
   Stage,
@@ -16,5 +17,6 @@ export {
   Rectangle,
   Square,
   Circle,
-  Label
+  Label,
+  Time
 };
