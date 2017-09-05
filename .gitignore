@@ -1,3 +1,7 @@
+# TEMPORARY ignore docs and build
+docs/
+build/
+
 # Project
 build/debug/
 playground/
