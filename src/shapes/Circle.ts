@@ -4,7 +4,7 @@ import Shape from './Shape';
 class Circle extends Shape {
   public radius: number;
 
-  constructor(name: string, point: Point, color: string, radius: number, fill: boolean = true) {
+  constructor(name: string, point: Point, radius: number, color: string, fill: boolean = true) {
     super(name, point, color, fill);
     this.radius = radius;
   }
