@@ -5,6 +5,7 @@ build/
 # Project
 build/debug/
 playground/
+test/lib
 
 # Logs
 logs
