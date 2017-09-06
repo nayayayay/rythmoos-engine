@@ -1,4 +1,4 @@
-import Point from './Point';
+import { Point } from '../geometry';
 import Shape from './Shape';
 
 class Rectangle extends Shape {

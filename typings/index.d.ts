@@ -44,11 +44,6 @@ declare module 'rythmoos-engine' {
   }
 
   // Shapes
-  export type Point = {
-    x: number,
-    y: number
-  };
-
   export interface IShape {
     name: string;
     point: Point;
@@ -91,5 +86,13 @@ declare module 'rythmoos-engine' {
     public font: string;
 
     constructor(name: string, point: Point, content: string, color: string, font: string, fill?: boolean);
+  }
+
+  // Geometry
+  export class Point {
+    public x: number;
+    public y: number;
+
+    constructor(x: number, y: number);
   }
 }

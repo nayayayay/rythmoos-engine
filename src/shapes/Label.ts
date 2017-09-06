@@ -1,5 +1,5 @@
 import Shape from './Shape';
-import Point from './Point';
+import { Point } from '../geometry';
 
 class Label extends Shape {
   public content: string;
