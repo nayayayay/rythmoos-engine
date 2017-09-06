@@ -6,7 +6,9 @@ import AnimationFrame from './AnimationFrame';
  * Render a Scene to the canvas.
  */
 class Renderer {
+  /** The 2D context this Renderer renders to. */
   public context: CanvasRenderingContext2D;
+  /** The scene this Renderer renders. */
   public scene: Scene;
   protected animationFrame: AnimationFrame;
 

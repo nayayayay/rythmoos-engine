@@ -11,8 +11,8 @@ declare module 'rythmoos-engine' {
     public shapes: Array<Shape>;
 
     constructor();
-    public addShape(shape: Shape): void;
-    public removeShape(shapeName: string): void;
+    public addShape(shape: Shape): number;
+    public removeShape(shapeName: string): number;
   }
 
   // Rendering
