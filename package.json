@@ -2,13 +2,13 @@
   "name": "rythmoos-engine",
   "version": "0.1.0",
   "description": "Rythmoos' game engine.",
-  "main": "build/lib/index.js",
-  "types": "typings/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "tsc --sourceMap false --outDir test/lib --module commonjs && mocha",
-    "build": "tsc --sourceMap false --outDir build/lib && webpack",
-    "doc": "typedoc --out docs src --mode file",
-    "all": "npm test && npm run build && npm run doc"
+    "test": "tsc && electron test/index.js",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "docs": "typedoc --out docs src --mode file"
   },
   "repository": {
     "type": "git",
@@ -22,14 +22,11 @@
   },
   "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme",
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.3",
-    "babel-minify-webpack-plugin": "^0.2.0",
-    "chai": "^4.1.2",
-    "mocha": "^3.5.0",
-    "mocha-jsdom": "^1.1.0",
-    "source-map-loader": "^0.2.1",
+    "mocha": "^3.5.3",
     "typedoc": "^0.8.0",
-    "typescript": "^2.5.2",
-    "webpack": "^3.5.5"
+    "typescript": "^2.5.2"
+  },
+  "peerDependencies": {
+    "electron": "^1.7.6"
   }
 }
