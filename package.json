@@ -10,8 +10,8 @@
     "build:rel": "webpack",
     "build:all": "npm run build:lib && npm run build:rel",
     "build": "npm run build:all",
-    "docs": "jsdoc src -t nodes_modules/docdash",
-    "noob": "npm install && npm run build && npm test"
+    "docs": "jsdoc src -t node_modules/docdash",
+    "noob": "npm install && npm test && npm run build:rel"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "chai": "^4.1.2",
+    "docdash": "^0.4.0",
     "jsdoc": "^3.5.5",
     "mocha": "^3.5.3",
     "webpack": "^3.6.0"
