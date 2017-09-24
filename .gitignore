@@ -1,3 +1,6 @@
+# Playground (used for testing in Electron)
+playground/
+
 # Logs
 logs
 *.log
