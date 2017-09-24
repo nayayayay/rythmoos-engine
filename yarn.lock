@@ -1225,6 +1225,10 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+docdash@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/docdash/-/docdash-0.4.0.tgz#05c3a50d83189981699ee0c076d3a3950db7ec00"
+
 domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"

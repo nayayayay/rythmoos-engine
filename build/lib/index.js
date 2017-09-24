@@ -3,4 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var toto = exports.toto = 45;
+/**
+ * @type {boolean}
+ */
+var test = exports.test = true;
