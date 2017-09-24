@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Rythmoos' game engine.",
   "main": "build/lib/index.js",
-  "types": "build/index.d.ts",
+  "types": "typings/index.d.ts",
   "scripts": {
     "test": "npm run build:lib && mocha --reporter=nyan",
     "build:lib": "babel src -d build/lib",
@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme",
   "peerDependencies": {
-    "electron": "^1.7.8"
+    "electron": "^1.7.8",
+    "typescript": "^2.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
