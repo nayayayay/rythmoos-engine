@@ -10,7 +10,7 @@
     "build:rel": "webpack",
     "build:all": "npm run build:lib && npm run build:rel",
     "build": "npm run build:all",
-    "docs": "jsdoc src -t node_modules/docdash",
+    "docs": "jsdoc src -t node_modules/docdash -d docs",
     "noob": "npm install && npm test && npm run build:rel"
   },
   "repository": {
