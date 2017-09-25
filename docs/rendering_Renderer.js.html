@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>rendering/Renderer.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,25 +27,58 @@
 
 <div id="main">
     
+    <h1 class="page-title">rendering/Renderer.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Render a scene to the game canvas using the 2D rendering context.
+ */
+export class Renderer {
 
+  /**
+   * Create a renderer.
+   * @param {CanvasRenderingContext2D} context The context to use when rendering a scene.
+   * @param {string|CanvasPattern|CanvasGradient} [backgroundColour='#000000'] The background
+   * colour of the canvas.
+   */
+  constructor(context, backgroundColour='#000000') {
 
+    /**
+     * The context used to render scenes.
+     * @type {CanvasRenderingContext2D}
+     */
+    this.context = context;
 
+    /**
+     * The background colour.
+     * @type {string|CanvasPattern|CanvasGradient}
+     */
+    this.backgroundColour = backgroundColour;
+  }
 
+  /**
+   * Render a scene onto the canvas.
+   * @param {Scene} scene 
+   */
+  render(scene) {
+    this.context.fillStyle = this.backgroundColour;
+    this.context.fillRect(0, 0, this.context.canvas.width, this.context.canvas.height);
 
-
-
-
-
-    
-
-
-
+    for (const gameObject of scene.gameObjects) {
+      gameObject._render(this.context);
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

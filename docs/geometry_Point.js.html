@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>geometry/Point.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,25 +27,44 @@
 
 <div id="main">
     
+    <h1 class="page-title">geometry/Point.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Represent a simple 2D point.
+ */
+export class Point {
+  
+  /**
+   * Create a point.
+   * @param {number} [x] The X position.
+   * @param {number} [y] The Y position.
+   */
+  constructor(x=0, y=0) {
 
+    /**
+     * The X position.
+     * @type {number}
+     */
+    this.x = x;
 
-
-
-
-
-
-
-
-    
-
-
-
+    /**
+     * The Y position.
+     * @type {number}
+     */
+    this.y = y;
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

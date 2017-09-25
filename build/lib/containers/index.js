@@ -4,38 +4,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _containers = require('./containers');
+var _Game = require('./Game');
 
-Object.keys(_containers).forEach(function (key) {
+Object.keys(_Game).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _containers[key];
+      return _Game[key];
     }
   });
 });
 
-var _geometry = require('./geometry');
+var _GameObject = require('./GameObject');
 
-Object.keys(_geometry).forEach(function (key) {
+Object.keys(_GameObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _geometry[key];
+      return _GameObject[key];
     }
   });
 });
 
-var _rendering = require('./rendering');
+var _Scene = require('./Scene');
 
-Object.keys(_rendering).forEach(function (key) {
+Object.keys(_Scene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _rendering[key];
+      return _Scene[key];
     }
   });
 });
