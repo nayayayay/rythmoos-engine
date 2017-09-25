@@ -1,11 +1,5 @@
-# TEMPORARY ignore docs and build
-docs/
-build/
-
-# Project
-build/debug/
+# Playground (used for testing in Electron)
 playground/
-test/lib
 
 # Logs
 logs

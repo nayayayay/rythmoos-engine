@@ -5,10 +5,13 @@
   "main": "build/lib/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "tsc --sourceMap false --outDir test/lib --module commonjs && mocha",
-    "build": "tsc --sourceMap false --outDir build/lib && webpack",
-    "doc": "typedoc --out docs src --mode file",
-    "all": "npm test && npm run build && npm run doc"
+    "test": "npm run build:lib && mocha --reporter=nyan",
+    "build:lib": "babel src -d build/lib",
+    "build:rel": "webpack",
+    "build:all": "npm run build:lib && npm run build:rel",
+    "build": "npm run build:all",
+    "docs": "jsdoc src -r -t node_modules/docdash -d docs",
+    "noob": "npm install && npm test && npm run build:rel"
   },
   "repository": {
     "type": "git",
@@ -21,15 +24,20 @@
     "url": "https://github.com/ChibiFR/rythmoos-engine/issues"
   },
   "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme",
+  "peerDependencies": {
+    "electron": "^1.7.8",
+    "typescript": "^2.5.2"
+  },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.2.3",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "chai": "^4.1.2",
-    "mocha": "^3.5.0",
-    "mocha-jsdom": "^1.1.0",
-    "source-map-loader": "^0.2.1",
-    "typedoc": "^0.8.0",
-    "typescript": "^2.5.2",
-    "webpack": "^3.5.5"
+    "docdash": "^0.4.0",
+    "jsdoc": "^3.5.5",
+    "mocha": "^3.5.3",
+    "webpack": "^3.6.0"
   }
 }
