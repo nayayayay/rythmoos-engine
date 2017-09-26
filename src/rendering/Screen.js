@@ -7,17 +7,18 @@ import {Point} from '../geometry';
 export class Screen {
 
   /**
+   * The canvas used as a reference for the screen.
+   * @type {HTMLCanvasElement}
+   * @private
+   */
+  static _canvas = { width: 1280, height: 720 };
+
+  /**
    * Used internally to initialize the Screen class.
    * @param {HTMLCanvasElement} canvas The canvas the use as a screen.
    * @ignore
    */
   static _init(canvas) {
-
-    /**
-     * The canvas used as a reference for the screen.
-     * @type {HTMLCanvasElement}
-     * @private
-     */
     this._canvas = canvas;
   }
 
