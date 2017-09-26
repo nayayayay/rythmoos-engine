@@ -1,4 +1,6 @@
 declare module 'rythmoos-engine' {
+  export type CanvasColour = string|CanvasPattern|CanvasGradient;
+
   export class Game {
     public canvas: HTMLCanvasElement;
     public height: number;
@@ -35,6 +37,10 @@ declare module 'rythmoos-engine' {
     public drawAfter(context: CanvasRenderingContext2D): void;
     public setCenter(center: Point): void;
     public update(): void;
+  }
+
+  export class Graphics {
+    public draw(context: CanvasRenderingContext2D): void;
   }
 
   export class Point {
