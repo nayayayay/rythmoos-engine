@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>containers/GameObject.js - Documentation</title>
+    <title>graphics/Circle.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">containers/GameObject.js</h1>
+    <h1 class="page-title">graphics/Circle.js</h1>
     
 
     
@@ -38,72 +38,70 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import {Point, Rotation} from '../geometry';
-import {Screen} from '../rendering';
+import {Graphics} from './Graphics';
 
 /**
- * Define an entity in your game (e.g. a character, a building...).
+ * A simple circle shape.
  */
-export class GameObject {
-  
+export class Circle extends Graphics {
+
   /**
-   * Create a GameObject.
-   * @param {number} [x=0] The point in the X axis.
-   * @param {number} [y=0] The point in the Y axis.
-   * @param {number} [width=Screen.width] The width of the game object.
-   * @param {number} [height=Screen.heigh] The height of the game object.
-   * @param {number} [rotation=0] The rotation in degrees.
-   * @param {number} [scale=1] The scale which to render this game object at.
-   * @param {boolean} [visible=true] Whether the game object has to be rendered or not.
+   * Create a Circle.
+   * @param {number} [x=0] The position in the X axis.
+   * @param {number} [y=0] The position in the Y axis.
+   * @param {number} [size=100] The diameter of the circle.
+   * @param {CanvasColour} [fillColour='#ff00ff'] The background colour of the circle.
+   * @param {CanvasColour} [strokeColour='#ffffff'] The colour of the strokes.
+   * @param {number} [strokeWidth=2] The width of the strokes, set to 0 if none.
    */
-  constructor(x=0, y=0, width=Screen.width, height=Screen.height, rotation=0, scale=1, visible=true) {
+  constructor(x=0, y=0, size=100, fillColour='#ff00ff', strokeColour='#ffffff', strokeWidth=2) {
+    super();
 
     /**
-     * The position of the game object (top-left corner).
+     * The position of the circle (its center).
      * @type {Point}
      */
     this.position = new Point(x, y);
 
     /**
-     * The width of the game object.
+     * The diameter of the circle.
      * @type {number}
      */
-    this.width = width;
+    this.size = size;
 
     /**
-     * The height of the game object.
+     * The background colour of the circle
+     * @type {CanvasColour}
+     */
+    this.fillColour = fillColour;
+
+    /**
+     * The colour of the strokes.
+     * @type {CanvasColour}
+     */
+    this.strokeColour = strokeColour;
+
+    /**
+     * The width of the strokes. Set to 0 if none.
      * @type {number}
      */
-    this.height = height;
+    this.strokeWidth = strokeWidth;
 
     /**
-     * The rotation of the game object in degrees.
+     * The rotation of the circle in degrees.
      * @type {number}
+     * @default
      */
-    this.rotation = rotation;
+    this.rotation = 0;
 
     /**
-     * The scale which to render this game object at (default is 1).
-     * @type {number}
-     */
-    this.scale = scale;
-
-    /**
-     * Whether this game object should be rendered or not.
+     * Whether to fill or not the circle with its fill colour.
      * @type {boolean}
+     * @default
      */
-    this.visible = visible;
-
-    /**
-     * The graphics contained in this game object, see {@link #addGraphics}.
-     * @type {Graphics[]}
-     */
-    this.graphics = [];
+    this.fill = true;
   }
 
-  /**
-   * The X position of the game object.
-   * @type {number}
-   */
   get x() {
     return this.position.x;
   }
@@ -112,10 +110,6 @@ export class GameObject {
     this.position.x = x;
   }
 
-  /**
-   * The Y position of the game object.
-   * @type {number}
-   */
   get y() {
     return this.position.y;
   }
@@ -125,120 +119,31 @@ export class GameObject {
   }
 
   /**
-   * The center of the game object. To set it, see {@link #setCenter}.
-   * @type {Point}
-   * @readonly
-   */
-  get center() {
-    return new Point(this.x + this.width / 2, this.y + this.height / 2);
-  }
-
-  /**
-   * The center of the game object in the X axis.
-   * @type {number}
-   */
-  get centerX() {
-    return this.x + this.width / 2;
-  }
-
-  set centerX(centerX) {
-    this.x = centerX - this.width / 2;
-  }
-
-  /**
-   * The center of the game object in the Y axis.
-   */
-  get centerY() {
-    return this.y + this.height / 2;
-  }
-
-  set centerY(centerY) {
-    this.y = centerY - this.height / 2;
-  }
-
-  /**
-   * Change the game object center position. This will update its position.
-   * @param {Point} center The new center position of the game object.
-   */
-  setCenter(center) {
-    this.x = center.x - this.width / 2;
-    this.y = center.y - this.height / 2;
-  }
-
-  /**
-   * Add new graphics to the game object.
-   * @param {Graphics} graphics 
-   * @param {...Graphics} otherGraphics 
-   */
-  addGraphics(graphics, ...otherGraphics) {
-    this.graphics.push(graphics);
-
-    for (const other of otherGraphics) {
-      this.addGraphics(other);
-    }
-  }
-
-  /**
-   * Run when the game object is created.
-   */
-  create() {
-  }
-
-  /**
-   * Update the game object.&lt;br>
-   * Run before each frame is rendered. For post updating, see {@link GameObject#afterUpdate}.
-   */
-  update() {
-  }
-
-  /**
-   * Update the game object.&lt;br>
-   * Run after the each frame is rendered. For pre updating, see {@link GameObject#update}.
-   */
-  afterUpdate() {
-  }
-
-  /**
-   * Draw the game object.&lt;br>
-   * This happens before drawing the game object's graphics. For post
-   * rendering see {@link GameObject#drawAfter}.
+   * Draw the circle.
    * @param {CanvasRenderingContext2D} context The renderer's context.
    */
   draw(context) {
-  }
-
-  /**
-   * Draw the game object.&lt;br>
-   * This happens after drawing the game object's graphics. For pre
-   * rendering see {@link GameObject#draw}.
-   * @param {CanvasRenderingContext2D} context The renderer's context.
-   */
-  drawAfter(context) {
-  }
-
-  /**
-   * Used internally to render the game object.
-   * @param {CanvasRenderingContext2D} context The renderer's context.
-   * @ignore
-   */
-  _render(context) {
     context.save();
-    context.translate(this.x, this.y);
-    context.scale(this.scale, this.scale);
 
     if (this.rotation) {
-      context.translate(this.width / 2, this.height / 2);
+      context.translate(this.x, this.y);
       context.rotate(Rotation.degreesToRadians(this.rotation));
-      context.translate(-this.width / 2, -this.height / 2);
+      context.translate(-this.x, -this.y);
     }
 
-    this.draw(context);
+    context.beginPath();
+    context.arc(this.x, this.y, this.size / 2, 0, 2 * Math.PI);
 
-    for (const graphics of this.graphics) {
-      graphics._render(context);
+    if (this.fill) {
+      context.fillStyle = this.fillColour;
+      context.fill();
     }
 
-    this.drawAfter(context);
+    if (this.strokeWidth) {
+      context.lineWidth = this.strokeWidth;
+      context.strokeStyle = this.strokeColour;
+      context.stroke();
+    }
 
     context.restore();
   }

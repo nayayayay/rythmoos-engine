@@ -12,19 +12,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * A drawable graphics that can be added to a game object.
  */
 var Graphics = exports.Graphics = function () {
+
+  /**
+   * Create a new graphics.
+   * @param {boolean} [visible=true] Whether the graphics should be rendered or not.
+   */
   function Graphics() {
+    var visible = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
     _classCallCheck(this, Graphics);
+
+    /**
+     * Whether the graphics should be rendered or not.
+     * @type {boolean}
+     */
+    this.visible = true;
   }
+
+  /**
+   * Draw the graphics.<br>
+   * Override this to define what should be drawn.
+   * @param {CanvasRenderingContext2D} context The renderer's context.
+   */
+
 
   _createClass(Graphics, [{
     key: "draw",
-
-
-    /**
-     * Draw the graphics.<br>
-     * Override this to define what should be drawn.
-     * @param {CanvasRenderingContext2D} context The renderer's context.
-     */
     value: function draw(context) {}
 
     /**
@@ -36,6 +49,8 @@ var Graphics = exports.Graphics = function () {
   }, {
     key: "_render",
     value: function _render(context) {
+      if (!this.visible) return;
+
       this.draw(context);
     }
   }]);

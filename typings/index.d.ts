@@ -1,6 +1,19 @@
 declare module 'rythmoos-engine' {
   export type CanvasColour = string|CanvasPattern|CanvasGradient;
 
+  export class Circle {
+    public fill: boolean;
+    public fillColour: CanvasColour;
+    public position: Point;
+    public rotation: number;
+    public size: number;
+    public strokeColour: CanvasColour;
+    public strokeWidth: number;
+
+    constructor(x?: number, y?: number, fillColour?: CanvasColour, strokeColour?: CanvasColour, strokeWidth?: number);
+    public draw(context: CanvasRenderingContext2D): void;
+  }
+
   export class Game {
     public canvas: HTMLCanvasElement;
     public height: number;

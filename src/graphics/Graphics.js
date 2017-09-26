@@ -4,6 +4,19 @@
 export class Graphics {
   
   /**
+   * Create a new graphics.
+   * @param {boolean} [visible=true] Whether the graphics should be rendered or not.
+   */
+  constructor(visible=true) {
+
+    /**
+     * Whether the graphics should be rendered or not.
+     * @type {boolean}
+     */
+    this.visible = true;
+  }
+
+  /**
    * Draw the graphics.<br>
    * Override this to define what should be drawn.
    * @param {CanvasRenderingContext2D} context The renderer's context.
@@ -17,6 +30,8 @@ export class Graphics {
    * @ignore
    */
   _render(context) {
+    if (!this.visible) return;
+
     this.draw(context);
   }
 }

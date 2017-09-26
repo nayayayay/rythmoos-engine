@@ -25,7 +25,7 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
   _inherits(Rectangle, _Graphics);
 
   /**
-   * 
+   * Create a Rectangle.
    * @param {number} [x=0] The X position of the rectangle (top-left corner).
    * @param {number} [y=0] The Y position of the rectangle (top-left corner).
    * @param {number} [width=400] The width of the rectangle.
@@ -91,13 +91,6 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
     _this.rotation = 0;
 
     /**
-     * Whether the rectangle should be rendered or not.
-     * @type {boolean}
-     * @default
-     */
-    _this.visible = true;
-
-    /**
      * Whether to fill or not the rectangle with its fill colour.
      * @type {boolean}
      * @default
@@ -118,6 +111,7 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
 
     /**
      * Change the rectangle's center point. This will update its position.
+     * @param {Point} center The new center of the rectangle.
      */
     value: function setCenter(center) {
       this.x = center.x - this.width / 2;
@@ -132,8 +126,6 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
   }, {
     key: 'draw',
     value: function draw(context) {
-      if (!this.visible) return;
-
       context.save();
 
       if (this.rotation) {
@@ -152,6 +144,8 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
         context.strokeStyle = this.strokeColour;
         context.strokeRect(this.x, this.y, this.width, this.height);
       }
+
+      context.restore();
     }
   }, {
     key: 'x',
