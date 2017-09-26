@@ -40,6 +40,7 @@ declare module 'rythmoos-engine' {
   }
 
   export class Graphics {
+    constructor();
     public draw(context: CanvasRenderingContext2D): void;
   }
 
@@ -48,6 +49,26 @@ declare module 'rythmoos-engine' {
     public y: number;
 
     constructor(x?: number, y?: number);
+  }
+
+  export class Rectangle extends Graphics {
+    public readonly center: Point;
+    public centerX: number;
+    public centerY: number;
+    public fill: boolean;
+    public fillColour: CanvasColour;
+    public height: number;
+    public position: Point;
+    public rotation: number;
+    public strokeColour: CanvasColour;
+    public strokeWidth: number;
+    public visible: boolean;
+    public width: number;
+    public x: number;
+    public y: number;
+
+    constructor(x?: number, y?: number, width?: number, height?: number, fillColour?: CanvasColour, strokeColour?: CanvasColour, strokeWidth?: number);
+    public draw(context: CanvasRenderingContext2D): void;
   }
 
   export class Renderer {

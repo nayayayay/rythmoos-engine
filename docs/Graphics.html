@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Screen - Documentation</title>
+    <title>Graphics - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Screen</h1>
+    <h1 class="page-title">Graphics</h1>
     
 
     
@@ -40,10 +40,10 @@
 <header>
     
         <h2>
-        Screen
+        Graphics
         </h2>
         
-            <div class="class-description">Contain values about the game screen (canvas).</div>
+            <div class="class-description">A drawable graphics that can be added to a game object.</div>
         
     
 </header>
@@ -57,7 +57,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Screen"><span class="type-signature">(abstract) </span>new Screen<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Graphics"><span class="type-signature"></span>new Graphics<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line7">line 7</a>
+        <a href="graphics_Graphics.js.html">graphics/Graphics.js</a>, <a href="graphics_Graphics.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -146,12 +146,18 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id=".center"><span class="type-signature">(static, readonly) </span>center<span class="type-signature"> :<a href="Point.html">Point</a></span></h4>
 
+    
+
+    <h4 class="name" id="draw"><span class="type-signature"></span>draw<span class="signature">(context)</span><span class="type-signature"></span></h4>
+
+    
 
 
 
@@ -161,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line49">line 49</a>
+        <a href="graphics_Graphics.js.html">graphics/Graphics.js</a>, <a href="graphics_Graphics.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -201,20 +207,76 @@
 
 
 <div class="description">
-    The center of the screen.
+    Draw the graphics.<br>Override this to define what should be drawn.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<span class="param-type"><a href="Point.html">Point</a></span>
+                <td class="name"><code>context</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CanvasRenderingContext2D</span>
 
 
-        </li>
-    </ul>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The renderer's context.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -222,300 +284,6 @@
 
 
         
-            
-<h4 class="name" id=".centerX"><span class="type-signature">(static, readonly) </span>centerX<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line58">line 58</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The X position of the screen's center.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".centerY"><span class="type-signature">(static, readonly) </span>centerY<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line67">line 67</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The Y position of the screen's center.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".height"><span class="type-signature">(static, readonly) </span>height<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line40">line 40</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The height of the game screen.<br>Represent the canvas.height property (not canvas.style.height).
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".width"><span class="type-signature">(static, readonly) </span>width<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rendering_Screen.js.html">rendering/Screen.js</a>, <a href="rendering_Screen.js.html#line30">line 30</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The width of the game screen.<br>Represent the canvas.width property (not canvas.style.width).
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
-
     
 
     

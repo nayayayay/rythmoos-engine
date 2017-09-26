@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>containers/Scene.js - Documentation</title>
+    <title>graphics/Graphics.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">containers/Scene.js</h1>
+    <h1 class="page-title">graphics/Graphics.js</h1>
     
 
     
@@ -38,78 +38,25 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Contain the game objects to update and render.
+ * A drawable graphics that can be added to a game object.
  */
-export class Scene {
-
+export class Graphics {
+  
   /**
-   * Create a Scene.
+   * Draw the graphics.&lt;br>
+   * Override this to define what should be drawn.
+   * @param {CanvasRenderingContext2D} context The renderer's context.
    */
-  constructor() {
-
-    /**
-     * The game objects contained in the scene.
-     * @type {GameObject[]}
-     */
-    this.gameObjects = [];
+  draw(context) {
   }
 
   /**
-   * Add game objects to the scene.
-   * @param {GameObject} gameObject A game object to add to the scene.
-   * @param {...GameObject} [otherGameObjects] More game objects to add.
+   * Used internally to render the graphics.
+   * @param {CanvasRenderingContext2D} context The renderer's context.
+   * @ignore
    */
-  add(gameObject, ...otherGameObjects) {
-    this.gameObjects.push(gameObject);
-
-    for (const other of otherGameObjects) {
-      this.add(other);
-    }
-  }
-
-  /**
-   * Check whether the given game object is in the scene or not.
-   * @param {GameObject} gameObject The game object to check.
-   */
-  contains(gameObject) {
-    return this.gameObjects.indexOf(gameObject) !== -1;
-  }
-
-  /**
-   * Remove game objects from the scene.
-   * @param {GameObject} gameObject A game object to remove from the scene.
-   * @param {...GameObject} [otherGameObjects] More game objects to remove.
-   */
-  remove(gameObject, ...otherGameObjects) {
-    const index = this.gameObjects.indexOf(gameObject);
-
-    if (index !== -1) {
-      this.gameObjects.splice(index, 1);
-    }
-
-    for (const other of otherGameObjects) {
-      this.remove(other);
-    }
-  }
-
-  /**
-   * Run when the scene is created.
-   */
-  create() {
-  }
-
-  /**
-   * Run before each frame is rendered.&lt;br>
-   * For post updating, see {@link Scene#afterUpdate}.
-   */
-  update() {
-  }
-
-  /**
-   * Run after each frame is rendered.&lt;br>
-   * For pre updating, see {@link Scene#update}
-   */
-  afterUpdate() {
+  _render(context) {
+    this.draw(context);
   }
 }
 </code></pre>

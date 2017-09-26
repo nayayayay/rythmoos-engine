@@ -28,6 +28,18 @@ Object.keys(_geometry).forEach(function (key) {
   });
 });
 
+var _graphics = require('./graphics');
+
+Object.keys(_graphics).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _graphics[key];
+    }
+  });
+});
+
 var _rendering = require('./rendering');
 
 Object.keys(_rendering).forEach(function (key) {

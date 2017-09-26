@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>containers/GameObject.js - Documentation</title>
+    <title>graphics/Rectangle.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">containers/GameObject.js</h1>
+    <h1 class="page-title">graphics/Rectangle.js</h1>
     
 
     
@@ -38,70 +38,87 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import {Point, Rotation} from '../geometry';
-import {Screen} from '../rendering';
+import {Graphics} from './Graphics';
 
 /**
- * Define an entity in your game (e.g. a character, a building...).
+ * A simple rectangle.
+ * @extends Graphics
  */
-export class GameObject {
-  
+export class Rectangle extends Graphics {
+
   /**
-   * Create a GameObject.
-   * @param {number} [x=0] The point in the X axis.
-   * @param {number} [y=0] The point in the Y axis.
-   * @param {number} [width=Screen.width] The width of the game object.
-   * @param {number} [height=Screen.heigh] The height of the game object.
-   * @param {number} [rotation=0] The rotation in degrees.
-   * @param {number} [scale=1] The scale which to render this game object at.
-   * @param {boolean} [visible=true] Whether the game object has to be rendered or not.
+   * 
+   * @param {number} [x=0] The X position of the rectangle (top-left corner).
+   * @param {number} [y=0] The Y position of the rectangle (top-left corner).
+   * @param {number} [width=400] The width of the rectangle.
+   * @param {number} [height=250] The height of the rectangle.
+   * @param {CanvasColour} [fillColour='#ff00ff'] The background colour of the rectangle.
+   * @param {CanvasColour} [strokeColour='#ffffff'] The colour of the rectangle's strokes.
+   * @param {number} [strokeWidth=2] The width of the rectangle's strokes. Set to 0 if none.
    */
-  constructor(x=0, y=0, width=Screen.width, height=Screen.height, rotation=0, scale=1, visible=true) {
+  constructor(x=0, y=0, width=400, height=250, fillColour='#ff00ff', strokeColour='#ffffff', strokeWidth=2) {
+    super();
 
     /**
-     * The position of the game object (top-left corner).
+     * The position of the rectangle (top-left corner).
      * @type {Point}
      */
     this.position = new Point(x, y);
 
     /**
-     * The width of the game object.
+     * The width of the rectangle.
      * @type {number}
      */
     this.width = width;
 
     /**
-     * The height of the game object.
+     * The height of the rectangle.
      * @type {number}
      */
     this.height = height;
 
     /**
-     * The rotation of the game object in degrees.
-     * @type {number}
+     * The background colour.
+     * @type {CanvasColour}
      */
-    this.rotation = rotation;
+    this.fillColour = fillColour;
 
     /**
-     * The scale which to render this game object at (default is 1).
-     * @type {number}
+     * The stroke colour of the rectangle.
+     * @type {CanvasColour}
      */
-    this.scale = scale;
+    this.strokeColour = strokeColour;
 
     /**
-     * Whether this game object should be rendered or not.
+     * The width of the rectangle's strokes. Set to 0 if none.
+     * @type {number}
+     */
+    this.strokeWidth = strokeWidth;
+
+    /**
+     * The rotation of the rectangle, in degrees.
+     * @type {number}
+     * @default
+     */
+    this.rotation = 0;
+
+    /**
+     * Whether the rectangle should be rendered or not.
      * @type {boolean}
+     * @default
      */
-    this.visible = visible;
+    this.visible = true;
 
     /**
-     * The graphics contained in this game object, see {@link #addGraphics}.
-     * @type {Graphics[]}
+     * Whether to fill or not the rectangle with its fill colour.
+     * @type {boolean}
+     * @default
      */
-    this.graphics = [];
+    this.fill = true;
   }
 
   /**
-   * The X position of the game object.
+   * The X position of the rectangle (top-left).
    * @type {number}
    */
   get x() {
@@ -113,8 +130,7 @@ export class GameObject {
   }
 
   /**
-   * The Y position of the game object.
-   * @type {number}
+   * The Y position of the rectangle (top-left).
    */
   get y() {
     return this.position.y;
@@ -125,7 +141,7 @@ export class GameObject {
   }
 
   /**
-   * The center of the game object. To set it, see {@link #setCenter}.
+   * The center point of the rectangle.
    * @type {Point}
    * @readonly
    */
@@ -134,7 +150,7 @@ export class GameObject {
   }
 
   /**
-   * The center of the game object in the X axis.
+   * The X coordinate of the rectangle's center.
    * @type {number}
    */
   get centerX() {
@@ -146,7 +162,8 @@ export class GameObject {
   }
 
   /**
-   * The center of the game object in the Y axis.
+   * The Y coordinate of the rectangle's center.
+   * @type {number}
    */
   get centerY() {
     return this.y + this.height / 2;
@@ -157,8 +174,8 @@ export class GameObject {
   }
 
   /**
-   * Change the game object center position. This will update its position.
-   * @param {Point} center The new center position of the game object.
+   * Change the rectangle's center point. This will update its position.
+   * @param {Point} center The new center of the rectangle.
    */
   setCenter(center) {
     this.x = center.x - this.width / 2;
@@ -166,81 +183,30 @@ export class GameObject {
   }
 
   /**
-   * Add new graphics to the game object.
-   * @param {Graphics} graphics 
-   * @param {...Graphics} otherGraphics 
-   */
-  addGraphics(graphics, ...otherGraphics) {
-    this.graphics.push(graphics);
-
-    for (const other of otherGraphics) {
-      this.addGraphics(other);
-    }
-  }
-
-  /**
-   * Run when the game object is created.
-   */
-  create() {
-  }
-
-  /**
-   * Update the game object.&lt;br>
-   * Run before each frame is rendered. For post updating, see {@link GameObject#afterUpdate}.
-   */
-  update() {
-  }
-
-  /**
-   * Update the game object.&lt;br>
-   * Run after the each frame is rendered. For pre updating, see {@link GameObject#update}.
-   */
-  afterUpdate() {
-  }
-
-  /**
-   * Draw the game object.&lt;br>
-   * This happens before drawing the game object's graphics. For post
-   * rendering see {@link GameObject#drawAfter}.
+   * Draw the rectangle.
    * @param {CanvasRenderingContext2D} context The renderer's context.
    */
   draw(context) {
-  }
+    if (!this.visible) return;
 
-  /**
-   * Draw the game object.&lt;br>
-   * This happens after drawing the game object's graphics. For pre
-   * rendering see {@link GameObject#draw}.
-   * @param {CanvasRenderingContext2D} context The renderer's context.
-   */
-  drawAfter(context) {
-  }
-
-  /**
-   * Used internally to render the game object.
-   * @param {CanvasRenderingContext2D} context The renderer's context.
-   * @ignore
-   */
-  _render(context) {
     context.save();
-    context.translate(this.x, this.y);
-    context.scale(this.scale, this.scale);
 
     if (this.rotation) {
-      context.translate(this.width / 2, this.height / 2);
+      context.translate(this.centerX, this.centerY);
       context.rotate(Rotation.degreesToRadians(this.rotation));
-      context.translate(-this.width / 2, -this.height / 2);
+      context.translate(-this.centerX, -this.centerY);
     }
 
-    this.draw(context);
-
-    for (const graphics of this.graphics) {
-      graphics._render(context);
+    if (this.fill) {
+      context.fillStyle = this.fillColour;
+      context.fillRect(this.x, this.y, this.width, this.height);
     }
 
-    this.drawAfter(context);
-
-    context.restore();
+    if (this.strokeWidth) {
+      context.lineWidth = this.strokeWidth;
+      context.strokeStyle = this.strokeColour;
+      context.strokeRect(this.x, this.y, this.width, this.height);
+    }
   }
 }
 </code></pre>

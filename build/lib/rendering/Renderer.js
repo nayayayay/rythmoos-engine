@@ -16,7 +16,7 @@ var Renderer = exports.Renderer = function () {
   /**
    * Create a renderer.
    * @param {CanvasRenderingContext2D} context The context to use when rendering a scene.
-   * @param {string|CanvasPattern|CanvasGradient} [backgroundColour='#000000'] The background
+   * @param {CanvasColour} [backgroundColour='#000000'] The background
    * colour of the canvas.
    */
   function Renderer(context) {
@@ -32,7 +32,7 @@ var Renderer = exports.Renderer = function () {
 
     /**
      * The background colour.
-     * @type {string|CanvasPattern|CanvasGradient}
+     * @type {CanvasColour}
      */
     this.backgroundColour = backgroundColour;
   }
