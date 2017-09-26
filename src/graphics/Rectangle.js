@@ -8,7 +8,7 @@ import {Graphics} from './Graphics';
 export class Rectangle extends Graphics {
 
   /**
-   * 
+   * Create a Rectangle.
    * @param {number} [x=0] The X position of the rectangle (top-left corner).
    * @param {number} [y=0] The Y position of the rectangle (top-left corner).
    * @param {number} [width=400] The width of the rectangle.
@@ -62,13 +62,6 @@ export class Rectangle extends Graphics {
      * @default
      */
     this.rotation = 0;
-
-    /**
-     * Whether the rectangle should be rendered or not.
-     * @type {boolean}
-     * @default
-     */
-    this.visible = true;
 
     /**
      * Whether to fill or not the rectangle with its fill colour.
@@ -148,8 +141,6 @@ export class Rectangle extends Graphics {
    * @param {CanvasRenderingContext2D} context The renderer's context.
    */
   draw(context) {
-    if (!this.visible) return;
-
     context.save();
 
     if (this.rotation) {
@@ -168,5 +159,7 @@ export class Rectangle extends Graphics {
       context.strokeStyle = this.strokeColour;
       context.strokeRect(this.x, this.y, this.width, this.height);
     }
+
+    context.restore();
   }
 }
