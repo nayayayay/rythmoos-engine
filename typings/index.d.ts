@@ -53,7 +53,9 @@ declare module 'rythmoos-engine' {
   }
 
   export class Graphics {
-    constructor();
+    public visible: boolean;
+      
+    constructor(visible?: boolean);
     public draw(context: CanvasRenderingContext2D): void;
   }
 
@@ -72,10 +74,10 @@ declare module 'rythmoos-engine' {
     public fillColour: CanvasColour;
     public height: number;
     public position: Point;
+    public radius: number;
     public rotation: number;
     public strokeColour: CanvasColour;
     public strokeWidth: number;
-    public visible: boolean;
     public width: number;
     public x: number;
     public y: number;

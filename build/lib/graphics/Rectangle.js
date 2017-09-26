@@ -30,6 +30,7 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
    * @param {number} [y=0] The Y position of the rectangle (top-left corner).
    * @param {number} [width=400] The width of the rectangle.
    * @param {number} [height=250] The height of the rectangle.
+   * @param {number} [radius=0] The radius of the rectangle's borders in degrees.
    * @param {CanvasColour} [fillColour='#ff00ff'] The background colour of the rectangle.
    * @param {CanvasColour} [strokeColour='#ffffff'] The colour of the rectangle's strokes.
    * @param {number} [strokeWidth=2] The width of the rectangle's strokes. Set to 0 if none.
@@ -39,9 +40,10 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
     var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
     var width = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 400;
     var height = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 250;
-    var fillColour = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '#ff00ff';
-    var strokeColour = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : '#ffffff';
-    var strokeWidth = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 2;
+    var radius = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+    var fillColour = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : '#ff00ff';
+    var strokeColour = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : '#ffffff';
+    var strokeWidth = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 2;
 
     _classCallCheck(this, Rectangle);
 
@@ -64,6 +66,12 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
      * @type {number}
      */
     _this.height = height;
+
+    /**
+     * The radius of the rectangle's borders in degrees.
+     * @type {number}
+     */
+    _this.radius = radius;
 
     /**
      * The background colour.
@@ -134,18 +142,62 @@ var Rectangle = exports.Rectangle = function (_Graphics) {
         context.translate(-this.centerX, -this.centerY);
       }
 
+      if (this.radius) {
+        this._drawRounded(context);
+      } else {
+        this._drawClassic(context);
+      }
+
       if (this.fill) {
         context.fillStyle = this.fillColour;
-        context.fillRect(this.x, this.y, this.width, this.height);
+        context.fill();
       }
 
       if (this.strokeWidth) {
         context.lineWidth = this.strokeWidth;
         context.strokeStyle = this.strokeColour;
-        context.strokeRect(this.x, this.y, this.width, this.height);
+        context.stroke();
       }
 
       context.restore();
+    }
+
+    /**
+     * Draw a classic rectangle.
+     * @param {CanvasRenderingContext2D} context The renderer's context.
+     * @private
+     */
+
+  }, {
+    key: '_drawClassic',
+    value: function _drawClassic(context) {
+      context.beginPath();
+      context.moveTo(this.x, this.y);
+      context.lineTo(this.x + this.width, this.y);
+      context.lineTo(this.x + this.width, this.y + this.height);
+      context.lineTo(this.x, this.y + this.height);
+      context.lineTo(this.x, this.y);
+    }
+
+    /**
+     * Draw a rounded rectangle.
+     * @param {CanvasRenderingContext2D} context The renderer's context.
+     * @private
+     */
+
+  }, {
+    key: '_drawRounded',
+    value: function _drawRounded(context) {
+      context.beginPath();
+      context.moveTo(this.x + this.radius, this.y);
+      context.lineTo(this.x + this.width - this.radius, this.y);
+      context.arcTo(this.x + this.width, this.y, this.x + this.width, this.y + this.radius, this.radius);
+      context.lineTo(this.x + this.width, this.y + this.height - this.radius);
+      context.arcTo(this.x + this.width, this.y + this.height, this.x + this.width - this.radius, this.y + this.height, this.radius);
+      context.lineTo(this.x + this.radius, this.y + this.height);
+      context.arcTo(this.x, this.y + this.height, this.x, this.y + this.height - this.radius, this.radius);
+      context.lineTo(this.x, this.y + this.radius);
+      context.arcTo(this.x, this.y, this.x + this.radius, this.y, this.radius);
     }
   }, {
     key: 'x',
