@@ -1,5 +1,6 @@
 import {Scene} from './Scene';
 import {Renderer, Screen} from '../rendering';
+import {Time, Loop} from '../timing';
 
 /**
  * The root for any game.
@@ -31,6 +32,20 @@ export class Game {
      * @type {Renderer}
      */
     this.renderer = new Renderer(this.canvas.getContext('2d'));
+
+    /**
+     * The main loop.
+     * @type {Loop}
+     * @private
+     */
+    this._loop = new Loop();
+
+    /**
+     * Whether the game was created or not.
+     * @type {boolean}
+     * @private
+     */
+    this._created = false;
 
     // Style and append the canvas to the DOM.
     this.canvas.style.display = 'block';
@@ -72,6 +87,42 @@ export class Game {
   }
 
   /**
+   * Whether the game was created/started or not.
+   * @type {boolean}
+   * @readonly
+   */
+  get created() {
+    return this._created;
+  }
+
+  /**
+   * Whether the game has started or not.
+   * @type {boolean}
+   * @readonly
+   */
+  get started() {
+    return this._loop.started;
+  }
+
+  /**
+   * Whether the game is running or not.
+   * @type {boolean}
+   * @readonly
+   */
+  get running() {
+    return this._loop.running;
+  }
+
+  /**
+   * Whether the game was stopped or not.
+   * @type {boolean}
+   * @readonly
+   */
+  get stopped() {
+    return this._loop.stopped;
+  }
+
+  /**
    * Run when the game start.
    */
   create() {
@@ -95,5 +146,29 @@ export class Game {
    * Start the game.
    */
   start() {
+    if (!this.created) {
+      this.create();
+    }
+
+    this._loop.start((frame) => {
+      // Update
+      Time._setFrame(frame);
+      this.update();
+      this.scene._runUpdate();
+
+      // Render
+      this.renderer.render(this.scene);
+
+      // Post update
+      this.scene._runAfterUpdate();
+      this.afterUpdate();
+    });
+  }
+
+  /**
+   * Stop the game.
+   */
+  stop() {
+    this._loop.stop();
   }
 }
