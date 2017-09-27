@@ -140,12 +140,6 @@ export class GameObject {
   }
 
   /**
-   * Run when the game object is created.
-   */
-  create() {
-  }
-
-  /**
    * Update the game object.<br>
    * Run before each frame is rendered. For post updating, see {@link GameObject#afterUpdate}.
    */

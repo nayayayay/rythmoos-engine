@@ -54,12 +54,6 @@ export class Scene {
   }
 
   /**
-   * Run when the scene is created.
-   */
-  create() {
-  }
-
-  /**
    * Run before each frame is rendered.<br>
    * For post updating, see {@link Scene#afterUpdate}.
    */
@@ -71,5 +65,29 @@ export class Scene {
    * For pre updating, see {@link Scene#update}
    */
   afterUpdate() {
+  }
+
+  /**
+   * Used internally to update the scene and its game objects.
+   * @ignore
+   */
+  _runUpdate() {
+    this.update();
+
+    for (const gameObject of this.gameObjects) {
+      gameObject.update();
+    }
+  }
+
+  /**
+   * Used internally to post update the scene and its game objects.
+   * @ignore
+   */
+  _runAfterUpdate() {
+    for (const gameObject of this.gameObjects) {
+      gameObject.afterUpdate();
+    }
+
+    this.afterUpdate();
   }
 }
