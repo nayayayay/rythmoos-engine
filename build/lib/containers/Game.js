@@ -11,6 +11,8 @@ var _Scene = require('./Scene');
 
 var _rendering = require('../rendering');
 
+var _timing = require('../timing');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
@@ -47,6 +49,20 @@ var Game = exports.Game = function () {
      * @type {Renderer}
      */
     this.renderer = new _rendering.Renderer(this.canvas.getContext('2d'));
+
+    /**
+     * The main loop.
+     * @type {Loop}
+     * @private
+     */
+    this._loop = new _timing.Loop();
+
+    /**
+     * Whether the game was created or not.
+     * @type {boolean}
+     * @private
+     */
+    this._created = false;
 
     // Style and append the canvas to the DOM.
     this.canvas.style.display = 'block';
@@ -102,7 +118,35 @@ var Game = exports.Game = function () {
 
   }, {
     key: 'start',
-    value: function start() {}
+    value: function start() {
+      var _this = this;
+
+      this.create();
+
+      this._loop.start(function (frame) {
+        // Update
+        _timing.Time._setFrame(frame);
+        _this.update();
+        _this.scene._runUpdate();
+
+        // Render
+        _this.renderer.render(_this.scene);
+
+        // Post update
+        _this.scene._runAfterUpdate();
+        _this.afterUpdate();
+      });
+    }
+
+    /**
+     * Stop the game.
+     */
+
+  }, {
+    key: 'stop',
+    value: function stop() {
+      this._loop.stop();
+    }
   }, {
     key: 'width',
     get: function get() {
@@ -124,6 +168,54 @@ var Game = exports.Game = function () {
     },
     set: function set(height) {
       this.canvas.height = height;
+    }
+
+    /**
+     * Whether the game was created/started or not.
+     * @type {boolean}
+     * @readonly
+     */
+
+  }, {
+    key: 'created',
+    get: function get() {
+      return this._created;
+    }
+
+    /**
+     * Whether the game has started or not.
+     * @type {boolean}
+     * @readonly
+     */
+
+  }, {
+    key: 'started',
+    get: function get() {
+      return this._loop.started;
+    }
+
+    /**
+     * Whether the game is running or not.
+     * @type {boolean}
+     * @readonly
+     */
+
+  }, {
+    key: 'running',
+    get: function get() {
+      return this._loop.running;
+    }
+
+    /**
+     * Whether the game was stopped or not.
+     * @type {boolean}
+     * @readonly
+     */
+
+  }, {
+    key: 'stopped',
+    get: function get() {
+      return this._loop.stopped;
     }
   }]);
 

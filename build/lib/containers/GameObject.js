@@ -143,14 +143,6 @@ var GameObject = exports.GameObject = function () {
     }
 
     /**
-     * Run when the game object is created.
-     */
-
-  }, {
-    key: 'create',
-    value: function create() {}
-
-    /**
      * Update the game object.<br>
      * Run before each frame is rendered. For post updating, see {@link GameObject#afterUpdate}.
      */

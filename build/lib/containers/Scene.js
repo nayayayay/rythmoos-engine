@@ -125,14 +125,6 @@ var Scene = exports.Scene = function () {
     }
 
     /**
-     * Run when the scene is created.
-     */
-
-  }, {
-    key: "create",
-    value: function create() {}
-
-    /**
      * Run before each frame is rendered.<br>
      * For post updating, see {@link Scene#afterUpdate}.
      */
@@ -149,6 +141,78 @@ var Scene = exports.Scene = function () {
   }, {
     key: "afterUpdate",
     value: function afterUpdate() {}
+
+    /**
+     * Used internally to update the scene and its game objects.
+     * @ignore
+     */
+
+  }, {
+    key: "_runUpdate",
+    value: function _runUpdate() {
+      this.update();
+
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = this.gameObjects[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var gameObject = _step3.value;
+
+          gameObject.update();
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+    }
+
+    /**
+     * Used internally to post update the scene and its game objects.
+     * @ignore
+     */
+
+  }, {
+    key: "_runAfterUpdate",
+    value: function _runAfterUpdate() {
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+        for (var _iterator4 = this.gameObjects[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var gameObject = _step4.value;
+
+          gameObject.afterUpdate();
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+
+      this.afterUpdate();
+    }
   }]);
 
   return Scene;

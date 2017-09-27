@@ -30,12 +30,6 @@ var Screen = exports.Screen = function () {
      * @ignore
      */
     value: function _init(canvas) {
-
-      /**
-       * The canvas used as a reference for the screen.
-       * @type {HTMLCanvasElement}
-       * @private
-       */
       this._canvas = canvas;
     }
 
@@ -44,6 +38,13 @@ var Screen = exports.Screen = function () {
      * Represent the canvas.width property (not canvas.style.width).
      * @type {number}
      * @readonly
+     */
+
+
+    /**
+     * The canvas used as a reference for the screen.
+     * @type {HTMLCanvasElement}
+     * @private
      */
 
   }, {
@@ -104,3 +105,5 @@ var Screen = exports.Screen = function () {
 
   return Screen;
 }();
+
+Screen._canvas = { width: 1280, height: 720 };

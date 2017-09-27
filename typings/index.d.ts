@@ -16,15 +16,20 @@ declare module 'rythmoos-engine' {
 
   export class Game {
     public canvas: HTMLCanvasElement;
+    public readonly created: boolean;
     public height: number;
     public renderer: Renderer;
+    public readonly running: boolean;
     public scene: Scene;
+    public readonly started: boolean;
+    public readonly stopped: boolean;
     public width: number;
 
     constructor(container: HTMLElement, width?: number, height?: number);
     public afterUpdate(): void;
     public create(): void;
     public start(): void;
+    public stop(): void;
     public update(): void;
   }
 
@@ -45,7 +50,6 @@ declare module 'rythmoos-engine' {
     constructor(x?: number, y?: number, width?: number, height?: number, rotation?: number, scale?: number, visible?: boolean);
     public addGraphics(graphics: Graphics, ...otherGraphics: Graphics[]): void;
     public afterUpdate(): void;
-    public create(): void;
     public draw(context: CanvasRenderingContext2D): void;
     public drawAfter(context: CanvasRenderingContext2D): void;
     public setCenter(center: Point): void;
@@ -57,6 +61,18 @@ declare module 'rythmoos-engine' {
       
     constructor(visible?: boolean);
     public draw(context: CanvasRenderingContext2D): void;
+  }
+
+  export class Loop {
+    public readonly currentTime: number;
+    public readonly running: boolean;
+    public readonly started: boolean;
+    public readonly timeStarted: boolean;
+    public readonly timeStopped: number;
+
+    constructor();
+    public start(callback: Function): void;
+    public stop(): void;
   }
 
   export class Point {
@@ -106,7 +122,6 @@ declare module 'rythmoos-engine' {
     public add(gameObject: GameObject, ...otherGameObjects: GameObject[]): void;
     public afterUpdate(): void;
     public contains(gameObject: GameObject): boolean;
-    public create(): void;
     public remove(gameObject: GameObject, ...otherGameObjects: GameObject[]): void;
     public update(): void;
   }
@@ -117,5 +132,12 @@ declare module 'rythmoos-engine' {
     public static readonly centerY: number;
     public static readonly height: number;
     public static readonly width: number;
+  }
+
+  export abstract class Time {
+    public static readonly deltaTime: number;
+    public static readonly FPS: number;
+    public static readonly lastTime: number;
+    public static readonly time: number;
   }
 }

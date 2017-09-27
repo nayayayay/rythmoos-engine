@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>geometry/Rotation.js - Documentation</title>
+    <title>timing/Time.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">geometry/Rotation.js</h1>
+    <h1 class="page-title">timing/Time.js</h1>
     
 
     
@@ -38,27 +38,69 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Contain helpers to translate angles.
+ * Contain data about time.
  * @abstract
  */
-export class Rotation {
+export class Time {
 
   /**
-   * Convert radians to degrees.
-   * @param {number} radians The angle in radians.
-   * @return {number} The radians in degrees.
+   * Time elapsed since the last frame.
+   * @type {number}
+   * @private
    */
-  static radiansToDegrees(radians) {
-    return radians * 180 / Math.PI;
+  static _deltaTime = 0;
+
+  /**
+   * Time elapsed since the main loop has started.
+   * @type {number}
+   * @private
+   */
+  static _time = 0;
+
+  /**
+   * Used internally to update the time data.
+   * @param {number} frame The time/high resolution timestamp provided by the browser.
+   * @ignore
+   */
+  static _setFrame(frame) {
+    this._deltaTime = frame - this._time;
+    this._time = frame;
   }
 
   /**
-   * Convert degrees to radians.
-   * @param {number} degrees The angle in degrees.
-   * @return {number} The degrees in radians.
+   * The time elapsed since the last frame, in milliseconds.
+   * @type {number}
+   * @readonly
    */
-  static degreesToRadians(degrees) {
-    return degrees * Math.PI / 180;
+  static get deltaTime() {
+    return this._deltaTime;
+  }
+
+  /**
+   * The time elapsed since the main loop has started, in milliseconds.
+   * @type {number}
+   * @readonly
+   */
+  static get time() {
+    return this._time;
+  }
+
+  /**
+   * The value of time during the last frame.
+   * @type {number}
+   * @readonly
+   */
+  static get lastTime() {
+    return this._time - this._deltaTime;
+  }
+
+  /**
+   * The average amount of frames per second based on the current delta time.
+   * @type {number}
+   * @readonly
+   */
+  static get FPS() {
+    return 1000 / this._deltaTime;
   }
 }
 </code></pre>
