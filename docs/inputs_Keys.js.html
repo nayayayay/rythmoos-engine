@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>timing/Loop.js - Documentation</title>
+    <title>inputs/Keys.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">timing/Loop.js</h1>
+    <h1 class="page-title">inputs/Keys.js</h1>
     
 
     
@@ -37,165 +37,120 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {Time} from './Time';
-
-/**
- * A loop that runs every frame.
+            <pre class="prettyprint source linenums"><code>/**
+ * All key codes. See {@link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code|KeyboardEvent.code}
+ * for more information.
+ * @readonly
+ * @enum {number}
  */
-export class Loop {
+export const Keys = {
+  Digit0: 'Digit0',
+  Digit1: 'Digit1',
+  Digit2: 'Digit2',
+  Digit3: 'Digit3',
+  Digit4: 'Digit4',
+  Digit5: 'Digit5',
+  Digit6: 'Digit6',
+  Digit7: 'Digit7',
+  Digit8: 'Digit8',
+  Digit9: 'Digit9',
 
-  /**
-   * Create a Loop.
-   */
-  constructor() {
+  KeyA: 'KeyA',
+  KeyB: 'KeyB',
+  KeyC: 'KeyC',
+  KeyD: 'KeyD',
+  KeyE: 'KeyE',
+  KeyF: 'KeyF',
+  KeyG: 'KeyG',
+  KeyH: 'KeyH',
+  KeyI: 'KeyI',
+  KeyJ: 'KeyJ',
+  KeyK: 'KeyK',
+  KeyL: 'KeyL',
+  KeyM: 'KeyM',
+  KeyN: 'KeyN',
+  KeyO: 'KeyO',
+  KeyP: 'KeyP',
+  KeyQ: 'KeyQ',
+  KeyR: 'KeyR',
+  KeyS: 'KeyS',
+  KeyT: 'KeyT',
+  KeyU: 'KeyU',
+  KeyV: 'KeyV',
+  KeyW: 'KeyW',
+  KeyX: 'KeyX',
+  KeyY: 'KeyY',
+  KeyZ: 'KeyZ',
 
-    /**
-     * Whether the loop was started or not.
-     * @type {boolean}
-     * @private
-     */
-    this._started = false;
+  Escape: 'Escape',
 
-    /**
-     * Whether the loop is currently running or not.
-     * @type {boolean}
-     * @private
-     */
-    this._running = false;
+  F1: 'F1',
+  F2: 'F2',
+  F3: 'F3',
+  F4: 'F4',
+  F5: 'F5',
+  F6: 'F6',
+  F7: 'F7',
+  F8: 'F8',
+  F9: 'F9',
+  F10: 'F10',
+  F11: 'F11',
+  F12: 'F12',
 
-    /**
-     * Whether the loop was stopped or not.
-     * @type {boolean}
-     * @private
-     */
-    this._stopped = false;
+  Insert: 'Insert',
+  Delete: 'Delete',
 
-    /**
-     * The time when this loop started (based on the animation frame).
-     * @type {number}
-     * @private
-     */
-    this._timeStarted = 0;
+  Home: 'Home',
+  End: 'End',
+  PageUp: 'PageUp',
+  PageDown: 'PageDown',
 
-    /**
-     * The time elapsed since that loop has been running.
-     * @type {number}
-     * @private
-     */
-    this._currentTime = 0;
+  NumLock: 'NumLock',
+  NumpadDivide: 'NumpadDivide',
+  NumpadMultiply: 'NumpadMultiply',
+  NumpadSubtract: 'NumpadSubtract',
+  NumpadAdd: 'NumpadAdd',
+  NumpadEnter: 'NumpadEnter',
+  NumpadDecimal: 'NumpadDecimal',
+  Numpad0: 'Numpad0',
+  Numpad1: 'Numpad1',
+  Numpad2: 'Numpad2',
+  Numpad3: 'Numpad3',
+  Numpad4: 'Numpad4',
+  Numpad5: 'Numpad5',
+  Numpad6: 'Numpad6',
+  Numpad7: 'Numpad7',
+  Numpad8: 'Numpad8',
+  Numpad9: 'Numpad9',
 
-    /**
-     * The time when this loop was stopped (based on the animation frame).
-     * @type {number}
-     * @private
-     */
-    this._timeStopped = 0;
+  ArrowUp: 'ArrowUp',
+  ArrowDown: 'ArrowDown',
+  ArrowLeft: 'ArrowLeft',
+  ArrowRight: 'ArrowRight',
 
-    /**
-     * This loop's animation frame id.
-     * @type {number}
-     * @private
-     */
-    this._animationFrame = 0;
-  }
+  Backquote: 'Backquote',
+  Minus: 'Minus',
+  Equal: 'Equal',
+  Backspace: 'Backspace',
+  BracketLeft: 'BracketLeft',
+  BracketRight: 'BracketRight',
+  Quote: 'Quote',
+  Backslash: 'Backslash',
+  Comma: 'Comma',
+  Period: 'Period',
+  Slash: 'Slash',
 
-  /**
-   * Whether the loop was started or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get started() {
-    return this._started;
-  }
-
-  /**
-   * Whether the loop is currently running or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get running() {
-    return this._running;
-  }
-
-  /**
-   * Whether the loop was stopped or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get stopped() {
-    return this._stopped;
-  }
-
-  /**
-   * The time when this loop started (based on the animation frame).
-   * @type {number}
-   * @readonly
-   */
-  get timeStarted() {
-    return this._timeStarted;
-  }
-
-  /**
-   * The time elapsed since that loop has been running.
-   * @type {number}
-   * @readonly
-   */
-  get currentTime() {
-    return Time.time - this.timeStarted;
-  }
-
-  /**
-   * The time when this loop was stopped (based on the animation frame).
-   * @type {number}
-   * @readonly
-   */
-  get timeStopped() {
-    return this._timeStopped;
-  }
-
-  /**
-   * Start the loop.
-   * @param {function} callback The function to run for each iteration.
-   */
-  start(callback) {
-    if (!this.started) {
-      this._started = true;
-      this._running = true;
-      this._stopped = false;
-
-      this._animationFrame = requestAnimationFrame((frame) => {
-        this._timeStarted = Time.time;
-        this._loop(callback, frame);
-      });
-    }
-  }
-
-  /**
-   * Stop the loop.
-   */
-  stop() {
-    if (this.running) {
-      this._running = false;
-      this._stopped = true;
-
-      cancelAnimationFrame(this._animationFrame);
-      this._timeStopped = Time.time;
-    }
-  }
-
-  /**
-   * Execute the loop.
-   * @param {function} callback The function to run for each iteration.
-   * @param {number} frame The animation frame timer.
-   * @private
-   */
-  _loop(callback, frame) {
-    this._animationFrame = requestAnimationFrame((frame) => {
-      this._loop(callback, frame);
-    });
-
-    callback(frame);
-  }
+  Enter: 'Enter',
+  ShiftLeft: 'ShiftLeft',
+  ShiftRight: 'ShiftRight',
+  CapsLock: 'CapsLock',
+  Tab: 'Tab',
+  ControlLeft: 'ControlLeft',
+  ControlRight: 'ControlRight',
+  MetaLeft: 'MetaLeft',
+  MetaRight: 'MetaRight',
+  AltLeft: 'AltLeft',
+  AltRight: 'AltRight'
 }
 </code></pre>
         </article>

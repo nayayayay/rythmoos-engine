@@ -13,6 +13,8 @@ var _rendering = require('../rendering');
 
 var _timing = require('../timing');
 
+var _inputs = require('../inputs');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
@@ -74,6 +76,8 @@ var Game = exports.Game = function () {
 
     // Init the screen and inputs
     _rendering.Screen._init(this.canvas);
+    _inputs.Mouse._init(this.canvas);
+    _inputs.Keyboard._init();
 
     // Draw the initial scene.
     this.renderer.render(this.scene);

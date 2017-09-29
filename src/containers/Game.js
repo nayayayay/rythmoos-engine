@@ -1,6 +1,7 @@
 import {Scene} from './Scene';
 import {Renderer, Screen} from '../rendering';
 import {Time, Loop} from '../timing';
+import {Keyboard, Mouse} from '../inputs';
 
 /**
  * The root for any game.
@@ -57,6 +58,8 @@ export class Game {
 
     // Init the screen and inputs
     Screen._init(this.canvas);
+    Mouse._init(this.canvas);
+    Keyboard._init();
 
     // Draw the initial scene.
     this.renderer.render(this.scene);

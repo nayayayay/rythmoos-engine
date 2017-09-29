@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Mouse - Documentation</title>
+    <title>Keyboard - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Mouse</h1>
+    <h1 class="page-title">Keyboard</h1>
     
 
     
@@ -40,10 +40,10 @@
 <header>
     
         <h2>
-        Mouse
+        Keyboard
         </h2>
         
-            <div class="class-description">Mouse input.</div>
+            <div class="class-description">Keyboard input.<br>This class maps the keyboard in the game window, not only in the game screen (canvas).</div>
         
     
 </header>
@@ -57,7 +57,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Mouse"><span class="type-signature">(abstract) </span>new Mouse<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Keyboard"><span class="type-signature">(abstract) </span>new Keyboard<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line7">line 7</a>
+        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -146,667 +146,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".cursor"><span class="type-signature">(static, readonly) </span>cursor<span class="type-signature"> :<a href="Point.html">Point</a></span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line189">line 189</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The current position of the cursor.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><a href="Point.html">Point</a></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".cursorX"><span class="type-signature">(static, readonly) </span>cursorX<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line198">line 198</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The position of the cursor in the X axis.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".cursorY"><span class="type-signature">(static, readonly) </span>cursorY<span class="type-signature"> :number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line207">line 207</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    The position of the cursor in the Y axis.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".leftButtonDown"><span class="type-signature">(static, readonly) </span>leftButtonDown<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line216">line 216</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the left button is down or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".leftButtonUp"><span class="type-signature">(static, readonly) </span>leftButtonUp<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line225">line 225</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the left button is up or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".middleButtonDown"><span class="type-signature">(static, readonly) </span>middleButtonDown<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line234">line 234</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the middle button (wheel) is down or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".middleButtonUp"><span class="type-signature">(static, readonly) </span>middleButtonUp<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line243">line 243</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the middle button (wheel) is up or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".rightButtonDown"><span class="type-signature">(static, readonly) </span>rightButtonDown<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line252">line 252</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the right button is down or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".rightButtonUp"><span class="type-signature">(static, readonly) </span>rightButtonUp<span class="type-signature"> :boolean</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line261">line 261</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Whether the right button is up or not.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -816,7 +155,7 @@
 
     
 
-    <h4 class="name" id=".on"><span class="type-signature">(static) </span>on<span class="signature">(eventName, handler)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".getKey"><span class="type-signature">(static) </span>getKey<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
 
@@ -828,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Mouse.js.html">inputs/Mouse.js</a>, <a href="inputs_Mouse.js.html#line273">line 273</a>
+        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -868,7 +207,472 @@
 
 
 <div class="description">
-    Listen to a mouse event.<br>The event name is case-insensitive and should be one of the following:<br>leftButtonDown, leftButtonUp, middleButtonDown, middleButtonUp, rightButtonDown,rightButtonUp, scrollDown, scrollUp, scrollLeft, scrollRight.
+    Get a get state.<br>Similar to <a href="Keyboard.html#.isDown">isDown</a>.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the key is pressed, false if not.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isDown"><span class="type-signature">(static) </span>isDown<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Get whether the specified key is down or not.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the key is pressed, false if not.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isUp"><span class="type-signature">(static) </span>isUp<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Get whether the specified key is up or not.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if the key is up, false if not.
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".on"><span class="type-signature">(static) </span>on<span class="signature">(eventName, eventHandler)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Listen to a key event.
 </div>
 
 
@@ -922,14 +726,14 @@
 
             
 
-            <td class="description last">The event name.</td>
+            <td class="description last">The event name (can be either keyDown or keyUp), case insensitive.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>handler</code></td>
+                <td class="name"><code>eventHandler</code></td>
             
 
             <td class="type">
@@ -945,7 +749,7 @@
 
             
 
-            <td class="description last">The event handler.</td>
+            <td class="description last">The handler for the event.</td>
         </tr>
 
     
