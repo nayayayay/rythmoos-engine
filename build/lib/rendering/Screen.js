@@ -25,7 +25,7 @@ var Screen = exports.Screen = function () {
 
 
     /**
-     * Used internally to initialize the Screen class.
+     * Used internally to initialise the Screen class.
      * @param {HTMLCanvasElement} canvas The canvas the use as a screen.
      * @ignore
      */

@@ -40,6 +40,18 @@ Object.keys(_graphics).forEach(function (key) {
   });
 });
 
+var _inputs = require('./inputs');
+
+Object.keys(_inputs).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _inputs[key];
+    }
+  });
+});
+
 var _rendering = require('./rendering');
 
 Object.keys(_rendering).forEach(function (key) {

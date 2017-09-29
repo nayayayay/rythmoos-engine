@@ -14,7 +14,7 @@ export class Screen {
   static _canvas = { width: 1280, height: 720 };
 
   /**
-   * Used internally to initialize the Screen class.
+   * Used internally to initialise the Screen class.
    * @param {HTMLCanvasElement} canvas The canvas the use as a screen.
    * @ignore
    */

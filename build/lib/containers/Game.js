@@ -121,7 +121,9 @@ var Game = exports.Game = function () {
     value: function start() {
       var _this = this;
 
-      this.create();
+      if (!this.created) {
+        this.create();
+      }
 
       this._loop.start(function (frame) {
         // Update
