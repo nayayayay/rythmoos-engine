@@ -2,6 +2,107 @@ declare module 'rythmoos-engine' {
   export type CanvasColour = string|CanvasPattern|CanvasGradient;
   export type EventHandler = (event: Event) => void;
 
+  export const enum Keys {
+    Digit0,
+    Digit1,
+    Digit2,
+    Digit3,
+    Digit4,
+    Digit5,
+    Digit6,
+    Digit7,
+    Digit8,
+    Digit9,
+    KeyA,
+    KeyB,
+    KeyC,
+    KeyD,
+    KeyE,
+    KeyF,
+    KeyG,
+    KeyH,
+    KeyI,
+    KeyJ,
+    KeyK,
+    KeyL,
+    KeyM,
+    KeyN,
+    KeyO,
+    KeyP,
+    KeyQ,
+    KeyR,
+    KeyS,
+    KeyT,
+    KeyU,
+    KeyV,
+    KeyW,
+    KeyX,
+    KeyY,
+    KeyZ,
+    Escape,
+    F1,
+    F2,
+    F3,
+    F4,
+    F5,
+    F6,
+    F7,
+    F8,
+    F9,
+    F10,
+    F11,
+    F12,
+    Insert,
+    Delete,
+    Home,
+    End,
+    PageUp,
+    PageDown,
+    NumLock,
+    NumpadDivide,
+    NumpadMultiply,
+    NumpadSubtract,
+    NumpadAdd,
+    NumpadEnter,
+    NumpadDecimal,
+    Numpad0,
+    Numpad1,
+    Numpad2,
+    Numpad3,
+    Numpad4,
+    Numpad5,
+    Numpad6,
+    Numpad7,
+    Numpad8,
+    Numpad9,
+    ArrowUp,
+    ArrowDown,
+    ArrowLeft,
+    ArrowRight,
+    Backquote,
+    Minus,
+    Equal,
+    Backspace,
+    BracketLeft,
+    BracketRight,
+    Quote,
+    Backslash,
+    Comma,
+    Period,
+    Slash,
+    Enter,
+    ShiftLeft,
+    ShiftRight,
+    CapsLock,
+    Tab,
+    ControlLeft,
+    ControlRight,
+    MetaLeft,
+    MetaRight,
+    AltLeft,
+    AltRight
+  }
+
   export class Circle {
     public fill: boolean;
     public fillColour: CanvasColour;
@@ -62,6 +163,13 @@ declare module 'rythmoos-engine' {
       
     constructor(visible?: boolean);
     public draw(context: CanvasRenderingContext2D): void;
+  }
+
+  export abstract class Keyboard {
+    public static getKey(keyName: Keys): boolean;
+    public static isDown(keyName: Keys): boolean;
+    public static isUp(keyName: Keys): boolean;
+    public static on(eventName: 'keyup'|'keydown', eventHandler: EventHandler): void;
   }
 
   export class Loop {
