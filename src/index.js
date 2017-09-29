@@ -5,7 +5,7 @@
 
 /**
  * @callback EventHandler
- * @param {Event} event The event object emitted by the browser.
+ * @param {Event} [event] The event object emitted by the browser.
  */
 
 export * from './containers';
