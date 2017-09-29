@@ -1,5 +1,6 @@
 declare module 'rythmoos-engine' {
   export type CanvasColour = string|CanvasPattern|CanvasGradient;
+  export type EventHandler = (event: Event) => void;
 
   export class Circle {
     public fill: boolean;
@@ -73,6 +74,20 @@ declare module 'rythmoos-engine' {
     constructor();
     public start(callback: Function): void;
     public stop(): void;
+  }
+
+  export abstract class Mouse {
+    public static readonly cursor: Point;
+    public static readonly cursorX: number;
+    public static readonly cursorY: number;
+    public static readonly leftButtonDown: boolean;
+    public static readonly leftButtonUp: boolean;
+    public static readonly middleButtonDown: boolean;
+    public static readonly middleButtonUp: boolean;
+    public static readonly rightButtonDown: boolean;
+    public static readonly rightButtonUp: boolean;
+
+    public static on(eventName: string, handler: EventHandler);
   }
 
   export class Point {
