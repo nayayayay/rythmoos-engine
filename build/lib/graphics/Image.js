@@ -26,7 +26,7 @@ var Image = exports.Image = function (_Graphics) {
 
   /**
    * Create an Image.
-   * @param {HTMLImageElement} image The image file to render.
+   * @param {HTMLImageElement|HTMLVideoElement} image The image/video file to render.
    * @param {number} [x=0] The image position in the X axis.
    * @param {number} [y=1] The image position in the Y axis.
    * @param {number} [rotation=0] The image rotation in degrees.
@@ -44,7 +44,7 @@ var Image = exports.Image = function (_Graphics) {
 
     /**
      * The image file to render.
-     * @type {HTMLImageElement}
+     * @type {HTMLImageElement|HTMLVideoElement}
      */
     var _this = _possibleConstructorReturn(this, (Image.__proto__ || Object.getPrototypeOf(Image)).call(this, visible));
 

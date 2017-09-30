@@ -9,7 +9,7 @@ export class Image extends Graphics {
 
   /**
    * Create an Image.
-   * @param {HTMLImageElement} image The image file to render.
+   * @param {HTMLImageElement|HTMLVideoElement} image The image/video file to render.
    * @param {number} [x=0] The image position in the X axis.
    * @param {number} [y=1] The image position in the Y axis.
    * @param {number} [rotation=0] The image rotation in degrees.
@@ -21,7 +21,7 @@ export class Image extends Graphics {
 
     /**
      * The image file to render.
-     * @type {HTMLImageElement}
+     * @type {HTMLImageElement|HTMLVideoElement}
      */
     this.image = image;
 

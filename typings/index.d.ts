@@ -83,13 +83,13 @@ declare module 'rythmoos-engine' {
     public centerX: number;
     public centerY: number;
     public height: number;
-    public image: HTMLImageElement;
+    public image: HTMLImageElement|HTMLVideoElement;
     public opacity: number;
     public position: Point;
     public rotation: number;
     public width: number;
 
-    constructor(image: HTMLImageElement, x?: number, y?: number, rotation?: number, opacity?: number, visible?: boolean);
+    constructor(image: HTMLImageElement|HTMLVideoElement, x?: number, y?: number, rotation?: number, opacity?: number, visible?: boolean);
     public draw(context: CanvasRenderingContext2D): void;
     public setCenter(center: Point): void;
   }
