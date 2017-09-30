@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {Rotation} = require('../build/lib');
+const {Rotation} = require('../build/lib/geometry/Rotation');
 
 describe('Rotation', () => {
   describe('Rotation#radiansToDegrees()', () => {

@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {Time} = require('../build/lib');
+const {Time} = require('../build/lib/timing/Time');
 
 describe('Time', () => {
   describe('Time#deltaTime', () => {
