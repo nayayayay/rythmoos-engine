@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>timing/Loop.js - Documentation</title>
+    <title>graphics/Image.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">timing/Loop.js</h1>
+    <h1 class="page-title">graphics/Image.js</h1>
     
 
     
@@ -37,164 +37,146 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import {Time} from './Time';
+            <pre class="prettyprint source linenums"><code>import {Point, Rotation} from '../geometry';
+import {Graphics} from './Graphics';
 
 /**
- * A loop that runs every frame.
+ * Handle image files rendering.
+ * @extends Graphics
  */
-export class Loop {
+export class Image extends Graphics {
 
   /**
-   * Create a Loop.
+   * Create an Image.
+   * @param {HTMLImageElement} image The image file to render.
+   * @param {number} [x=0] The image position in the X axis.
+   * @param {number} [y=1] The image position in the Y axis.
+   * @param {number} [rotation=0] The image rotation in degrees.
+   * @param {number} [opacity=1] The opacity of the image between 0 and 1.
+   * @param {boolean} [visible=true] Whether to render or not this graphics.
    */
-  constructor() {
+  constructor(image, x=0, y=0, rotation=0, opacity=1, visible=true) {
+    super(visible);
 
     /**
-     * Whether the loop was started or not.
-     * @type {boolean}
-     * @private
+     * The image file to render.
+     * @type {HTMLImageElement}
      */
-    this._started = false;
+    this.image = image;
 
     /**
-     * Whether the loop is currently running or not.
-     * @type {boolean}
-     * @private
+     * The position of the image.
+     * @type {Point}
      */
-    this._running = false;
+    this.position = new Point(x, y);
 
     /**
-     * Whether the loop was stopped or not.
-     * @type {boolean}
-     * @private
-     */
-    this._stopped = false;
-
-    /**
-     * The time when this loop started (based on the animation frame).
+     * The rotation in degrees.
      * @type {number}
-     * @private
      */
-    this._timeStarted = 0;
+    this.rotation = 0;
 
     /**
-     * The time elapsed since that loop has been running.
+     * The opacity of the image between 0 and 1.
      * @type {number}
-     * @private
      */
-    this._currentTime = 0;
+    this.opacity = opacity;
 
     /**
-     * The time when this loop was stopped (based on the animation frame).
+     * The width of the image.
      * @type {number}
-     * @private
      */
-    this._timeStopped = 0;
+    this.width = this.image.width;
 
     /**
-     * This loop's animation frame id.
+     * The height of the image.
      * @type {number}
-     * @private
      */
-    this._animationFrame = 0;
-  }
+    this.height = this.image.height;
 
-  /**
-   * Whether the loop was started or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get started() {
-    return this._started;
-  }
-
-  /**
-   * Whether the loop is currently running or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get running() {
-    return this._running;
-  }
-
-  /**
-   * Whether the loop was stopped or not.
-   * @type {boolean}
-   * @readonly
-   */
-  get stopped() {
-    return this._stopped;
-  }
-
-  /**
-   * The time when this loop started (based on the animation frame).
-   * @type {number}
-   * @readonly
-   */
-  get timeStarted() {
-    return this._timeStarted;
-  }
-
-  /**
-   * The time elapsed since that loop has been running.
-   * @type {number}
-   * @readonly
-   */
-  get currentTime() {
-    return Time.time - this.timeStarted;
-  }
-
-  /**
-   * The time when this loop was stopped (based on the animation frame).
-   * @type {number}
-   * @readonly
-   */
-  get timeStopped() {
-    return this._timeStopped;
-  }
-
-  /**
-   * Start the loop.
-   * @param {function} callback The function to run for each iteration.
-   */
-  start(callback) {
-    if (!this.started) {
-      this._started = true;
-      this._running = true;
-      this._stopped = false;
-
-      this._animationFrame = requestAnimationFrame((frame) => {
-        this._timeStarted = Time.time;
-        this._loop(callback, frame);
-      });
+    this.image.onload = () => {
+      this.width = this.width === 0 ? this.image.width : this.width;
+      this.height = this.height === 0 ? this.image.height : this.height;
     }
   }
 
-  /**
-   * Stop the loop.
-   */
-  stop() {
-    if (this.running) {
-      this._running = false;
-      this._stopped = true;
+  get x() {
+    return this.position.x;
+  }
 
-      cancelAnimationFrame(this._animationFrame);
-      this._timeStopped = Time.time;
-    }
+  set x(x) {
+    this.position.x = x;
+  }
+
+  get y() {
+    return this.position.y;
+  }
+
+  set y(y) {
+    this.position.y = y;
   }
 
   /**
-   * Execute the loop.
-   * @param {function} callback The function to run for each iteration.
-   * @param {number} frame The animation frame timer.
-   * @private
+   * The center of the image.
+   * @type {Point}
+   * @readonly
    */
-  _loop(callback, frame) {
-    this._animationFrame = requestAnimationFrame((frame) => {
-      this._loop(callback, frame);
-    });
+  get center() {
+    return new Point(this.x + this.width / 2, this.y + this.height / 2);
+  }
 
-    callback(frame);
+  /**
+   * The X position of the image's center.
+   * @type {number}
+   */
+  get centerX() {
+    return this.x + this.width / 2;
+  }
+
+  set centerX(centerX) {
+    this.x = centerX - this.width / 2;
+  }
+
+  /**
+   * The Y position of the image's center.
+   * @type {number}
+   */
+  get centerY() {
+    return this.y + this.height / 2;
+  }
+
+  set centerY(centerY) {
+    this.y = centerY - this.height / 2;
+  }
+
+  /**
+   * Set the center point of the image.
+   * @param {Point} center The new center to set the image to.
+   */
+  setCenter(center) {
+    this.position.x = center.x - this.width / 2;
+    this.position.y = center.y - this.height / 2;
+  }
+
+  /**
+   * Render the image.
+   * @param {CanvasRenderingContext2D} context The renderer context.
+   */
+  draw(context) {
+    if (!this.opacity) return;
+
+    context.save();
+    context.globalAlpha = this.opacity;
+
+    if (this.rotation) {
+      context.translate(this.centerX, this.centerY);
+      context.rotate(Rotation.degreesToRadians(this.rotation));
+      context.translate(-this.centerX, -this.centerY);
+    }
+
+    context.drawImage(this.image, this.x, this.y, this.width, this.height);
+
+    context.restore();
   }
 }
 </code></pre>

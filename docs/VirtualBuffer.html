@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Keyboard - Documentation</title>
+    <title>VirtualBuffer - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Keyboard</h1>
+    <h1 class="page-title">VirtualBuffer</h1>
     
 
     
@@ -40,10 +40,10 @@
 <header>
     
         <h2>
-        Keyboard
+        VirtualBuffer
         </h2>
         
-            <div class="class-description">Keyboard input.<br>This class maps the keyboard in the game window, not only in the game screen (canvas).</div>
+            <div class="class-description">A virtual rendering context.</div>
         
     
 </header>
@@ -57,7 +57,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Keyboard"><span class="type-signature">(abstract) </span>new Keyboard<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="VirtualBuffer"><span class="type-signature">(abstract) </span>new VirtualBuffer<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line8">line 8</a>
+        <a href="rendering_VirtualBuffer.js.html">rendering/VirtualBuffer.js</a>, <a href="rendering_VirtualBuffer.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -155,7 +155,7 @@
 
     
 
-    <h4 class="name" id=".getKey"><span class="type-signature">(static) </span>getKey<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id=".clearBuffer"><span class="type-signature">(static) </span>clearBuffer<span class="signature">(width, height)</span><span class="type-signature"></span></h4>
 
     
 
@@ -167,7 +167,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line66">line 66</a>
+        <a href="rendering_VirtualBuffer.js.html">rendering/VirtualBuffer.js</a>, <a href="rendering_VirtualBuffer.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -207,7 +207,7 @@
 
 
 <div class="description">
-    Get a get state.<br>Similar to <a href="Keyboard.html#.isDown">isDown</a>.
+    Clear the virtual buffer.
 </div>
 
 
@@ -245,13 +245,13 @@
 
         <tr>
             
-                <td class="name"><code>keyName</code></td>
+                <td class="name"><code>width</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -261,7 +261,338 @@
 
             
 
-            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
+            <td class="description last">The width of the area to clear.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The height of the area to clear.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getImageData"><span class="type-signature">(static) </span>getImageData<span class="signature">(image, x<span class="signature-attributes">opt</span>, y<span class="signature-attributes">opt</span>, width<span class="signature-attributes">opt</span>, height<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {ImageData}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rendering_VirtualBuffer.js.html">rendering/VirtualBuffer.js</a>, <a href="rendering_VirtualBuffer.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Get the image data.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>image</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLImageElement</span>
+|
+
+<span class="param-type">HTMLVideoElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>0</code>
+                
+                </td>
+            
+
+            <td class="description last">The X position which to get the image data from.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>0</code>
+                
+                </td>
+            
+
+            <td class="description last">The Y position which to get the image data from.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>image.width</code>
+                
+                </td>
+            
+
+            <td class="description last">The width of the image data area.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>image.height</code>
+                
+                </td>
+            
+
+            <td class="description last">The height of the image data area.</td>
         </tr>
 
     
@@ -285,7 +616,7 @@
 
         
 <div class="param-desc">
-    True if the key is pressed, false if not.
+    The image data.
 </div>
 
 
@@ -296,7 +627,7 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">ImageData</span>
 
 
     </dd>
@@ -310,7 +641,7 @@
 
     
 
-    <h4 class="name" id=".isDown"><span class="type-signature">(static) </span>isDown<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id=".requestBuffer"><span class="type-signature">(static) </span>requestBuffer<span class="signature">(width, height)</span><span class="type-signature"> &rarr; {CanvasRenderingContext2D}</span></h4>
 
     
 
@@ -322,7 +653,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line75">line 75</a>
+        <a href="rendering_VirtualBuffer.js.html">rendering/VirtualBuffer.js</a>, <a href="rendering_VirtualBuffer.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -362,7 +693,7 @@
 
 
 <div class="description">
-    Get whether the specified key is down or not.
+    Request the virtual context.<br>Make sure to set the right width and height required otherwise the context mayfail at clearing itself properly.<br>If you don't know what width and height you are going to need, you can requestarbitrary width and height and call ClearBufferwidth the width and height that need to be cleared.
 </div>
 
 
@@ -400,13 +731,13 @@
 
         <tr>
             
-                <td class="name"><code>keyName</code></td>
+                <td class="name"><code>width</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">number</span>
 
 
             
@@ -416,7 +747,30 @@
 
             
 
-            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
+            <td class="description last">The width to request from the context.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The height to request from the context.</td>
         </tr>
 
     
@@ -440,7 +794,7 @@
 
         
 <div class="param-desc">
-    True if the key is pressed, false if not.
+    The virtual context.
 </div>
 
 
@@ -451,324 +805,13 @@
     </dt>
     <dd>
         
-<span class="param-type">boolean</span>
+<span class="param-type">CanvasRenderingContext2D</span>
 
 
     </dd>
 </dl>
 
     
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isUp"><span class="type-signature">(static) </span>isUp<span class="signature">(keyName)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line84">line 84</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Get whether the specified key is up or not.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>keyName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">A key code (same format as <a href="global.html#Keys">Keys</a>).</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    True if the key is up, false if not.
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".on"><span class="type-signature">(static) </span>on<span class="signature">(eventName, eventHandler)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="inputs_Keyboard.js.html">inputs/Keyboard.js</a>, <a href="inputs_Keyboard.js.html#line93">line 93</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    Listen to a key event.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>eventName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The event name (can be either keyDown or keyUp), case insensitive.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>eventHandler</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#EventHandler">EventHandler</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The handler for the event.</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         
