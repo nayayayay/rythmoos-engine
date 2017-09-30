@@ -186,6 +186,26 @@ declare module 'rythmoos-engine' {
     public static readonly width: number;
   }
 
+  export class Text extends Graphics {
+    public fill: boolean;
+    public fillColour: CanvasColour;
+    public fontFamily: string;
+    public fontSize: number;
+    public fontStyle: string;
+    public fontVariant: string;
+    public fontWeight: string|number;
+    public position: Point;
+    public rotation: number;
+    public strokeColour: CanvasColour;
+    public strokeWidth: number;
+    public text: string;
+    public x: number;
+    public y: number;
+
+    constructor(text?: string, x?: number, y?: number, fillColour?: CanvasColour, strokeColour?: CanvasColour, strokeWidth?: number);
+    public draw(context: CanvasRenderingContext2D): void;
+  }
+
   export abstract class Time {
     public static readonly deltaTime: number;
     public static readonly FPS: number;

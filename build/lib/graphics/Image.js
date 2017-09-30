@@ -59,6 +59,7 @@ var Image = exports.Image = function (_Graphics) {
     /**
      * The rotation in degrees.
      * @type {number}
+     * @default
      */
     _this.rotation = 0;
 
@@ -71,12 +72,14 @@ var Image = exports.Image = function (_Graphics) {
     /**
      * The width of the image.
      * @type {number}
+     * @default
      */
     _this.width = _this.image.width;
 
     /**
      * The height of the image.
      * @type {number}
+     * @default
      */
     _this.height = _this.image.height;
 

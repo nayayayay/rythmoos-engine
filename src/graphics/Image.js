@@ -34,6 +34,7 @@ export class Image extends Graphics {
     /**
      * The rotation in degrees.
      * @type {number}
+     * @default
      */
     this.rotation = 0;
 
@@ -46,12 +47,14 @@ export class Image extends Graphics {
     /**
      * The width of the image.
      * @type {number}
+     * @default
      */
     this.width = this.image.width;
 
     /**
      * The height of the image.
      * @type {number}
+     * @default
      */
     this.height = this.image.height;
 
