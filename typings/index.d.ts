@@ -72,6 +72,10 @@ declare module 'rythmoos-engine' {
   }
 
   export class Graphics {
+    public shadowBlur: number;
+    public shadowColour: CanvasColour;
+    public shadowOffsetX: number;
+    public shadowOffsetY: number;
     public visible: boolean;
       
     constructor(visible?: boolean);

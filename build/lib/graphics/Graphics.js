@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -27,6 +27,34 @@ var Graphics = exports.Graphics = function () {
      * @type {boolean}
      */
     this.visible = true;
+
+    /**
+     * The shadow colour.
+     * @type {CanvasColour}
+     * @default
+     */
+    this.shadowColour = '#ffffff';
+
+    /**
+     * The shadow blur. Set to 0 if not shadow.
+     * @type {number}
+     * @default
+     */
+    this.shadowBlur = 0;
+
+    /**
+     * The shadow offset in the X axis.
+     * @type {number}
+     * @default
+     */
+    this.shadowOffsetX = 5;
+
+    /**
+     * The shadow offset in the Y axis.
+     * @type {number}
+     * @default
+     */
+    this.shadowOffsetY = 5;
   }
 
   /**
@@ -37,7 +65,7 @@ var Graphics = exports.Graphics = function () {
 
 
   _createClass(Graphics, [{
-    key: "draw",
+    key: 'draw',
     value: function draw(context) {}
 
     /**
@@ -47,11 +75,22 @@ var Graphics = exports.Graphics = function () {
      */
 
   }, {
-    key: "_render",
+    key: '_render',
     value: function _render(context) {
       if (!this.visible) return;
 
-      this.draw(context);
+      if (this.shadowBlur) {
+        context.save();
+        context.shadowColor = this.shadowColour;
+        context.shadowBlur = this.shadowBlur;
+        context.shadowOffsetX = this.shadowOffsetX;
+        context.shadowOffsetY = this.shadowOffsetY;
+
+        this.draw(context);
+        context.restore();
+      } else {
+        this.draw(context);
+      }
     }
   }]);
 
