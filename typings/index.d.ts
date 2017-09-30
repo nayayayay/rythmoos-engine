@@ -3,104 +3,17 @@ declare module 'rythmoos-engine' {
   export type EventHandler = (event: Event) => void;
 
   export const enum Keys {
-    Digit0,
-    Digit1,
-    Digit2,
-    Digit3,
-    Digit4,
-    Digit5,
-    Digit6,
-    Digit7,
-    Digit8,
-    Digit9,
-    KeyA,
-    KeyB,
-    KeyC,
-    KeyD,
-    KeyE,
-    KeyF,
-    KeyG,
-    KeyH,
-    KeyI,
-    KeyJ,
-    KeyK,
-    KeyL,
-    KeyM,
-    KeyN,
-    KeyO,
-    KeyP,
-    KeyQ,
-    KeyR,
-    KeyS,
-    KeyT,
-    KeyU,
-    KeyV,
-    KeyW,
-    KeyX,
-    KeyY,
-    KeyZ,
-    Escape,
-    F1,
-    F2,
-    F3,
-    F4,
-    F5,
-    F6,
-    F7,
-    F8,
-    F9,
-    F10,
-    F11,
-    F12,
-    Insert,
-    Delete,
-    Home,
-    End,
-    PageUp,
-    PageDown,
-    NumLock,
-    NumpadDivide,
-    NumpadMultiply,
-    NumpadSubtract,
-    NumpadAdd,
-    NumpadEnter,
-    NumpadDecimal,
-    Numpad0,
-    Numpad1,
-    Numpad2,
-    Numpad3,
-    Numpad4,
-    Numpad5,
-    Numpad6,
-    Numpad7,
-    Numpad8,
-    Numpad9,
-    ArrowUp,
-    ArrowDown,
-    ArrowLeft,
-    ArrowRight,
-    Backquote,
-    Minus,
-    Equal,
-    Backspace,
-    BracketLeft,
-    BracketRight,
-    Quote,
-    Backslash,
-    Comma,
-    Period,
-    Slash,
-    Enter,
-    ShiftLeft,
-    ShiftRight,
-    CapsLock,
-    Tab,
-    ControlLeft,
-    ControlRight,
-    MetaLeft,
-    MetaRight,
-    AltLeft,
-    AltRight
+    Digit0, Digit1, Digit2, Digit3, Digit4, Digit5, Digit6, Digit7, Digit8, Digit9,
+    KeyA, KeyB, KeyC, KeyD, KeyE, KeyF, KeyG, KeyH, KeyI, KeyJ, KeyK, KeyL,KeyM, KeyN,
+    KeyO, KeyP, KeyQ, KeyR, KeyS, KeyT, KeyU, KeyV, KeyW, KeyX, KeyY, KeyZ, Escape,
+    F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12,
+    Insert, Delete, Home, End, PageUp, PageDown,
+    NumLock, NumpadDivide, NumpadMultiply, NumpadSubtract, NumpadAdd, NumpadEnter, NumpadDecimal,
+    Numpad0, Numpad1, Numpad2, Numpad3, Numpad4, Numpad5, Numpad6, Numpad7, Numpad8, Numpad9,
+    ArrowUp, ArrowDown, ArrowLeft, ArrowRight,
+    Backquote, Minus, Equal, Backspace, BracketLeft, BracketRight, Quote, Backslash, Comma, Period,
+    Slash, Enter, ShiftLeft, ShiftRight, CapsLock, Tab,
+    ControlLeft, ControlRight, MetaLeft, MetaRight, AltLeft, AltRight
   }
 
   export class Circle {
@@ -163,6 +76,22 @@ declare module 'rythmoos-engine' {
       
     constructor(visible?: boolean);
     public draw(context: CanvasRenderingContext2D): void;
+  }
+
+  export class Image extends Graphics {
+    public readonly center: Point;
+    public centerX: number;
+    public centerY: number;
+    public height: number;
+    public image: HTMLImageElement;
+    public opacity: number;
+    public position: Point;
+    public rotation: number;
+    public width: number;
+
+    constructor(image: HTMLImageElement, x?: number, y?: number, rotation?: number, opacity?: number, visible?: boolean);
+    public draw(context: CanvasRenderingContext2D): void;
+    public setCenter(center: Point): void;
   }
 
   export abstract class Keyboard {
@@ -262,5 +191,11 @@ declare module 'rythmoos-engine' {
     public static readonly FPS: number;
     public static readonly lastTime: number;
     public static readonly time: number;
+  }
+
+  export abstract class VirtualBuffer {
+    public static clearBuffer(width: number, height: number): void;
+    public static getImageData(image: HTMLImageElement|HTMLVideoElement, x: number, y: number, width: number, height: number): ImageData;
+    public static requestBuffer(width: number, height: number): CanvasRenderingContext2D;
   }
 }
