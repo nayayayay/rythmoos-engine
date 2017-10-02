@@ -5,6 +5,11 @@
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "scripts": {
+    "build:lib": "tsc --declaration",
+    "build:web": "webpack",
+    "build": "npm run build:lib && npm run build:web",
+    "docs": "typedoc --out docs --mode file --name RythmoosEngine --readme README.md --excludeNotExported --excludePrivate",
+    "noob": "npm install && npm run docs && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,5 +23,11 @@
   },
   "homepage": "https://github.com/ChibiFR/rythmoos-engine#readme",
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "source-map-loader": "^0.2.2",
+    "typedoc": "^0.8.0",
+    "typescript": "^2.5.3",
+    "webpack": "^3.6.0"
   }
 }
