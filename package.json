@@ -5,13 +5,9 @@
   "main": "build/lib/index.js",
   "types": "typings/index.d.ts",
   "scripts": {
-    "test": "npm run build:lib && mocha --reporter=nyan",
-    "build:lib": "babel src -d build/lib",
-    "build:rel": "webpack",
-    "build:all": "npm run build:lib && npm run build:rel",
-    "build": "npm run build:all",
-    "docs": "jsdoc src -r -t node_modules/docdash -d docs",
-    "noob": "npm install && npm test && npm run build:rel"
+    "build": "tsc && webpack",
+    "docs": "typedoc --out docs --mode file",
+    "noob": "npm install && npm run docs && npm run build"
   },
   "repository": {
     "type": "git",
