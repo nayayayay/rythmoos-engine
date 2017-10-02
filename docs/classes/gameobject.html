@@ -40,6 +40,8 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -64,6 +66,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A game object defines an entity in your game&#39;s world.<br>
+						It can be for example the player&#39;s character, a button, etc.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -112,7 +122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/GameObject.ts#L4">GameObject.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/GameObject.ts#L8">GameObject.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="gameobject.html" class="tsd-signature-type">GameObject</a></h4>
@@ -132,9 +142,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/GameObject.ts#L9">GameObject.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/GameObject.ts#L18">GameObject.ts:18</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called when the game object is created.<br>
+										You can set the game object&#39;s properties in here, use the loader
+									to load textures, etc...</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -150,13 +167,22 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/irenderable.html">IRenderable</a>.<a href="../interfaces/irenderable.html#render">render</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/GameObject.ts#L15">GameObject.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/GameObject.ts#L34">GameObject.ts:34</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called every frame as long as the game object is in the active scene.<br>
+									Render the game object to the screen using the renderer&#39;s 2D context.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>context: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The renderer&#39;s context, automatically passed in.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -174,9 +200,16 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iupdatable.html">IUpdatable</a>.<a href="../interfaces/iupdatable.html#update">update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/GameObject.ts#L12">GameObject.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/GameObject.ts#L26">GameObject.ts:26</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called every frame as long as the game object is in the active scene.<br>
+										You can update your object property from here to, for example, move a
+									character if a keyboard key is being pressed.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

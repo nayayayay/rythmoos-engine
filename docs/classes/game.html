@@ -40,6 +40,8 @@
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
 							<input type="checkbox" id="tsd-filter-externals" checked />
 							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -64,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The base class of any game.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -121,19 +130,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L16">Game.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L23">Game.ts:23</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a Game.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The width of the game.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The height of the game.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5>container: <span class="tsd-signature-type">HTMLElement</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The HTML parent element for the game&#39;s canvas.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="game.html" class="tsd-signature-type">Game</a></h4>
@@ -149,9 +178,14 @@
 					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HTMLElement</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L12">Game.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L18">Game.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The parent element of the game.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="height" class="tsd-anchor"></a>
@@ -159,9 +193,14 @@
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L11">Game.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L16">Game.ts:16</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The height of the game.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="scene" class="tsd-anchor"></a>
@@ -169,9 +208,14 @@
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <a href="scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L13">Game.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L20">Game.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The scene currently being rendered.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="width" class="tsd-anchor"></a>
@@ -179,9 +223,14 @@
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L10">Game.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L14">Game.ts:14</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The width of the game.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -196,9 +245,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L43">Game.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L71">Game.ts:71</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used internally to start the game.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -213,9 +267,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L37">Game.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L58">Game.ts:58</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called when the game is ready to run, just before it starts.<br>
+									You can set a scene and access the loaded assets safely from here.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -230,9 +290,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L34">Game.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L51">Game.ts:51</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called when the game is launched.<br>
+									Useful for assets loading.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -248,9 +314,15 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iupdatable.html">IUpdatable</a>.<a href="../interfaces/iupdatable.html#update">update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/e4fc7f3/src/Game.ts#L40">Game.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/1ab0c37/src/Game.ts#L65">Game.ts:65</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Called before rendering a frame.<br>
+									You can specify things to run every frame as long as your game is running.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

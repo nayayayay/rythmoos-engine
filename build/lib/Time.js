@@ -1,13 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Store time values and make them easy to access from anywhere
+ * in your game just by importing this static class.
+ */
 var Time = /** @class */ (function () {
     function Time() {
     }
+    /**
+     * Used internally to update the time data.
+     * @param frame The total time elapsed in milliseconds, passed in by the browser.
+     */
     Time._setFrame = function (frame) {
         this._deltaTime = frame - this._time;
         this._time = frame;
     };
     Object.defineProperty(Time, "deltaTime", {
+        /**
+         * The time elapsed since the last frame, in milliseconds.<br>
+         * Useful for smooth animations that will run at the same speed regardless
+         * of the rendering speed.
+         */
         get: function () {
             return this._deltaTime;
         },
@@ -15,6 +28,9 @@ var Time = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Time, "time", {
+        /**
+         * The time elapsed since the game has started being rendered, in milliseconds.
+         */
         get: function () {
             return this._time;
         },
@@ -22,6 +38,9 @@ var Time = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Time, "FPS", {
+        /**
+         * The average amount of frames per second based on the current deltaTime.
+         */
         get: function () {
             return 1000 / this._deltaTime;
         },

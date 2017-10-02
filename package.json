@@ -8,7 +8,7 @@
     "build:lib": "tsc --declaration",
     "build:web": "webpack",
     "build": "npm run build:lib && npm run build:web",
-    "docs": "typedoc --out docs --mode file --name RythmoosEngine --readme README.md --excludeNotExported --excludePrivate",
+    "docs": "typedoc --out docs --mode file --name RythmoosEngine --readme README.md --excludePrivate",
     "noob": "npm install && npm run docs && npm run build"
   },
   "repository": {

@@ -1,9 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Map the mouse input.
+ */
 var Mouse = /** @class */ (function () {
     function Mouse() {
     }
     Object.defineProperty(Mouse, "cursorX", {
+        /**
+         * The X position of the cursor in the window.
+         */
         get: function () {
             return this._cursorX;
         },
@@ -11,6 +17,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "cursorY", {
+        /**
+         * The Y position of the cursor in the window.
+         */
         get: function () {
             return this._cursorY;
         },
@@ -18,6 +27,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "leftButtonDown", {
+        /**
+         * Whether the left button is down or not.
+         */
         get: function () {
             return this._leftButton;
         },
@@ -25,6 +37,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "middleButtonDown", {
+        /**
+         * Whether the middle (wheel) button is down or not.
+         */
         get: function () {
             return this._middleButton;
         },
@@ -32,6 +47,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "rightButtonDown", {
+        /**
+         * Whether the right button is down or not.
+         */
         get: function () {
             return this._rightButton;
         },
@@ -39,6 +57,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "leftClick", {
+        /**
+         * Evaluate to true when a left click occurs.
+         */
         get: function () {
             return this._leftClick;
         },
@@ -46,6 +67,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "middleClick", {
+        /**
+         * Evaluate to true when a middle (wheel) click occurs.
+         */
         get: function () {
             return this._middleClick;
         },
@@ -53,6 +77,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "rightClick", {
+        /**
+         * Evaluate to true when a right click occurs.
+         */
         get: function () {
             return this._rightClick;
         },
@@ -60,6 +87,10 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "scrollX", {
+        /**
+         * The scroll movement in the X axis.<br>
+         * Possible values: -1 (scroll to -x), 0 (no scroll x), 1 (scroll to +x).
+         */
         get: function () {
             return this._scrollX;
         },
@@ -67,13 +98,20 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "scrollY", {
+        /**
+         * The scroll movement in the Y axis.<br>
+         * Possible values: -1 (scroll to -y), 0 (no scroll y), 1 (scroll to +y).
+         */
         get: function () {
             return this._scrollY;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Mouse, "scrollTop", {
+    Object.defineProperty(Mouse, "scrollUp", {
+        /**
+         * Evaluate to true when the user is scrolling up.
+         */
         get: function () {
             return this._scrollY === -1;
         },
@@ -81,6 +119,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "scrollDown", {
+        /**
+         * Evaluate to true when the user is scrolling down.
+         */
         get: function () {
             return this._scrollY === 1;
         },
@@ -88,6 +129,9 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "scrollLeft", {
+        /**
+         * Evaluate to true when the user is scrolling left.
+         */
         get: function () {
             return this._scrollX === -1;
         },
@@ -95,12 +139,18 @@ var Mouse = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Mouse, "scrollRight", {
+        /**
+         * Evaluate to true when the user is scrolling right.
+         */
         get: function () {
             return this._scrollY === 1;
         },
         enumerable: true,
         configurable: true
     });
+    /**
+     * Used internally to initialise the mouse input.
+     */
     Mouse._init = function () {
         var _this = this;
         window.addEventListener('mousemove', function (e) {
@@ -172,6 +222,9 @@ var Mouse = /** @class */ (function () {
             });
         });
     };
+    /**
+     * Used internally to update the mouse input states.
+     */
     Mouse._update = function () {
         this._scrollX = 0;
         this._scrollY = 0;

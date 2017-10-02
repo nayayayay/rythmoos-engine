@@ -1,5 +1,8 @@
 import {IUpdatable} from './IUpdatable';
 
+/**
+ * Map the mouse input.
+ */
 export abstract class Mouse {
   private static _cursorX: number = 0;
   private static _cursorY: number = 0;
@@ -12,62 +15,109 @@ export abstract class Mouse {
   private static _scrollX: number = 0;
   private static _scrollY: number = 0;
 
+  /**
+   * The X position of the cursor in the window.
+   */
   public static get cursorX(): number {
     return this._cursorX;
   }
 
+  /**
+   * The Y position of the cursor in the window.
+   */
   public static get cursorY(): number {
     return this._cursorY;
   }
 
+  /**
+   * Whether the left button is down or not.
+   */
   public static get leftButtonDown(): boolean {
     return this._leftButton;
   }
 
+  /**
+   * Whether the middle (wheel) button is down or not.
+   */
   public static get middleButtonDown(): boolean {
     return this._middleButton;
   }
 
+  /**
+   * Whether the right button is down or not.
+   */
   public static get rightButtonDown(): boolean {
     return this._rightButton;
   }
 
+  /**
+   * Evaluate to true when a left click occurs.
+   */
   public static get leftClick(): boolean {
     return this._leftClick;
   }
 
+  /**
+   * Evaluate to true when a middle (wheel) click occurs.
+   */
   public static get middleClick(): boolean {
     return this._middleClick;
   }
 
+  /**
+   * Evaluate to true when a right click occurs.
+   */
   public static get rightClick(): boolean {
     return this._rightClick;
   }
 
+  /**
+   * The scroll movement in the X axis.<br>
+   * Possible values: -1 (scroll to -x), 0 (no scroll x), 1 (scroll to +x).
+   */
   public static get scrollX(): number {
     return this._scrollX;
   }
 
+  /**
+   * The scroll movement in the Y axis.<br>
+   * Possible values: -1 (scroll to -y), 0 (no scroll y), 1 (scroll to +y).
+   */
   public static get scrollY(): number {
     return this._scrollY;
   }
 
-  public static get scrollTop(): boolean {
+  /**
+   * Evaluate to true when the user is scrolling up.
+   */
+  public static get scrollUp(): boolean {
     return this._scrollY === -1;
   }
 
+  /**
+   * Evaluate to true when the user is scrolling down.
+   */
   public static get scrollDown(): boolean {
     return this._scrollY === 1;
   }
 
+  /**
+   * Evaluate to true when the user is scrolling left.
+   */
   public static get scrollLeft(): boolean {
     return this._scrollX === -1;
   }
 
+  /**
+   * Evaluate to true when the user is scrolling right.
+   */
   public static get scrollRight(): boolean {
     return this._scrollY === 1;
   }
 
+  /**
+   * Used internally to initialise the mouse input.
+   */
   public static _init() {
     window.addEventListener('mousemove', e => {
       this._cursorX = e.clientX;
@@ -144,6 +194,9 @@ export abstract class Mouse {
     });
   }
 
+  /**
+   * Used internally to update the mouse input states.
+   */
   public static _update(): void {
     this._scrollX = 0;
     this._scrollY = 0;

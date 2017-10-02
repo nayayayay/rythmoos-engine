@@ -1,5 +1,8 @@
 import {Time} from './Time';
 
+/**
+ * Used internally to run the game.
+ */
 export abstract class Loop {
   private static _animationFrame: number = 0;
   private static _callback: Function;

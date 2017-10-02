@@ -6,7 +6,16 @@ var Loop_1 = require("./Loop");
 var Mouse_1 = require("./Mouse");
 var Keyboard_1 = require("./Keyboard");
 var Loader_1 = require("./Loader");
+/**
+ * The base class of any game.
+ */
 var Game = /** @class */ (function () {
+    /**
+     * Create a Game.
+     * @param width The width of the game.
+     * @param height The height of the game.
+     * @param container The HTML parent element for the game's canvas.
+     */
     function Game(width, height, container) {
         this.width = width;
         this.height = height;
@@ -20,12 +29,27 @@ var Game = /** @class */ (function () {
         this.container.appendChild(this._canvas);
         Loader_1.Loader._init(this);
     }
+    /**
+     * Called when the game is launched.<br>
+     * Useful for assets loading.
+     */
     Game.prototype.load = function () {
     };
+    /**
+     * Called when the game is ready to run, just before it starts.<br>
+     * You can set a scene and access the loaded assets safely from here.
+     */
     Game.prototype.create = function () {
     };
+    /**
+     * Called before rendering a frame.<br>
+     * You can specify things to run every frame as long as your game is running.
+     */
     Game.prototype.update = function () {
     };
+    /**
+     * Used internally to start the game.
+     */
     Game.prototype._start = function () {
         var _this = this;
         if (this._running)

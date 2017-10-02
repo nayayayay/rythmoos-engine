@@ -1,9 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = require("./Map");
+/**
+ * The loader is an easy way to preload all the required assets for your game.<br>
+ * You can use it from the load() method of your Game class.<br>
+ * It can also be used while the game is running to load assets on the fly.
+ */
 var Loader = /** @class */ (function () {
     function Loader() {
     }
+    /**
+     * Used internally to preload the game and its assets.
+     * @param game The game instance.
+     */
     Loader._init = function (game) {
         this._game = game;
         this._game.load();
@@ -11,6 +20,11 @@ var Loader = /** @class */ (function () {
             this._fileLoaded();
         }
     };
+    /**
+     * Load an image file.
+     * @param fileName The name to save this file as in the loader.
+     * @param filePath The path to the file to load.
+     */
     Loader.loadImage = function (fileName, filePath) {
         var _this = this;
         var image = document.createElement('img');
@@ -27,13 +41,18 @@ var Loader = /** @class */ (function () {
         });
         image.src = filePath;
     };
+    /**
+     * Load a video file.
+     * @param fileName The name to save this file as in the loader.
+     * @param filePath The path to the file to load.
+     */
     Loader.loadVideo = function (fileName, filePath) {
         var _this = this;
         var video = document.createElement('video');
         filePath = this.basePath + "/" + filePath;
         this._videos.set(fileName, video);
         this._files.set(fileName, false);
-        video.addEventListener('load', function () {
+        video.addEventListener('loadeddata', function () {
             _this._files.set(fileName, true);
             if (!_this._loaded)
                 _this._fileLoaded();
@@ -43,6 +62,11 @@ var Loader = /** @class */ (function () {
         });
         video.src = filePath;
     };
+    /**
+     * Load an audio file.
+     * @param fileName The name to save this file as in the loader.
+     * @param filePath The path to the file to load.
+     */
     Loader.loadAudio = function (fileName, filePath) {
         var _this = this;
         var audio = document.createElement('audio');
@@ -59,6 +83,11 @@ var Loader = /** @class */ (function () {
         });
         audio.src = filePath;
     };
+    /**
+     * Load a json file.
+     * @param fileName The name to save this file as in the loader.
+     * @param filePath The path to the file to load.
+     */
     Loader.loadJSON = function (fileName, filePath) {
         var _this = this;
         var xhr = new XMLHttpRequest();
@@ -77,17 +106,52 @@ var Loader = /** @class */ (function () {
         xhr.open('GET', filePath, true);
         xhr.send();
     };
+    /**
+     * Get an image that was loaded.<br>
+     * If the image was loaded on the fly, it may not be ready yet! You can
+     * check whether the file was loaded or not using the loaded() method.
+     * @param fileName The name of the file to get.
+     * @return The image file, or null if the image was not loaded using loadImage().
+     */
     Loader.image = function (fileName) {
         return this._images.get(fileName);
     };
+    /**
+     * Get a video that was loaded.<br>
+     * If the video was loaded on the fly, it may not be ready yet! You can
+     * check whether the file was loaded or not using the loaded() method.
+     * @param fileName The name of the file to get.
+     * @return The video file, or null if the video was not loaded using loadVideo().
+     */
     Loader.video = function (fileName) {
         return this._videos.get(fileName);
     };
+    /**
+     * Get a audio that was loaded.<br>
+     * If the audio was loaded on the fly, it may not be ready yet! You can
+     * check whether the file was loaded or not using the loaded() method.
+     * @param fileName The name of the file to get.
+     * @return The audio file, or null if the audio was not loaded using loadAudio().
+     */
     Loader.audio = function (fileName) {
         return this._audios.get(fileName);
     };
+    /**
+     * Get a JSON file that was loaded.<br>
+     * If the JSON file was loaded on the fly, it may not be ready yet! You can
+     * check whether the file was loaded or not using the loaded() method.
+     * @param fileName The name of the file to get.
+     * @return The parsed JSON file, or null if the JSON file was not loaded using loadJSON().
+     */
     Loader.json = function (fileName) {
         return this._json.get(fileName);
+    };
+    /**
+     * Check whether a file is ready to be used or not.
+     * @param fileName The file to check.
+     */
+    Loader.loaded = function (fileName) {
+        return this._files.get(fileName) || false;
     };
     Loader._fileLoaded = function () {
         if (this._files.getAll().indexOf(false) === -1) {
@@ -95,6 +159,7 @@ var Loader = /** @class */ (function () {
             this._game._start();
         }
     };
+    /** The base path to the assets directory. */
     Loader.basePath = '';
     Loader._loaded = false;
     Loader._images = new Map_1.Map();

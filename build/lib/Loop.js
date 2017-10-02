@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Time_1 = require("./Time");
+/**
+ * Used internally to run the game.
+ */
 var Loop = /** @class */ (function () {
     function Loop() {
     }

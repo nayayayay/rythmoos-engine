@@ -1,3 +1,6 @@
+/**
+ * Used internally to run the game.
+ */
 export declare abstract class Loop {
     private static _animationFrame;
     private static _callback;

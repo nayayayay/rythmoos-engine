@@ -6,6 +6,7 @@ export * from './IUpdatable';
 export * from './Keyboard';
 export * from './Keys';
 export * from './Loader';
+export * from './Loop';
 export * from './Map';
 export * from './Mouse';
 export * from './Renderer';

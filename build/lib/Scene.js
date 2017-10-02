@@ -11,6 +11,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = require("./Map");
+/**
+ * A scene contains all the game objects in a specific "word" of your game.<br>
+ * For example, you may have a "MainScreen" scene that will contain everything
+ * that is in the main screen of your game.<br>
+ * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
+ */
 var Scene = /** @class */ (function (_super) {
     __extends(Scene, _super);
     function Scene() {
@@ -18,10 +24,22 @@ var Scene = /** @class */ (function (_super) {
         _this.create();
         return _this;
     }
+    /**
+     * Called the the scene is created.<br>
+     * You can set your game objects (UI, characters, music, etc) from here.
+     */
     Scene.prototype.create = function () {
     };
+    /**
+     * Run every frame to update the scene.<br>
+     * This is useful when you want an update to run as long as your scene is
+     * being rendered, independently from the game objects it contains.
+     */
     Scene.prototype.update = function () {
     };
+    /**
+     * Used internally to update the scene and its game objects.
+     */
     Scene.prototype._runUpdate = function () {
         this.update();
         for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
@@ -29,6 +47,10 @@ var Scene = /** @class */ (function (_super) {
             gameObject.update();
         }
     };
+    /**
+     * Used internally by the renderer to render the scene.
+     * @param context The renderer's context, automatically passed in.
+     */
     Scene.prototype._runRender = function (context) {
         for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
             var gameObject = _a[_i];
