@@ -1,1 +1,835 @@
-var RythmoosEngine=function(e){function t(n){if(o[n])return o[n].exports;var a=o[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,t),a.l=!0,a.exports}var o={};return t.m=e,t.c=o,t.d=function(e,o,n){t.o(e,o)||Object.defineProperty(e,o,{configurable:!1,enumerable:!0,get:n})},t.n=function(e){var o=e&&e.__esModule?function(){return e['default']}:function(){return e};return t.d(o,'a',o),o},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p='',t(t.s=8)}([function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(13);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(14);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})})},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});var n=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),a=t.Graphics=function(){function e(){0<arguments.length&&void 0!==arguments[0]?arguments[0]:!0;o(this,e),this.visible=!0,this.shadowColour='#ffffff',this.shadowBlur=0,this.shadowOffsetX=5,this.shadowOffsetY=5}return n(e,[{key:'draw',value:function(){}},{key:'_render',value:function(e){this.visible&&(this.shadowBlur?(e.save(),e.shadowColor=this.shadowColour,e.shadowBlur=this.shadowBlur,e.shadowOffsetX=this.shadowOffsetX,e.shadowOffsetY=this.shadowOffsetY,this.draw(e),e.restore()):this.draw(e))}}]),e}()},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(11);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(12);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})});var r=o(15);Object.keys(r).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return r[e]}})})},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});var n=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),a=t.Scene=function(){function e(){o(this,e),this.gameObjects=[]}return n(e,[{key:'add',value:function(e){this.gameObjects.push(e);for(var t=arguments.length,o=Array(1<t?t-1:0),n=1;n<t;n++)o[n-1]=arguments[n];var a,r=!0,i=!1;try{for(var l,u,d=o[Symbol.iterator]();!(r=(l=d.next()).done);r=!0)u=l.value,this.add(u)}catch(e){i=!0,a=e}finally{try{!r&&d.return&&d.return()}finally{if(i)throw a}}}},{key:'contains',value:function(e){return-1!==this.gameObjects.indexOf(e)}},{key:'remove',value:function(e){var t=this.gameObjects.indexOf(e);-1!==t&&this.gameObjects.splice(t,1);for(var o=arguments.length,n=Array(1<o?o-1:0),a=1;a<o;a++)n[a-1]=arguments[a];var r,i=!0,l=!1;try{for(var u,d,s=n[Symbol.iterator]();!(i=(u=s.next()).done);i=!0)d=u.value,this.remove(d)}catch(e){l=!0,r=e}finally{try{!i&&s.return&&s.return()}finally{if(l)throw r}}}},{key:'update',value:function(){}},{key:'afterUpdate',value:function(){}},{key:'_runUpdate',value:function(){this.update();var e,t=!0,o=!1;try{for(var n,a,r=this.gameObjects[Symbol.iterator]();!(t=(n=r.next()).done);t=!0)a=n.value,a.update()}catch(t){o=!0,e=t}finally{try{!t&&r.return&&r.return()}finally{if(o)throw e}}}},{key:'_runAfterUpdate',value:function(){var e,t=!0,o=!1;try{for(var n,a,r=this.gameObjects[Symbol.iterator]();!(t=(n=r.next()).done);t=!0)a=n.value,a.afterUpdate()}catch(t){o=!0,e=t}finally{try{!t&&r.return&&r.return()}finally{if(o)throw e}}this.afterUpdate()}}]),e}()},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(16);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(5);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})})},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});var n=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),a=t.Time=function(){function e(){o(this,e)}return n(e,null,[{key:'_setFrame',value:function(e){this._deltaTime=e-this._time,this._time=e}},{key:'deltaTime',get:function(){return this._deltaTime}},{key:'time',get:function(){return this._time}},{key:'lastTime',get:function(){return this._time-this._deltaTime}},{key:'FPS',get:function(){return 1e3/this._deltaTime}}]),e}();a._deltaTime=0,a._time=0},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(17);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(7);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})});var r=o(18);Object.keys(r).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return r[e]}})})},function(e,t){'use strict';Object.defineProperty(t,'__esModule',{value:!0});t.Keys={Digit0:'Digit0',Digit1:'Digit1',Digit2:'Digit2',Digit3:'Digit3',Digit4:'Digit4',Digit5:'Digit5',Digit6:'Digit6',Digit7:'Digit7',Digit8:'Digit8',Digit9:'Digit9',KeyA:'KeyA',KeyB:'KeyB',KeyC:'KeyC',KeyD:'KeyD',KeyE:'KeyE',KeyF:'KeyF',KeyG:'KeyG',KeyH:'KeyH',KeyI:'KeyI',KeyJ:'KeyJ',KeyK:'KeyK',KeyL:'KeyL',KeyM:'KeyM',KeyN:'KeyN',KeyO:'KeyO',KeyP:'KeyP',KeyQ:'KeyQ',KeyR:'KeyR',KeyS:'KeyS',KeyT:'KeyT',KeyU:'KeyU',KeyV:'KeyV',KeyW:'KeyW',KeyX:'KeyX',KeyY:'KeyY',KeyZ:'KeyZ',Escape:'Escape',F1:'F1',F2:'F2',F3:'F3',F4:'F4',F5:'F5',F6:'F6',F7:'F7',F8:'F8',F9:'F9',F10:'F10',F11:'F11',F12:'F12',Insert:'Insert',Delete:'Delete',Home:'Home',End:'End',PageUp:'PageUp',PageDown:'PageDown',NumLock:'NumLock',NumpadDivide:'NumpadDivide',NumpadMultiply:'NumpadMultiply',NumpadSubtract:'NumpadSubtract',NumpadAdd:'NumpadAdd',NumpadEnter:'NumpadEnter',NumpadDecimal:'NumpadDecimal',Numpad0:'Numpad0',Numpad1:'Numpad1',Numpad2:'Numpad2',Numpad3:'Numpad3',Numpad4:'Numpad4',Numpad5:'Numpad5',Numpad6:'Numpad6',Numpad7:'Numpad7',Numpad8:'Numpad8',Numpad9:'Numpad9',ArrowUp:'ArrowUp',ArrowDown:'ArrowDown',ArrowLeft:'ArrowLeft',ArrowRight:'ArrowRight',Backquote:'Backquote',Minus:'Minus',Equal:'Equal',Backspace:'Backspace',BracketLeft:'BracketLeft',BracketRight:'BracketRight',Quote:'Quote',Backslash:'Backslash',Comma:'Comma',Period:'Period',Slash:'Slash',Enter:'Enter',ShiftLeft:'ShiftLeft',ShiftRight:'ShiftRight',CapsLock:'CapsLock',Tab:'Tab',ControlLeft:'ControlLeft',ControlRight:'ControlRight',MetaLeft:'MetaLeft',MetaRight:'MetaRight',AltLeft:'AltLeft',AltRight:'AltRight'}},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(9);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(0);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})});var r=o(20);Object.keys(r).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return r[e]}})});var i=o(6);Object.keys(i).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return i[e]}})});var l=o(2);Object.keys(l).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return l[e]}})});var u=o(4);Object.keys(u).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return u[e]}})})},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(10);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(19);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})});var r=o(3);Object.keys(r).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return r[e]}})})},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.Game=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(3),i=o(2),l=o(4),u=o(6),d=t.Game=function(){function e(t){var o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:1280,a=2<arguments.length&&void 0!==arguments[2]?arguments[2]:720;n(this,e),this.canvas=document.createElement('canvas'),this.scene=new r.Scene,this.renderer=new i.Renderer(this.canvas.getContext('2d')),this._loop=new l.Loop,this._created=!1,this.canvas.style.display='block',this.canvas.style.width='100%',this.canvas.style.height='auto',this.canvas.width=o,this.canvas.height=a,t.appendChild(this.canvas),i.Screen._init(this.canvas),u.Mouse._init(this.canvas),u.Keyboard._init(),this.renderer.render(this.scene)}return a(e,[{key:'create',value:function(){}},{key:'update',value:function(){}},{key:'afterUpdate',value:function(){}},{key:'start',value:function(){var e=this;this.created||this.create(),this._loop.start(function(t){l.Time._setFrame(t),e.update(),e.scene._runUpdate(),e.renderer.render(e.scene),e.scene._runAfterUpdate(),e.afterUpdate()})}},{key:'stop',value:function(){this._loop.stop()}},{key:'width',get:function(){return this.canvas.width},set:function(e){this.canvas.width=e}},{key:'height',get:function(){return this.canvas.height},set:function(e){this.canvas.height=e}},{key:'created',get:function(){return this._created}},{key:'started',get:function(){return this._loop.started}},{key:'running',get:function(){return this._loop.running}},{key:'stopped',get:function(){return this._loop.stopped}}]),e}()},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});var n=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),a=t.Renderer=function(){function e(t){var n=1<arguments.length&&void 0!==arguments[1]?arguments[1]:'#000000';o(this,e),this.context=t,this.backgroundColour=n}return n(e,[{key:'render',value:function(e){this.context.fillStyle=this.backgroundColour,this.context.fillRect(0,0,this.context.canvas.width,this.context.canvas.height);var t,o=!0,n=!1;try{for(var a,r,i=e.gameObjects[Symbol.iterator]();!(o=(a=i.next()).done);o=!0)r=a.value,r._render(this.context)}catch(e){n=!0,t=e}finally{try{!o&&i.return&&i.return()}finally{if(n)throw t}}}}]),e}()},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.Screen=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(0),i=t.Screen=function(){function e(){n(this,e)}return a(e,null,[{key:'_init',value:function(e){this._canvas=e}},{key:'width',get:function(){return this._canvas.width}},{key:'height',get:function(){return this._canvas.height}},{key:'center',get:function(){return new r.Point(this.width/2,this.height/2)}},{key:'centerX',get:function(){return this.width/2}},{key:'centerY',get:function(){return this.height/2}}]),e}();i._canvas={width:1280,height:720}},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});t.Point=function e(){var t=0<arguments.length&&arguments[0]!==void 0?arguments[0]:0,n=1<arguments.length&&arguments[1]!==void 0?arguments[1]:0;o(this,e),this.x=t,this.y=n}},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}var n=Math.PI;Object.defineProperty(t,'__esModule',{value:!0});var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=t.Rotation=function(){function e(){o(this,e)}return a(e,null,[{key:'radiansToDegrees',value:function(e){return 180*e/n}},{key:'degreesToRadians',value:function(e){return e*n/180}}]),e}()},function(e,t){'use strict';function o(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0});var n=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),a=t.VirtualBuffer=function(){function e(){o(this,e)}return n(e,null,[{key:'requestBuffer',value:function(e,t){return this._width=e,this._height=t,this._buffer}},{key:'getImageData',value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,o=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0,n=3<arguments.length&&void 0!==arguments[3]?arguments[3]:e.width,a=4<arguments.length&&void 0!==arguments[4]?arguments[4]:e.height,r=this.requestBuffer(n,a);return r.drawImage(e,t,o),r.getImageData(t,o,n,a)}},{key:'clearBuffer',value:function(e,t){this._width=e,this._height=t,this._clearBuffer()}},{key:'_clearBuffer',value:function(){(this._width||this._height)&&(this._context.clearRect(0,0,this._width,this._height),this._width=0,this._height=0,this._context.restore())}},{key:'_buffer',get:function(){return this._clearBuffer(),this._context.save(),this._context}}]),e}();a._context=document.createElement('canvas').getContext('2d'),a._width=0,a._height=0},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.Loop=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(5),i=t.Loop=function(){function e(){n(this,e),this._started=!1,this._running=!1,this._stopped=!1,this._timeStarted=0,this._currentTime=0,this._timeStopped=0,this._animationFrame=0}return a(e,[{key:'start',value:function(e){var t=this;this.started||(this._started=!0,this._running=!0,this._stopped=!1,this._animationFrame=requestAnimationFrame(function(o){t._timeStarted=r.Time.time,t._loop(e,o)}))}},{key:'stop',value:function(){this.running&&(this._running=!1,this._stopped=!0,cancelAnimationFrame(this._animationFrame),this._timeStopped=r.Time.time)}},{key:'_loop',value:function(e,t){var o=this;this._animationFrame=requestAnimationFrame(function(t){o._loop(e,t)}),e(t)}},{key:'started',get:function(){return this._started}},{key:'running',get:function(){return this._running}},{key:'stopped',get:function(){return this._stopped}},{key:'timeStarted',get:function(){return this._timeStarted}},{key:'currentTime',get:function(){return r.Time.time-this.timeStarted}},{key:'timeStopped',get:function(){return this._timeStopped}}]),e}()},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.Keyboard=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(7),i=t.Keyboard=function(){function e(){n(this,e)}return a(e,null,[{key:'_init',value:function(){var t=this;for(var e in r.Keys)this._keys[e]=!1;window.addEventListener('keydown',function(o){t._keys[o.code]=!0;var e,n=!0,a=!1;try{for(var r,i,l=t._onKeyDown[Symbol.iterator]();!(n=(r=l.next()).done);n=!0)i=r.value,i(o)}catch(t){a=!0,e=t}finally{try{!n&&l.return&&l.return()}finally{if(a)throw e}}}),window.addEventListener('keyup',function(o){t._keys[o.code]=!1;var e,n=!0,a=!1;try{for(var r,i,l=t._onKeyUp[Symbol.iterator]();!(n=(r=l.next()).done);n=!0)i=r.value,i(o)}catch(t){a=!0,e=t}finally{try{!n&&l.return&&l.return()}finally{if(a)throw e}}})}},{key:'getKey',value:function(e){return this._keys[e]}},{key:'isDown',value:function(e){return void 0!==this._keys[e]&&this._keys[e]}},{key:'isUp',value:function(e){return void 0===this._keys[e]||!this._keys[e]}},{key:'on',value:function(e,t){switch(e.toLowerCase()){case'keydown':this._onKeyDown.push(t);break;case'keyup':this._onKeyUp.push(t);break;default:}}}]),e}();i._keys={},i._onKeyDown=[],i._onKeyUp=[]},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.Mouse=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(0),i=t.Mouse=function(){function e(){n(this,e)}return a(e,null,[{key:'_init',value:function(e){var t=this;window.addEventListener('mousemove',function(o){t._cursor.x=o.clientX,t._cursor.y=o.clientY}),e.addEventListener('mousedown',function(o){switch(o.preventDefault(),o.button){case 0:t._leftButtonDown=!0,t._triggerEvent(t._onLeftButtonDown,o);break;case 1:t._middleButtonDown=!0,t._triggerEvent(t._onMiddleButtonDown,o);break;case 2:t._rightButtonDown=!0,t._triggerEvent(t._onRightButtonDown,o);break;default:}}),e.addEventListener('mouseup',function(o){switch(o.preventDefault(),o.button){case 0:t._leftButtonDown=!1,t._triggerEvent(t._onLeftButtonUp,o);break;case 1:t._middleButtonDown=!1,t._triggerEvent(t._onMiddleButtonUp,o);break;case 2:t._rightButtonDown=!1,t._triggerEvent(t._onRightButtonUp,o);break;default:}}),e.addEventListener('contextmenu',function(t){t.preventDefault()}),e.addEventListener('wheel',function(o){0<o.deltaY?t._triggerEvent(t._onScrollDown,o):0>o.deltaY&&t._triggerEvent(t._onScrollUp,o),0<o.deltaX?t._triggerEvent(t._onScrollRight,o):0>o.deltaY&&t._triggerEvent(t._onScrollLeft,o)})}},{key:'on',value:function(e,t){switch(e.toLocaleLowerCase()){case'leftbuttondown':this._onLeftButtonDown.push(t);break;case'leftbuttonup':this._onLeftButtonUp.push(t);break;case'middlebuttondown':this._onMiddleButtonDown.push(t);break;case'middlebuttonup':this._onMiddleButtonUp.push(t);break;case'rightbuttondown':this._onRightButtonDown.push(t);break;case'rightbuttonup':this._onRightButtonUp.push(t);break;case'scrolldown':this._onScrollDown.push(t);break;case'scrollup':this._onScrollUp.push(t);break;case'scrollleft':this._onScrollLeft.push(t);break;case'scrollright':this._onScrollRight.push(t);break;default:}}},{key:'_triggerEvent',value:function(e,t){var o,n=!0,a=!1;try{for(var r,i,l=e[Symbol.iterator]();!(n=(r=l.next()).done);n=!0)i=r.value,i(t)}catch(e){a=!0,o=e}finally{try{!n&&l.return&&l.return()}finally{if(a)throw o}}}},{key:'cursor',get:function(){return new r.Point(this._cursor.x,this._cursor.y)}},{key:'cursorX',get:function(){return this._cursor.x}},{key:'cursorY',get:function(){return this._cursor.y}},{key:'leftButtonDown',get:function(){return this._leftButtonDown}},{key:'leftButtonUp',get:function(){return!this._leftButtonDown}},{key:'middleButtonDown',get:function(){return this._middleButtonDown}},{key:'middleButtonUp',get:function(){return!this._middleButtonDown}},{key:'rightButtonDown',get:function(){return this._rightButtonDown}},{key:'rightButtonUp',get:function(){return!this._rightButtonDown}}]),e}();i._cursor=new r.Point,i._leftButtonDown=!1,i._middleButtonDown=!1,i._rightButtonDown=!1,i._onLeftButtonDown=[],i._onLeftButtonUp=[],i._onMiddleButtonDown=[],i._onMiddleButtonUp=[],i._onRightButtonDown=[],i._onRightButtonUp=[],i._onScrollDown=[],i._onScrollUp=[],i._onScrollLeft=[],i._onScrollRight=[]},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}Object.defineProperty(t,'__esModule',{value:!0}),t.GameObject=void 0;var a=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),r=o(0),i=o(2),l=t.GameObject=function(){function e(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:0,o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,a=2<arguments.length&&void 0!==arguments[2]?arguments[2]:i.Screen.width,l=3<arguments.length&&void 0!==arguments[3]?arguments[3]:i.Screen.height,u=4<arguments.length&&void 0!==arguments[4]?arguments[4]:0,d=5<arguments.length&&void 0!==arguments[5]?arguments[5]:1,s=6<arguments.length&&void 0!==arguments[6]?arguments[6]:!0;n(this,e),this.position=new r.Point(t,o),this.width=a,this.height=l,this.rotation=u,this.scale=d,this.visible=s,this.graphics=[]}return a(e,[{key:'setCenter',value:function(e){this.x=e.x-this.width/2,this.y=e.y-this.height/2}},{key:'addGraphics',value:function(e){this.graphics.push(e);for(var t=arguments.length,o=Array(1<t?t-1:0),n=1;n<t;n++)o[n-1]=arguments[n];var a,r=!0,i=!1;try{for(var l,u,d=o[Symbol.iterator]();!(r=(l=d.next()).done);r=!0)u=l.value,this.addGraphics(u)}catch(e){i=!0,a=e}finally{try{!r&&d.return&&d.return()}finally{if(i)throw a}}}},{key:'update',value:function(){}},{key:'afterUpdate',value:function(){}},{key:'draw',value:function(){}},{key:'drawAfter',value:function(){}},{key:'_render',value:function(e){e.save(),e.translate(this.x,this.y),e.scale(this.scale,this.scale),this.rotation&&(e.translate(this.width/2,this.height/2),e.rotate(r.Rotation.degreesToRadians(this.rotation)),e.translate(-this.width/2,-this.height/2)),this.draw(e);var t,o=!0,n=!1;try{for(var a,i,l=this.graphics[Symbol.iterator]();!(o=(a=l.next()).done);o=!0)i=a.value,i._render(e)}catch(e){n=!0,t=e}finally{try{!o&&l.return&&l.return()}finally{if(n)throw t}}this.drawAfter(e),e.restore()}},{key:'x',get:function(){return this.position.x},set:function(e){this.position.x=e}},{key:'y',get:function(){return this.position.y},set:function(e){this.position.y=e}},{key:'center',get:function(){return new r.Point(this.x+this.width/2,this.y+this.height/2)}},{key:'centerX',get:function(){return this.x+this.width/2},set:function(e){this.x=e-this.width/2}},{key:'centerY',get:function(){return this.y+this.height/2},set:function(e){this.y=e-this.height/2}}]),e}()},function(e,t,o){'use strict';Object.defineProperty(t,'__esModule',{value:!0});var n=o(21);Object.keys(n).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return n[e]}})});var a=o(1);Object.keys(a).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return a[e]}})});var r=o(22);Object.keys(r).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return r[e]}})});var i=o(23);Object.keys(i).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return i[e]}})});var l=o(24);Object.keys(l).forEach(function(e){'default'===e||'__esModule'===e||Object.defineProperty(t,e,{enumerable:!0,get:function(){return l[e]}})})},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}function a(e,t){if(!e)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return t&&('object'==typeof t||'function'==typeof t)?t:e}function r(e,t){if('function'!=typeof t&&null!==t)throw new TypeError('Super expression must either be null or a function, not '+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,'__esModule',{value:!0}),t.Circle=void 0;var i=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),l=o(0),u=o(1),d=t.Circle=function(e){function t(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:0,o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:100,i=3<arguments.length&&void 0!==arguments[3]?arguments[3]:'#ff00ff',u=4<arguments.length&&void 0!==arguments[4]?arguments[4]:'#ffffff',d=5<arguments.length&&void 0!==arguments[5]?arguments[5]:2;n(this,t);var s=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return s.position=new l.Point(e,o),s.size=r,s.fillColour=i,s.strokeColour=u,s.strokeWidth=d,s.rotation=0,s.fill=!0,s}return r(t,e),i(t,[{key:'draw',value:function(e){e.save(),this.rotation&&(e.translate(this.x,this.y),e.rotate(l.Rotation.degreesToRadians(this.rotation)),e.translate(-this.x,-this.y)),e.beginPath(),e.arc(this.x,this.y,this.size/2,0,2*Math.PI),this.fill&&(e.fillStyle=this.fillColour,e.fill()),this.strokeWidth&&(e.lineWidth=this.strokeWidth,e.strokeStyle=this.strokeColour,e.stroke()),e.restore()}},{key:'x',get:function(){return this.position.x},set:function(e){this.position.x=e}},{key:'y',get:function(){return this.position.y},set:function(e){this.position.y=e}}]),t}(u.Graphics)},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}function a(e,t){if(!e)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return t&&('object'==typeof t||'function'==typeof t)?t:e}function r(e,t){if('function'!=typeof t&&null!==t)throw new TypeError('Super expression must either be null or a function, not '+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,'__esModule',{value:!0}),t.Image=void 0;var i=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),l=o(0),u=o(1),d=t.Image=function(e){function t(e){var o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0,i=3<arguments.length&&void 0!==arguments[3]?arguments[3]:0,u=4<arguments.length&&void 0!==arguments[4]?arguments[4]:1,d=5<arguments.length&&void 0!==arguments[5]?arguments[5]:!0;n(this,t);var s=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,d));return s.image=e,s.position=new l.Point(o,r),s.rotation=0,s.opacity=u,s.width=s.image.width,s.height=s.image.height,s.image.onload=function(){s.width=0===s.width?s.image.width:s.width,s.height=0===s.height?s.image.height:s.height},s}return r(t,e),i(t,[{key:'setCenter',value:function(e){this.position.x=e.x-this.width/2,this.position.y=e.y-this.height/2}},{key:'draw',value:function(e){this.opacity&&(e.save(),e.globalAlpha=this.opacity,this.rotation&&(e.translate(this.centerX,this.centerY),e.rotate(l.Rotation.degreesToRadians(this.rotation)),e.translate(-this.centerX,-this.centerY)),e.drawImage(this.image,this.x,this.y,this.width,this.height),e.restore())}},{key:'x',get:function(){return this.position.x},set:function(e){this.position.x=e}},{key:'y',get:function(){return this.position.y},set:function(e){this.position.y=e}},{key:'center',get:function(){return new l.Point(this.x+this.width/2,this.y+this.height/2)}},{key:'centerX',get:function(){return this.x+this.width/2},set:function(e){this.x=e-this.width/2}},{key:'centerY',get:function(){return this.y+this.height/2},set:function(e){this.y=e-this.height/2}}]),t}(u.Graphics)},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}function a(e,t){if(!e)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return t&&('object'==typeof t||'function'==typeof t)?t:e}function r(e,t){if('function'!=typeof t&&null!==t)throw new TypeError('Super expression must either be null or a function, not '+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,'__esModule',{value:!0}),t.Rectangle=void 0;var i=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),l=o(0),u=o(1),d=t.Rectangle=function(e){function t(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:0,o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:400,i=3<arguments.length&&void 0!==arguments[3]?arguments[3]:250,u=4<arguments.length&&void 0!==arguments[4]?arguments[4]:0,d=5<arguments.length&&void 0!==arguments[5]?arguments[5]:'#ff00ff',s=6<arguments.length&&void 0!==arguments[6]?arguments[6]:'#ffffff',y=7<arguments.length&&void 0!==arguments[7]?arguments[7]:2;n(this,t);var h=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return h.position=new l.Point(e,o),h.width=r,h.height=i,h.radius=u,h.fillColour=d,h.strokeColour=s,h.strokeWidth=y,h.rotation=0,h.fill=!0,h}return r(t,e),i(t,[{key:'setCenter',value:function(e){this.x=e.x-this.width/2,this.y=e.y-this.height/2}},{key:'draw',value:function(e){e.save(),this.rotation&&(e.translate(this.centerX,this.centerY),e.rotate(l.Rotation.degreesToRadians(this.rotation)),e.translate(-this.centerX,-this.centerY)),this.radius?this._drawRounded(e):this._drawClassic(e),this.fill&&(e.fillStyle=this.fillColour,e.fill()),this.strokeWidth&&(e.lineWidth=this.strokeWidth,e.strokeStyle=this.strokeColour,e.stroke()),e.restore()}},{key:'_drawClassic',value:function(e){e.beginPath(),e.moveTo(this.x,this.y),e.lineTo(this.x+this.width,this.y),e.lineTo(this.x+this.width,this.y+this.height),e.lineTo(this.x,this.y+this.height),e.lineTo(this.x,this.y)}},{key:'_drawRounded',value:function(e){e.beginPath(),e.moveTo(this.x+this.radius,this.y),e.lineTo(this.x+this.width-this.radius,this.y),e.arcTo(this.x+this.width,this.y,this.x+this.width,this.y+this.radius,this.radius),e.lineTo(this.x+this.width,this.y+this.height-this.radius),e.arcTo(this.x+this.width,this.y+this.height,this.x+this.width-this.radius,this.y+this.height,this.radius),e.lineTo(this.x+this.radius,this.y+this.height),e.arcTo(this.x,this.y+this.height,this.x,this.y+this.height-this.radius,this.radius),e.lineTo(this.x,this.y+this.radius),e.arcTo(this.x,this.y,this.x+this.radius,this.y,this.radius)}},{key:'x',get:function(){return this.position.x},set:function(e){this.position.x=e}},{key:'y',get:function(){return this.position.y},set:function(e){this.position.y=e}},{key:'center',get:function(){return new l.Point(this.x+this.width/2,this.y+this.height/2)}},{key:'centerX',get:function(){return this.x+this.width/2},set:function(e){this.x=e-this.width/2}},{key:'centerY',get:function(){return this.y+this.height/2},set:function(e){this.y=e-this.height/2}}]),t}(u.Graphics)},function(e,t,o){'use strict';function n(e,t){if(!(e instanceof t))throw new TypeError('Cannot call a class as a function')}function a(e,t){if(!e)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return t&&('object'==typeof t||'function'==typeof t)?t:e}function r(e,t){if('function'!=typeof t&&null!==t)throw new TypeError('Super expression must either be null or a function, not '+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,'__esModule',{value:!0}),t.Text=void 0;var i=function(){function e(e,t){for(var o,n=0;n<t.length;n++)o=t[n],o.enumerable=o.enumerable||!1,o.configurable=!0,'value'in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}return function(t,o,n){return o&&e(t.prototype,o),n&&e(t,n),t}}(),l=o(0),u=o(1),d=t.Text=function(e){function t(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:'',o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0,i=3<arguments.length&&void 0!==arguments[3]?arguments[3]:'#ffffff',u=4<arguments.length&&void 0!==arguments[4]?arguments[4]:'#ff00ff',d=5<arguments.length&&void 0!==arguments[5]?arguments[5]:1;n(this,t);var s=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return s.text=e,s.position=new l.Point(o,r),s.fillColour=i,s.fill=!0,s.strokeColour=u,s.strokeWidth=d,s.rotation=0,s.fontStyle='normal',s.fontVariant='normal',s.fontWeight='normal',s.fontSize=20,s.fontFamily='Arial',s}return r(t,e),i(t,[{key:'draw',value:function(e){e.save(),e.textAlign='center',e.textBaseline='middle',e.font=this.fontStyle+' '+this.fontVariant+' '+this.fontWeight+' '+this.fontSize+'px '+this.fontFamily,this.rotation&&(e.translate(this.x,this.y),e.rotate(l.Rotation.degreesToRadians(this.rotation)),e.translate(-this.x,-this.y)),this.fill&&(e.fillStyle=this.fillColour,e.fillText(this.text,this.x,this.y)),this.strokeWidth&&(e.strokeStyle=this.strokeColour,e.strokeText(this.text,this.x,this.y)),e.restore()}},{key:'x',get:function(){return this.position.x},set:function(e){this.position.x=e}},{key:'y',get:function(){return this.position.y},set:function(e){this.position.y=e}}]),t}(u.Graphics)}]);
+var RythmoosEngine =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map = /** @class */ (function () {
+    function Map() {
+        this._keys = [];
+        this._values = [];
+    }
+    Map.prototype.get = function (key) {
+        var index = this._keys.indexOf(key);
+        if (index !== -1) {
+            return this._values[index];
+        }
+        return null;
+    };
+    Map.prototype.set = function (key, value) {
+        var index = this._keys.indexOf(key);
+        if (index !== -1) {
+            this._values[index] = value;
+        }
+        else {
+            this._keys.push(key);
+            this._values.push(value);
+        }
+    };
+    Map.prototype.remove = function (key) {
+        var index = this._keys.indexOf(key);
+        if (index !== -1) {
+            this._keys.splice(index, 1);
+            this._values.splice(index, 1);
+            return true;
+        }
+        return false;
+    };
+    Map.prototype.getAll = function () {
+        return this._values.slice();
+    };
+    Map.prototype.removeAll = function () {
+        this._keys = [];
+        this._values = [];
+    };
+    return Map;
+}());
+exports.Map = Map;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Renderer = /** @class */ (function () {
+    function Renderer(context) {
+        this._context = context;
+    }
+    Renderer.prototype.render = function (scene) {
+        this._context.fillStyle = '#000000';
+        this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height);
+        scene._runRender(this._context);
+    };
+    return Renderer;
+}());
+exports.Renderer = Renderer;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map_1 = __webpack_require__(0);
+var Scene = /** @class */ (function (_super) {
+    __extends(Scene, _super);
+    function Scene() {
+        var _this = _super.call(this) || this;
+        _this.create();
+        return _this;
+    }
+    Scene.prototype.create = function () {
+    };
+    Scene.prototype.update = function () {
+    };
+    Scene.prototype._runUpdate = function () {
+        this.update();
+        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
+            var gameObject = _a[_i];
+            gameObject.update();
+        }
+    };
+    Scene.prototype._runRender = function (context) {
+        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
+            var gameObject = _a[_i];
+            gameObject.render(context);
+        }
+    };
+    return Scene;
+}(Map_1.Map));
+exports.Scene = Scene;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Time = /** @class */ (function () {
+    function Time() {
+    }
+    Time._setFrame = function (frame) {
+        this._deltaTime = frame - this._time;
+        this._time = frame;
+    };
+    Object.defineProperty(Time, "deltaTime", {
+        get: function () {
+            return this._deltaTime;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Time, "time", {
+        get: function () {
+            return this._time;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Time, "FPS", {
+        get: function () {
+            return 1000 / this._deltaTime;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Time._deltaTime = 0;
+    Time._time = 0;
+    return Time;
+}());
+exports.Time = Time;
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Mouse = /** @class */ (function () {
+    function Mouse() {
+    }
+    Object.defineProperty(Mouse, "cursorX", {
+        get: function () {
+            return this._cursorX;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "cursorY", {
+        get: function () {
+            return this._cursorY;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "leftButtonDown", {
+        get: function () {
+            return this._leftButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "middleButtonDown", {
+        get: function () {
+            return this._middleButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "rightButtonDown", {
+        get: function () {
+            return this._rightButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "leftClick", {
+        get: function () {
+            return this._leftClick;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "middleClick", {
+        get: function () {
+            return this._middleClick;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "rightClick", {
+        get: function () {
+            return this._rightClick;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollX", {
+        get: function () {
+            return this._scrollX;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollY", {
+        get: function () {
+            return this._scrollY;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollTop", {
+        get: function () {
+            return this._scrollY === -1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollDown", {
+        get: function () {
+            return this._scrollY === 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollLeft", {
+        get: function () {
+            return this._scrollX === -1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "scrollRight", {
+        get: function () {
+            return this._scrollY === 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Mouse._init = function () {
+        var _this = this;
+        window.addEventListener('mousemove', function (e) {
+            _this._cursorX = e.clientX;
+            _this._cursorY = e.clientY;
+        });
+        window.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            switch (e.button) {
+                case 0:
+                    _this._leftButton = true;
+                    _this._leftClick = true;
+                    break;
+                case 1:
+                    _this._middleButton = true;
+                    _this._middleClick = true;
+                    break;
+                case 2:
+                    _this._rightButton = true;
+                    _this._rightClick = true;
+                    break;
+                default:
+                    break;
+            }
+            window.addEventListener('mouseup', function (e) {
+                e.preventDefault();
+                switch (e.button) {
+                    case 0:
+                        _this._leftButton = false;
+                        break;
+                    case 1:
+                        _this._middleButton = false;
+                        break;
+                    case 2:
+                        _this._rightButton = false;
+                        break;
+                    default:
+                        break;
+                }
+            });
+            window.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+            });
+            window.addEventListener('wheel', function (e) {
+                e.preventDefault();
+                if (e.deltaX > 0) {
+                    _this._scrollX = 1;
+                }
+                else if (e.deltaX < 0) {
+                    _this._scrollX = -1;
+                }
+                else {
+                    _this._scrollX = 0;
+                }
+                if (e.deltaY > 0) {
+                    _this._scrollY = 1;
+                }
+                else if (e.deltaY < 0) {
+                    _this._scrollY = -1;
+                }
+                else {
+                    _this._scrollY = 0;
+                }
+            });
+            window.addEventListener('blur', function () {
+                _this._leftButton = false;
+                _this._middleButton = false;
+                _this._rightButton = false;
+            });
+        });
+    };
+    Mouse._update = function () {
+        this._scrollX = 0;
+        this._scrollY = 0;
+        this._leftClick = false;
+        this._middleClick = false;
+        this._rightClick = false;
+    };
+    Mouse._cursorX = 0;
+    Mouse._cursorY = 0;
+    Mouse._leftButton = false;
+    Mouse._leftClick = false;
+    Mouse._middleButton = false;
+    Mouse._middleClick = false;
+    Mouse._rightButton = false;
+    Mouse._rightClick = false;
+    Mouse._scrollX = 0;
+    Mouse._scrollY = 0;
+    return Mouse;
+}());
+exports.Mouse = Mouse;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map_1 = __webpack_require__(0);
+var Keyboard = /** @class */ (function () {
+    function Keyboard() {
+    }
+    Keyboard.keyDown = function (key) {
+        return this._keys.get(key) || false;
+    };
+    Keyboard.keyPressed = function (key) {
+        return this._pressed.indexOf(key) !== -1;
+    };
+    Keyboard._init = function () {
+        var _this = this;
+        this._keys = new Map_1.Map();
+        window.addEventListener('keydown', function (e) {
+            e.preventDefault();
+            _this._keys.set(e.code, true);
+            _this._pressed.push(e.code);
+        });
+        window.addEventListener('keyup', function (e) {
+            e.preventDefault();
+            _this._keys.set(e.code, false);
+        });
+        window.addEventListener('keypress', function (e) {
+            e.preventDefault();
+        });
+    };
+    Keyboard._update = function () {
+        this._pressed = [];
+    };
+    return Keyboard;
+}());
+exports.Keyboard = Keyboard;
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map_1 = __webpack_require__(0);
+var Loader = /** @class */ (function () {
+    function Loader() {
+    }
+    Loader._init = function (game) {
+        this._game = game;
+        this._game.load();
+        if (this._files.getAll().length === 0) {
+            this._fileLoaded();
+        }
+    };
+    Loader.loadImage = function (fileName, filePath) {
+        var _this = this;
+        var image = document.createElement('img');
+        filePath = this.basePath + "/" + filePath;
+        this._images.set(fileName, image);
+        this._files.set(fileName, false);
+        image.addEventListener('load', function () {
+            _this._files.set(fileName, true);
+            if (!_this._loaded)
+                _this._fileLoaded();
+        });
+        image.addEventListener('error', function () {
+            console.log("Could not load file: " + filePath + ".");
+        });
+        image.src = filePath;
+    };
+    Loader.loadVideo = function (fileName, filePath) {
+        var _this = this;
+        var video = document.createElement('video');
+        filePath = this.basePath + "/" + filePath;
+        this._videos.set(fileName, video);
+        this._files.set(fileName, false);
+        video.addEventListener('load', function () {
+            _this._files.set(fileName, true);
+            if (!_this._loaded)
+                _this._fileLoaded();
+        });
+        video.addEventListener('error', function () {
+            console.log("Could not load file: " + filePath + ".");
+        });
+        video.src = filePath;
+    };
+    Loader.loadAudio = function (fileName, filePath) {
+        var _this = this;
+        var audio = document.createElement('audio');
+        filePath = this.basePath + "/" + filePath;
+        this._audios.set(fileName, audio);
+        this._files.set(fileName, false);
+        audio.addEventListener('loadeddata', function () {
+            _this._files.set(fileName, true);
+            if (!_this._loaded)
+                _this._fileLoaded();
+        });
+        audio.addEventListener('error', function () {
+            console.log("Could not load file: " + filePath + ".");
+        });
+        audio.src = filePath;
+    };
+    Loader.loadJSON = function (fileName, filePath) {
+        var _this = this;
+        var xhr = new XMLHttpRequest();
+        filePath = this.basePath + "/" + filePath;
+        this._json.set(fileName, {});
+        this._files.set(fileName, false);
+        xhr.addEventListener('load', function () {
+            _this._files.set(fileName, true);
+            _this._json.set(fileName, JSON.parse(xhr.responseText));
+            if (!_this._loaded)
+                _this._fileLoaded();
+        });
+        xhr.addEventListener('error', function () {
+            console.log("Could not load file: " + filePath);
+        });
+        xhr.open('GET', filePath, true);
+        xhr.send();
+    };
+    Loader.image = function (fileName) {
+        return this._images.get(fileName);
+    };
+    Loader.video = function (fileName) {
+        return this._videos.get(fileName);
+    };
+    Loader.audio = function (fileName) {
+        return this._audios.get(fileName);
+    };
+    Loader.json = function (fileName) {
+        return this._json.get(fileName);
+    };
+    Loader._fileLoaded = function () {
+        if (this._files.getAll().indexOf(false) === -1) {
+            this._loaded = true;
+            this._game._start();
+        }
+    };
+    Loader.basePath = '';
+    Loader._loaded = false;
+    Loader._images = new Map_1.Map();
+    Loader._videos = new Map_1.Map();
+    Loader._audios = new Map_1.Map();
+    Loader._json = new Map_1.Map();
+    Loader._files = new Map_1.Map();
+    return Loader;
+}());
+exports.Loader = Loader;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(8));
+__export(__webpack_require__(10));
+__export(__webpack_require__(5));
+__export(__webpack_require__(11));
+__export(__webpack_require__(6));
+__export(__webpack_require__(0));
+__export(__webpack_require__(4));
+__export(__webpack_require__(1));
+__export(__webpack_require__(2));
+__export(__webpack_require__(3));
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Renderer_1 = __webpack_require__(1);
+var Scene_1 = __webpack_require__(2);
+var Loop_1 = __webpack_require__(9);
+var Mouse_1 = __webpack_require__(4);
+var Keyboard_1 = __webpack_require__(5);
+var Loader_1 = __webpack_require__(6);
+var Game = /** @class */ (function () {
+    function Game(width, height, container) {
+        this.width = width;
+        this.height = height;
+        this.container = container;
+        this.scene = new Scene_1.Scene();
+        this._canvas = document.createElement('canvas');
+        this._renderer = new Renderer_1.Renderer(this._canvas.getContext('2d'));
+        this._running = false;
+        this._canvas.width = this.width;
+        this._canvas.height = this.height;
+        this.container.appendChild(this._canvas);
+        Loader_1.Loader._init(this);
+    }
+    Game.prototype.load = function () {
+    };
+    Game.prototype.create = function () {
+    };
+    Game.prototype.update = function () {
+    };
+    Game.prototype._start = function () {
+        var _this = this;
+        if (this._running)
+            return;
+        this._running = true;
+        this.create();
+        Mouse_1.Mouse._init();
+        Keyboard_1.Keyboard._init();
+        window.focus();
+        Loop_1.Loop.start(function () {
+            _this.update();
+            _this.scene._runUpdate();
+            _this._renderer.render(_this.scene);
+            Mouse_1.Mouse._update();
+            Keyboard_1.Keyboard._update();
+        });
+    };
+    return Game;
+}());
+exports.Game = Game;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Time_1 = __webpack_require__(3);
+var Loop = /** @class */ (function () {
+    function Loop() {
+    }
+    Loop.start = function (callback) {
+        var _this = this;
+        if (this._animationFrame === 0) {
+            this._callback = callback;
+            this._animationFrame = window.requestAnimationFrame(function (frame) {
+                _this._update(frame);
+            });
+        }
+    };
+    Loop.stop = function () {
+        if (this._animationFrame !== 0) {
+            window.cancelAnimationFrame(this._animationFrame);
+            this._animationFrame = 0;
+        }
+    };
+    Loop._update = function (frame) {
+        var _this = this;
+        this._animationFrame = window.requestAnimationFrame(function (frame) {
+            _this._update(frame);
+        });
+        Time_1.Time._setFrame(frame);
+        this._callback();
+    };
+    Loop._animationFrame = 0;
+    return Loop;
+}());
+exports.Loop = Loop;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var GameObject = /** @class */ (function () {
+    function GameObject() {
+        this.create();
+    }
+    GameObject.prototype.create = function () {
+    };
+    GameObject.prototype.update = function () {
+    };
+    GameObject.prototype.render = function (context) {
+    };
+    return GameObject;
+}());
+exports.GameObject = GameObject;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Keys;
+(function (Keys) {
+    Keys["Digit0"] = "Digit0";
+    Keys["Digit1"] = "Digit1";
+    Keys["Digit2"] = "Digit2";
+    Keys["Digit3"] = "Digit3";
+    Keys["Digit4"] = "Digit4";
+    Keys["Digit5"] = "Digit5";
+    Keys["Digit6"] = "Digit6";
+    Keys["Digit7"] = "Digit7";
+    Keys["Digit8"] = "Digit8";
+    Keys["Digit9"] = "Digit9";
+    Keys["KeyA"] = "KeyA";
+    Keys["KeyB"] = "KeyB";
+    Keys["KeyC"] = "KeyC";
+    Keys["KeyD"] = "KeyD";
+    Keys["KeyE"] = "KeyE";
+    Keys["KeyF"] = "KeyF";
+    Keys["KeyG"] = "KeyG";
+    Keys["KeyH"] = "KeyH";
+    Keys["KeyI"] = "KeyI";
+    Keys["KeyJ"] = "KeyJ";
+    Keys["KeyK"] = "KeyK";
+    Keys["KeyL"] = "KeyL";
+    Keys["KeyM"] = "KeyM";
+    Keys["KeyN"] = "KeyN";
+    Keys["KeyO"] = "KeyO";
+    Keys["KeyP"] = "KeyP";
+    Keys["KeyQ"] = "KeyQ";
+    Keys["KeyR"] = "KeyR";
+    Keys["KeyS"] = "KeyS";
+    Keys["KeyT"] = "KeyT";
+    Keys["KeyU"] = "KeyU";
+    Keys["KeyV"] = "KeyV";
+    Keys["KeyW"] = "KeyW";
+    Keys["KeyX"] = "KeyX";
+    Keys["KeyY"] = "KeyY";
+    Keys["KeyZ"] = "KeyZ";
+    Keys["Escape"] = "Escape";
+    Keys["F1"] = "F1";
+    Keys["F2"] = "F2";
+    Keys["F3"] = "F3";
+    Keys["F4"] = "F4";
+    Keys["F5"] = "F5";
+    Keys["F6"] = "F6";
+    Keys["F7"] = "F7";
+    Keys["F8"] = "F8";
+    Keys["F9"] = "F9";
+    Keys["F10"] = "F10";
+    Keys["F11"] = "F11";
+    Keys["F12"] = "F12";
+    Keys["Insert"] = "Insert";
+    Keys["Delete"] = "Delete";
+    Keys["Home"] = "Home";
+    Keys["End"] = "End";
+    Keys["PageUp"] = "PageUp";
+    Keys["PageDown"] = "PageDown";
+    Keys["NumLock"] = "NumLock";
+    Keys["NumpadDivide"] = "NumpadDivide";
+    Keys["NumpadMultiply"] = "NumpadMultiply";
+    Keys["NumpadSubtract"] = "NumpadSubtract";
+    Keys["NumpadAdd"] = "NumpadAdd";
+    Keys["NumpadEnter"] = "NumpadEnter";
+    Keys["NumpadDecimal"] = "NumpadDecimal";
+    Keys["Numpad0"] = "Numpad0";
+    Keys["Numpad1"] = "Numpad1";
+    Keys["Numpad2"] = "Numpad2";
+    Keys["Numpad3"] = "Numpad3";
+    Keys["Numpad4"] = "Numpad4";
+    Keys["Numpad5"] = "Numpad5";
+    Keys["Numpad6"] = "Numpad6";
+    Keys["Numpad7"] = "Numpad7";
+    Keys["Numpad8"] = "Numpad8";
+    Keys["Numpad9"] = "Numpad9";
+    Keys["ArrowUp"] = "ArrowUp";
+    Keys["ArrowDown"] = "ArrowDown";
+    Keys["ArrowLeft"] = "ArrowLeft";
+    Keys["ArrowRight"] = "ArrowRight";
+    Keys["Backquote"] = "Backquote";
+    Keys["Minus"] = "Minus";
+    Keys["Equal"] = "Equal";
+    Keys["Backspace"] = "Backspace";
+    Keys["BracketLeft"] = "BracketLeft";
+    Keys["BracketRight"] = "BracketRight";
+    Keys["Quote"] = "Quote";
+    Keys["Backslash"] = "Backslash";
+    Keys["Comma"] = "Comma";
+    Keys["Period"] = "Period";
+    Keys["Slash"] = "Slash";
+    Keys["Enter"] = "Enter";
+    Keys["ShiftLeft"] = "ShiftLeft";
+    Keys["ShiftRight"] = "ShiftRight";
+    Keys["CapsLock"] = "CapsLock";
+    Keys["Tab"] = "Tab";
+    Keys["ControlLeft"] = "ControlLeft";
+    Keys["ControlRight"] = "ControlRight";
+    Keys["MetaLeft"] = "MetaLeft";
+    Keys["MetaRight"] = "MetaRight";
+    Keys["AltLeft"] = "AltLeft";
+    Keys["AltRight"] = "AltRight";
+})(Keys = exports.Keys || (exports.Keys = {}));
+;
+
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=rythmoos-engine.js.map
