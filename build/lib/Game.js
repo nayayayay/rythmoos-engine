@@ -6,6 +6,7 @@ var Loop_1 = require("./Loop");
 var Mouse_1 = require("./Mouse");
 var Keyboard_1 = require("./Keyboard");
 var Loader_1 = require("./Loader");
+var State_1 = require("./State");
 /**
  * The base class of any game.
  */
@@ -27,6 +28,7 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        State_1.State._init();
         Loader_1.Loader._init(this);
     }
     /**

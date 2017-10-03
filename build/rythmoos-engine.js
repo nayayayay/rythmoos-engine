@@ -61,7 +61,7 @@ var RythmoosEngine =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -860,26 +860,70 @@ exports.Loader = Loader;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map_1 = __webpack_require__(0);
+/**
+ * The State class is used to store data that can be accessed throughout you game.<br>
+ * For example, you can use it from a game object to update a state value, then
+ * access this state value from the game update.<br>
+ * Think of it as a big container available from anywhere you import it.
+ */
+var State = /** @class */ (function () {
+    function State() {
+    }
+    /**
+     * Used internally to initialise the State class.
+     */
+    State._init = function () {
+        this._states = new Map_1.Map();
+    };
+    /**
+     * Set (create or update) a state value.
+     * @param key The name of the state.
+     * @param value The value of the state.
+     */
+    State.set = function (key, value) {
+        this._states.set(key, value);
+    };
+    /**
+     * Get a state value.
+     * @param key The name of the state.
+     * @return The value of the state, null if the state was not set.
+     */
+    State.get = function (key) {
+        return this._states.get(key);
+    };
+    return State;
+}());
+exports.State = State;
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(9));
 __export(__webpack_require__(10));
-__export(__webpack_require__(6));
 __export(__webpack_require__(11));
+__export(__webpack_require__(6));
+__export(__webpack_require__(12));
 __export(__webpack_require__(7));
 __export(__webpack_require__(3));
 __export(__webpack_require__(0));
 __export(__webpack_require__(5));
 __export(__webpack_require__(1));
 __export(__webpack_require__(2));
-__export(__webpack_require__(12));
+__export(__webpack_require__(8));
 __export(__webpack_require__(4));
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -891,6 +935,7 @@ var Loop_1 = __webpack_require__(3);
 var Mouse_1 = __webpack_require__(5);
 var Keyboard_1 = __webpack_require__(6);
 var Loader_1 = __webpack_require__(7);
+var State_1 = __webpack_require__(8);
 /**
  * The base class of any game.
  */
@@ -912,6 +957,7 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        State_1.State._init();
         Loader_1.Loader._init(this);
     }
     /**
@@ -958,7 +1004,7 @@ exports.Game = Game;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -999,7 +1045,7 @@ exports.GameObject = GameObject;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1110,45 +1156,6 @@ var Keys;
     Keys["AltRight"] = "AltRight";
 })(Keys = exports.Keys || (exports.Keys = {}));
 ;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Map_1 = __webpack_require__(0);
-/**
- * The State class is used to store data that can be accessed throughout you game.<br>
- * For example, you can use it from a game object to update a state value, then
- * access this state value from the game update.<br>
- * Think of it as a big container available from anywhere you import it.
- */
-var State = /** @class */ (function () {
-    function State() {
-    }
-    /**
-     * Set (create or update) a state value.
-     * @param key The name of the state.
-     * @param value The value of the state.
-     */
-    State.set = function (key, value) {
-        this._states.set(key, value);
-    };
-    /**
-     * Get a state value.
-     * @param key The name of the state.
-     * @return The value of the state, null if the state was not set.
-     */
-    State.get = function (key) {
-        return this._states.get(key);
-    };
-    State._states = new Map_1.Map();
-    return State;
-}());
-exports.State = State;
 
 
 /***/ })

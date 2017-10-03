@@ -7,6 +7,10 @@
 export declare abstract class State {
     private static _states;
     /**
+     * Used internally to initialise the State class.
+     */
+    static _init(): void;
+    /**
      * Set (create or update) a state value.
      * @param key The name of the state.
      * @param value The value of the state.

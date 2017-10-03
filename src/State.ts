@@ -7,7 +7,14 @@ import {Map} from './Map';
  * Think of it as a big container available from anywhere you import it.
  */
 export abstract class State {
-  private static _states: Map<any> = new Map<any>();
+  private static _states: Map<any>;
+
+  /**
+   * Used internally to initialise the State class.
+   */
+  public static _init() {
+    this._states = new Map<any>();
+  }
 
   /**
    * Set (create or update) a state value.

@@ -11,6 +11,12 @@ var State = /** @class */ (function () {
     function State() {
     }
     /**
+     * Used internally to initialise the State class.
+     */
+    State._init = function () {
+        this._states = new Map_1.Map();
+    };
+    /**
      * Set (create or update) a state value.
      * @param key The name of the state.
      * @param value The value of the state.
@@ -26,7 +32,6 @@ var State = /** @class */ (function () {
     State.get = function (key) {
         return this._states.get(key);
     };
-    State._states = new Map_1.Map();
     return State;
 }());
 exports.State = State;

@@ -5,6 +5,7 @@ import {IUpdatable} from './IUpdatable';
 import {Mouse} from './Mouse';
 import {Keyboard} from './Keyboard';
 import {Loader} from './Loader';
+import {State} from './State';
 
 /**
  * The base class of any game.
@@ -41,6 +42,7 @@ export class Game implements IUpdatable {
     this._canvas.height = this.height;
     this.container.appendChild(this._canvas);
 
+    State._init();
     Loader._init(this);
   }
 
