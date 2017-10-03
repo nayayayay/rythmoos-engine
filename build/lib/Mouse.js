@@ -150,14 +150,15 @@ var Mouse = /** @class */ (function () {
     });
     /**
      * Used internally to initialise the mouse input.
+     * @param canvas The game's canvas.
      */
-    Mouse._init = function () {
+    Mouse._init = function (canvas) {
         var _this = this;
-        window.addEventListener('mousemove', function (e) {
-            _this._cursorX = e.clientX;
-            _this._cursorY = e.clientY;
+        canvas.addEventListener('mousemove', function (e) {
+            _this._cursorX = e.clientX - canvas.offsetLeft;
+            _this._cursorY = e.clientY - canvas.offsetTop;
         });
-        window.addEventListener('mousedown', function (e) {
+        canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
             switch (e.button) {
                 case 0:
@@ -176,6 +177,11 @@ var Mouse = /** @class */ (function () {
                     break;
             }
             window.addEventListener('mouseup', function (e) {
+                if (e.clientX < canvas.offsetLeft ||
+                    e.clientX > canvas.width + canvas.offsetLeft ||
+                    e.clientY < canvas.offsetTop ||
+                    e.clientY > canvas.height + canvas.offsetTop)
+                    return;
                 e.preventDefault();
                 switch (e.button) {
                     case 0:
@@ -191,7 +197,7 @@ var Mouse = /** @class */ (function () {
                         break;
                 }
             });
-            window.addEventListener('contextmenu', function (e) {
+            canvas.addEventListener('contextmenu', function (e) {
                 e.preventDefault();
             });
             window.addEventListener('wheel', function (e) {

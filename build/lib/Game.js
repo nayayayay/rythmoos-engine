@@ -5,6 +5,7 @@ var Scene_1 = require("./Scene");
 var Loop_1 = require("./Loop");
 var Mouse_1 = require("./Mouse");
 var Keyboard_1 = require("./Keyboard");
+var Screen_1 = require("./Screen");
 var Loader_1 = require("./Loader");
 var State_1 = require("./State");
 /**
@@ -28,6 +29,9 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        Screen_1.Screen._init(this._canvas);
+        Mouse_1.Mouse._init(this._canvas);
+        Keyboard_1.Keyboard._init();
         State_1.State._init();
         Loader_1.Loader._init(this);
     }
@@ -58,8 +62,6 @@ var Game = /** @class */ (function () {
             return;
         this._running = true;
         this.create();
-        Mouse_1.Mouse._init();
-        Keyboard_1.Keyboard._init();
         window.focus();
         Loop_1.Loop.start(function () {
             _this.update();

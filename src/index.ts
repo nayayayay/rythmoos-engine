@@ -11,5 +11,6 @@ export * from './Map';
 export * from './Mouse';
 export * from './Renderer';
 export * from './Scene';
+export * from './Screen';
 export * from './State';
 export * from './Time';

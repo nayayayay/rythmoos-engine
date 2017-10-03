@@ -4,6 +4,7 @@ import {Loop} from './Loop';
 import {IUpdatable} from './IUpdatable';
 import {Mouse} from './Mouse';
 import {Keyboard} from './Keyboard';
+import {Screen} from './Screen';
 import {Loader} from './Loader';
 import {State} from './State';
 
@@ -42,6 +43,9 @@ export class Game implements IUpdatable {
     this._canvas.height = this.height;
     this.container.appendChild(this._canvas);
 
+    Screen._init(this._canvas);
+    Mouse._init(this._canvas);
+    Keyboard._init();
     State._init();
     Loader._init(this);
   }
@@ -75,9 +79,6 @@ export class Game implements IUpdatable {
 
     this._running = true;
     this.create();
-
-    Mouse._init();
-    Keyboard._init();
 
     window.focus();
 

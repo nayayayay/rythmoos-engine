@@ -61,7 +61,7 @@ var RythmoosEngine =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -502,14 +502,15 @@ var Mouse = /** @class */ (function () {
     });
     /**
      * Used internally to initialise the mouse input.
+     * @param canvas The game's canvas.
      */
-    Mouse._init = function () {
+    Mouse._init = function (canvas) {
         var _this = this;
-        window.addEventListener('mousemove', function (e) {
-            _this._cursorX = e.clientX;
-            _this._cursorY = e.clientY;
+        canvas.addEventListener('mousemove', function (e) {
+            _this._cursorX = e.clientX - canvas.offsetLeft;
+            _this._cursorY = e.clientY - canvas.offsetTop;
         });
-        window.addEventListener('mousedown', function (e) {
+        canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
             switch (e.button) {
                 case 0:
@@ -528,6 +529,11 @@ var Mouse = /** @class */ (function () {
                     break;
             }
             window.addEventListener('mouseup', function (e) {
+                if (e.clientX < canvas.offsetLeft ||
+                    e.clientX > canvas.width + canvas.offsetLeft ||
+                    e.clientY < canvas.offsetTop ||
+                    e.clientY > canvas.height + canvas.offsetTop)
+                    return;
                 e.preventDefault();
                 switch (e.button) {
                     case 0:
@@ -543,7 +549,7 @@ var Mouse = /** @class */ (function () {
                         break;
                 }
             });
-            window.addEventListener('contextmenu', function (e) {
+            canvas.addEventListener('contextmenu', function (e) {
                 e.preventDefault();
             });
             window.addEventListener('wheel', function (e) {
@@ -677,6 +683,93 @@ exports.Keyboard = Keyboard;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * This class represent the game's screen (canvas).<br>
+ * It makes it easy to access the width, height and offsets properties of the
+ * game's screen from anywhere in your game.
+ */
+var Screen = /** @class */ (function () {
+    function Screen() {
+    }
+    Object.defineProperty(Screen, "width", {
+        /**
+         * The width of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.width;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Screen, "height", {
+        /**
+         * The height of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.height;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Screen, "offsetWidth", {
+        /**
+         * The offset width of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.offsetWidth;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Screen, "offsetHeight", {
+        /**
+         * The offset height of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.offsetHeight;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Screen, "offsetX", {
+        /**
+         * The offset left of the game canvas.
+         */
+        get: function () {
+            return this._canvas.offsetLeft;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Screen, "offsetY", {
+        /**
+         * The offset top of the game canvas.
+         */
+        get: function () {
+            return this._canvas.offsetTop;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Used internally to initialise the Screen class.
+     * @param canvas The game's canvas.
+     */
+    Screen._init = function (canvas) {
+        this._canvas = canvas;
+    };
+    return Screen;
+}());
+exports.Screen = Screen;
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -855,7 +948,7 @@ exports.Loader = Loader;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -899,7 +992,7 @@ exports.State = State;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -908,22 +1001,23 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(10));
 __export(__webpack_require__(11));
-__export(__webpack_require__(6));
 __export(__webpack_require__(12));
-__export(__webpack_require__(7));
+__export(__webpack_require__(6));
+__export(__webpack_require__(13));
+__export(__webpack_require__(8));
 __export(__webpack_require__(3));
 __export(__webpack_require__(0));
 __export(__webpack_require__(5));
 __export(__webpack_require__(1));
 __export(__webpack_require__(2));
-__export(__webpack_require__(8));
+__export(__webpack_require__(7));
+__export(__webpack_require__(9));
 __export(__webpack_require__(4));
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -934,8 +1028,9 @@ var Scene_1 = __webpack_require__(2);
 var Loop_1 = __webpack_require__(3);
 var Mouse_1 = __webpack_require__(5);
 var Keyboard_1 = __webpack_require__(6);
-var Loader_1 = __webpack_require__(7);
-var State_1 = __webpack_require__(8);
+var Screen_1 = __webpack_require__(7);
+var Loader_1 = __webpack_require__(8);
+var State_1 = __webpack_require__(9);
 /**
  * The base class of any game.
  */
@@ -957,6 +1052,9 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        Screen_1.Screen._init(this._canvas);
+        Mouse_1.Mouse._init(this._canvas);
+        Keyboard_1.Keyboard._init();
         State_1.State._init();
         Loader_1.Loader._init(this);
     }
@@ -987,8 +1085,6 @@ var Game = /** @class */ (function () {
             return;
         this._running = true;
         this.create();
-        Mouse_1.Mouse._init();
-        Keyboard_1.Keyboard._init();
         window.focus();
         Loop_1.Loop.start(function () {
             _this.update();
@@ -1004,7 +1100,7 @@ exports.Game = Game;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1045,7 +1141,7 @@ exports.GameObject = GameObject;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

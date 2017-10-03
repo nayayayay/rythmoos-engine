@@ -72,8 +72,9 @@ export declare abstract class Mouse {
     static readonly scrollRight: boolean;
     /**
      * Used internally to initialise the mouse input.
+     * @param canvas The game's canvas.
      */
-    static _init(): void;
+    static _init(canvas: HTMLCanvasElement): void;
     /**
      * Used internally to update the mouse input states.
      */

@@ -117,14 +117,15 @@ export abstract class Mouse {
 
   /**
    * Used internally to initialise the mouse input.
+   * @param canvas The game's canvas.
    */
-  public static _init() {
-    window.addEventListener('mousemove', e => {
-      this._cursorX = e.clientX;
-      this._cursorY = e.clientY;
+  public static _init(canvas: HTMLCanvasElement) {
+    canvas.addEventListener('mousemove', e => {
+      this._cursorX = e.clientX - canvas.offsetLeft;
+      this._cursorY = e.clientY - canvas.offsetTop;
     });
 
-    window.addEventListener('mousedown', e => {
+    canvas.addEventListener('mousedown', e => {
       e.preventDefault();
 
       switch (e.button) {
@@ -145,6 +146,13 @@ export abstract class Mouse {
       }
 
       window.addEventListener('mouseup', e => {
+        if (
+          e.clientX < canvas.offsetLeft ||
+          e.clientX > canvas.width + canvas.offsetLeft ||
+          e.clientY < canvas.offsetTop ||
+          e.clientY > canvas.height + canvas.offsetTop
+        ) return;
+
         e.preventDefault();
 
         switch (e.button) {
@@ -162,7 +170,7 @@ export abstract class Mouse {
         }
       });
 
-      window.addEventListener('contextmenu', e => {
+      canvas.addEventListener('contextmenu', e => {
         e.preventDefault();
       });
 
