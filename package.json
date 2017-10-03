@@ -1,6 +1,6 @@
 {
   "name": "rythmoos-engine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Rythmoos' game engine.",
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
