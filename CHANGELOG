@@ -1,2 +1,8 @@
+v0.2.0:
+  * Possibility to prevent the default action for keyboard's keys at any time in the game.
+  * The Keyboard class now gives access to the last key pressed.
+  * A new static class "State" that allows to save data and access it throughout anywhere in
+    the game.
+
 v0.1.0:
   * Initial version

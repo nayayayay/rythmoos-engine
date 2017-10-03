@@ -9,6 +9,7 @@ export abstract class Keyboard {
   private static preventDefault: boolean;
   private static _keys: Map<boolean>;
   private static _pressed: Keys[];
+  private static _lastKey: Keys|null;
 
   /**
    * Check if a key is down.
@@ -27,18 +28,31 @@ export abstract class Keyboard {
   }
 
   /**
+   * Get the last key that was pressed.<br>
+   * Can for example be used in a settings menu when asking the user the desired
+   * key-binding.<br>
+   * The value is reset to null or to the new last key each frame.
+   * @return The last key pressed, or null if no key was previously pressed.
+   */
+  public static lastKey(): Keys|null {
+    return this._lastKey;
+  }
+
+  /**
    * Used internally to initialise the keyboard input.
    */
   public static _init() {
     this.preventDefault = false;
     this._keys = new Map<boolean>();
     this._pressed = [];
+    this._lastKey = null;
 
     window.addEventListener('keydown', e => {
       if (this.preventDefault) e.preventDefault();
 
       this._keys.set(e.code, true);
       this._pressed.push(<Keys>e.code);
+      this._lastKey = <Keys>e.code;
     });
 
     window.addEventListener('keyup', e => {
@@ -57,5 +71,6 @@ export abstract class Keyboard {
    */
   public static _update() {
     this._pressed = [];
+    this._lastKey = null;
   }
 }

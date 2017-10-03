@@ -7,6 +7,7 @@ export declare abstract class Keyboard {
     private static preventDefault;
     private static _keys;
     private static _pressed;
+    private static _lastKey;
     /**
      * Check if a key is down.
      * @param key The key to check.
@@ -17,6 +18,14 @@ export declare abstract class Keyboard {
      * @param key The key to check.
      */
     static keyPressed(key: Keys): boolean;
+    /**
+     * Get the last key that was pressed.<br>
+     * Can for example be used in a settings menu when asking the user the desired
+     * key-binding.<br>
+     * The value is reset to null or to the new last key each frame.
+     * @return The last key pressed, or null if no key was previously pressed.
+     */
+    static lastKey(): Keys | null;
     /**
      * Used internally to initialise the keyboard input.
      */

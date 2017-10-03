@@ -628,6 +628,16 @@ var Keyboard = /** @class */ (function () {
         return this._pressed.indexOf(key) !== -1;
     };
     /**
+     * Get the last key that was pressed.<br>
+     * Can for example be used in a settings menu when asking the user the desired
+     * key-binding.<br>
+     * The value is reset to null or to the new last key each frame.
+     * @return The last key pressed, or null if no key was previously pressed.
+     */
+    Keyboard.lastKey = function () {
+        return this._lastKey;
+    };
+    /**
      * Used internally to initialise the keyboard input.
      */
     Keyboard._init = function () {
@@ -635,11 +645,13 @@ var Keyboard = /** @class */ (function () {
         this.preventDefault = false;
         this._keys = new Map_1.Map();
         this._pressed = [];
+        this._lastKey = null;
         window.addEventListener('keydown', function (e) {
             if (_this.preventDefault)
                 e.preventDefault();
             _this._keys.set(e.code, true);
             _this._pressed.push(e.code);
+            _this._lastKey = e.code;
         });
         window.addEventListener('keyup', function (e) {
             if (_this.preventDefault)
@@ -656,6 +668,7 @@ var Keyboard = /** @class */ (function () {
      */
     Keyboard._update = function () {
         this._pressed = [];
+        this._lastKey = null;
     };
     return Keyboard;
 }());
@@ -861,6 +874,7 @@ __export(__webpack_require__(0));
 __export(__webpack_require__(5));
 __export(__webpack_require__(1));
 __export(__webpack_require__(2));
+__export(__webpack_require__(12));
 __export(__webpack_require__(4));
 
 
@@ -1096,6 +1110,45 @@ var Keys;
     Keys["AltRight"] = "AltRight";
 })(Keys = exports.Keys || (exports.Keys = {}));
 ;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Map_1 = __webpack_require__(0);
+/**
+ * The State class is used to store data that can be accessed throughout you game.<br>
+ * For example, you can use it from a game object to update a state value, then
+ * access this state value from the game update.<br>
+ * Think of it as a big container available from anywhere you import it.
+ */
+var State = /** @class */ (function () {
+    function State() {
+    }
+    /**
+     * Set (create or update) a state value.
+     * @param key The name of the state.
+     * @param value The value of the state.
+     */
+    State.set = function (key, value) {
+        this._states.set(key, value);
+    };
+    /**
+     * Get a state value.
+     * @param key The name of the state.
+     * @return The value of the state, null if the state was not set.
+     */
+    State.get = function (key) {
+        return this._states.get(key);
+    };
+    State._states = new Map_1.Map();
+    return State;
+}());
+exports.State = State;
 
 
 /***/ })

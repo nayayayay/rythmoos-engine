@@ -13,5 +13,6 @@ __export(require("./Map"));
 __export(require("./Mouse"));
 __export(require("./Renderer"));
 __export(require("./Scene"));
+__export(require("./State"));
 __export(require("./Time"));
 //# sourceMappingURL=index.js.map

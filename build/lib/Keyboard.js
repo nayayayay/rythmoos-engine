@@ -22,6 +22,16 @@ var Keyboard = /** @class */ (function () {
         return this._pressed.indexOf(key) !== -1;
     };
     /**
+     * Get the last key that was pressed.<br>
+     * Can for example be used in a settings menu when asking the user the desired
+     * key-binding.<br>
+     * The value is reset to null or to the new last key each frame.
+     * @return The last key pressed, or null if no key was previously pressed.
+     */
+    Keyboard.lastKey = function () {
+        return this._lastKey;
+    };
+    /**
      * Used internally to initialise the keyboard input.
      */
     Keyboard._init = function () {
@@ -29,11 +39,13 @@ var Keyboard = /** @class */ (function () {
         this.preventDefault = false;
         this._keys = new Map_1.Map();
         this._pressed = [];
+        this._lastKey = null;
         window.addEventListener('keydown', function (e) {
             if (_this.preventDefault)
                 e.preventDefault();
             _this._keys.set(e.code, true);
             _this._pressed.push(e.code);
+            _this._lastKey = e.code;
         });
         window.addEventListener('keyup', function (e) {
             if (_this.preventDefault)
@@ -50,6 +62,7 @@ var Keyboard = /** @class */ (function () {
      */
     Keyboard._update = function () {
         this._pressed = [];
+        this._lastKey = null;
     };
     return Keyboard;
 }());
