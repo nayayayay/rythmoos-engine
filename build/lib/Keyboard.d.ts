@@ -3,6 +3,8 @@ import { Keys } from './Keys';
  * Map the keyboard and the state of each keys.
  */
 export declare abstract class Keyboard {
+    /** Whether to prevent the default key action or not. Defaults to false. */
+    private static preventDefault;
     private static _keys;
     private static _pressed;
     /**

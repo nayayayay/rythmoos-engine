@@ -26,18 +26,23 @@ var Keyboard = /** @class */ (function () {
      */
     Keyboard._init = function () {
         var _this = this;
+        this.preventDefault = false;
         this._keys = new Map_1.Map();
+        this._pressed = [];
         window.addEventListener('keydown', function (e) {
-            e.preventDefault();
+            if (_this.preventDefault)
+                e.preventDefault();
             _this._keys.set(e.code, true);
             _this._pressed.push(e.code);
         });
         window.addEventListener('keyup', function (e) {
-            e.preventDefault();
+            if (_this.preventDefault)
+                e.preventDefault();
             _this._keys.set(e.code, false);
         });
         window.addEventListener('keypress', function (e) {
-            e.preventDefault();
+            if (_this.preventDefault)
+                e.preventDefault();
         });
     };
     /**

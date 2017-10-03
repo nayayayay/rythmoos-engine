@@ -5,6 +5,8 @@ import {Keys} from './Keys';
  * Map the keyboard and the state of each keys.
  */
 export abstract class Keyboard {
+  /** Whether to prevent the default key action or not. Defaults to false. */
+  private static preventDefault: boolean;
   private static _keys: Map<boolean>;
   private static _pressed: Keys[];
 
@@ -28,23 +30,25 @@ export abstract class Keyboard {
    * Used internally to initialise the keyboard input.
    */
   public static _init() {
+    this.preventDefault = false;
     this._keys = new Map<boolean>();
+    this._pressed = [];
 
     window.addEventListener('keydown', e => {
-      e.preventDefault();
+      if (this.preventDefault) e.preventDefault();
 
       this._keys.set(e.code, true);
       this._pressed.push(<Keys>e.code);
     });
 
     window.addEventListener('keyup', e => {
-      e.preventDefault();
+      if (this.preventDefault) e.preventDefault();
 
       this._keys.set(e.code, false);
     });
 
     window.addEventListener('keypress', e => {
-      e.preventDefault();
+      if (this.preventDefault) e.preventDefault();
     });
   }
 
