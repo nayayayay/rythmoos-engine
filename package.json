@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/ChibiFR/rythmoos-engine.git"
   },
-  "keywords": [],
+  "keywords": ["2d", "canvas", "game", "engine", "typescript", "es6"],
   "author": "Chibi <23081995b@gmail.com>",
   "license": "MIT",
   "bugs": {

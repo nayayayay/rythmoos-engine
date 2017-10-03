@@ -1,7 +1,7 @@
 /**
  * Define all the keys available from the Keyboard class.
  */
-export declare const enum Keys {
+export declare enum Keys {
     Digit0 = "Digit0",
     Digit1 = "Digit1",
     Digit2 = "Digit2",
