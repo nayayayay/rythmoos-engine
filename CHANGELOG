@@ -1,3 +1,7 @@
+v1.0.0:
+  * Bug fixes and improvements.
+  * An example game was added to the documentation in the docs/examples directory.
+
 v0.2.0:
   * Possibility to prevent the default action for keyboard's keys at any time in the game.
   * The Keyboard class now gives access to the last key pressed.
