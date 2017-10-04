@@ -2,6 +2,8 @@
 
 The Rythmoos Engine allows you to create games easily using ES6 or Typescript.
 
+An example project can be found [here](https://chibifr.github.io/rythmoos-engine/examples/rythm-clicker/public/index.html).
+
 # Requirements
 
 * [Node.js](https://nodejs.org/en/download/)
@@ -16,8 +18,6 @@ CDN:
 - Unminified: https://cdn.rawgit.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.js
 - Minified: https://cdn.rawgit.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.min.js
 
-# Quick start
+# Documentation
 
-Once you have created a new project and installed the Ryhtmoos Engine, let's see what you can do with it!
-
-In this guide, we will first setup a simple web server to serve our game files.
+The references and documentation are available [here](https://chibifr.github.io/rythmoos-engine/).
