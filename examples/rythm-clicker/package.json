@@ -1,0 +1,18 @@
+{
+  "name": "rythm-clicker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "rythmoos-engine": "^0.2.0"
+  }
+}
