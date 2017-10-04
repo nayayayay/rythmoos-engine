@@ -177,10 +177,7 @@ var Mouse = /** @class */ (function () {
                     break;
             }
             window.addEventListener('mouseup', function (e) {
-                if (e.clientX < canvas.offsetLeft ||
-                    e.clientX > canvas.width + canvas.offsetLeft ||
-                    e.clientY < canvas.offsetTop ||
-                    e.clientY > canvas.height + canvas.offsetTop)
+                if (!_this._leftButton || !_this._middleButton || !_this._rightButton)
                     return;
                 e.preventDefault();
                 switch (e.button) {

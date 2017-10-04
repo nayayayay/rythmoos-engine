@@ -146,12 +146,7 @@ export abstract class Mouse {
       }
 
       window.addEventListener('mouseup', e => {
-        if (
-          e.clientX < canvas.offsetLeft ||
-          e.clientX > canvas.width + canvas.offsetLeft ||
-          e.clientY < canvas.offsetTop ||
-          e.clientY > canvas.height + canvas.offsetTop
-        ) return;
+        if (!this._leftButton || !this._middleButton || !this._rightButton) return;
 
         e.preventDefault();
 
