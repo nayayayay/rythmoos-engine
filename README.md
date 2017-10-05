@@ -38,10 +38,10 @@ The references and documentation are available [here](https://chibifr.github.io/
 Examples are available in the examples directory.
 
 You can see the results in there:
-- [FPS Counter](https://chibifr.github.io/rythmoos-engine/examples/fps-counter/index.html)
-- [Moving sprite](https://chibifr.github.io/rythmoos-engine/examples/moving-sprite/index.html)
-- [Quick start example](https://chibifr.github.io/rythmoos-engine/examples/quick-start-example/public/index.html)
-- [Rythm Clicker](https://chibifr.github.io/rythmoos-engine/examples/rythm-clicker/public/index.html)
+- [FPS Counter](https://chibifr.github.io/rythmoos-engine/media/fps-counter/index.html)
+- [Moving sprite](https://chibifr.github.io/rythmoos-engine/media/moving-sprite/index.html)
+- [Quick start example](https://chibifr.github.io/rythmoos-engine/media/quick-start-example/public/index.html)
+- [Rythm Clicker](https://chibifr.github.io/rythmoos-engine/media/rythm-clicker/public/index.html)
 
 # Quick start
 
@@ -52,7 +52,7 @@ Let's make a very simple game just to see how the Rythmoos Engine works.
 This game will simply spawn circles to random places on the screen and the player will have
 to click the shapes in order to earn more score.
 
-You can find the result [here](https://chibifr.github.io/rythmoos-engine/examples/quick-start-example/public/index.html).
+You can find the result [here](https://chibifr.github.io/rythmoos-engine/media/quick-start-example/public/index.html).
 
 ## Project setup
 
@@ -413,7 +413,7 @@ We then added the game object to the scene and the scene to the game.
 You can see the result by reloading your game page at http://localhost:3000, you should
 see this:
 
-![Game screen 1](https://chibifr.github.io/rythmoos-engine/examples/not-an-example/01.png)
+![Game screen 1](https://chibifr.github.io/rythmoos-engine/media/not-an-example/01.png)
 
 Since the engine uses the animation frame, it should run at about 60 frames per second.
 As you can see, the Time.FPS property retuns a decimal number, and we don't want that! We only want
@@ -459,7 +459,7 @@ export default class FPSCounter extends GameObject {
 
 Now you should see this:
 
-![Game screen 2](https://chibifr.github.io/rythmoos-engine/examples/not-an-example/02.png)
+![Game screen 2](https://chibifr.github.io/rythmoos-engine/media/not-an-example/02.png)
 
 A legit FPS counter, yay.
 
@@ -766,11 +766,11 @@ And here we are, our game is done!
 
 See the result at http://localhost:3000
 
-[Game screen 3](https://chibifr.github.io/rythmoos-engine/examples/not-an-example/03.png)
+[Game screen 3](https://chibifr.github.io/rythmoos-engine/media/not-an-example/03.png)
 
-[Game screen 4](https://chibifr.github.io/rythmoos-engine/examples/not-an-example/04.png)
+[Game screen 4](https://chibifr.github.io/rythmoos-engine/media/not-an-example/04.png)
 
-[Game screen 5](https://chibifr.github.io/rythmoos-engine/examples/not-an-example/05.png)
+[Game screen 5](https://chibifr.github.io/rythmoos-engine/media/not-an-example/05.png)
 
 ___
 
