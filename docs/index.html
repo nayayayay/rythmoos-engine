@@ -66,16 +66,30 @@
 			<div class="tsd-panel tsd-typography">
 				<h1 id="rythmoos-engine">Rythmoos Engine</h1>
 				<p>The Rythmoos Engine allows you to create games easily using ES6 or Typescript.</p>
-				<p>An example project can be found <a href="https://chibifr.github.io/rythmoos-engine/examples/rythm-clicker/public/index.html">here</a>.</p>
+				<p>What it does:</p>
+				<ul>
+					<li>Game loop</li>
+					<li>Game, Scene and GameObject extendable classes for object-oriented code.</li>
+					<li>Time management (deltaTime, FPS count, etc)</li>
+					<li>Assets loading (load assets before the game start, or load them on the fly)</li>
+					<li>Global storage (called &quot;state&quot;, allows you to share values easily between all components throughout your game)</li>
+					<li>Input mapping (easily access to mouse, cursor and keyboard properties)</li>
+					<li>and more!</li>
+				</ul>
 				<h1 id="requirements">Requirements</h1>
 				<ul>
 					<li><a href="https://nodejs.org/en/download/">Node.js</a></li>
 				</ul>
-				<h1 id="installation-cdn">Installation / CDN</h1>
-				<p>Installation:</p>
+				<h1 id="installation">Installation</h1>
+				<p><strong>Package manager (recommended)</strong>:</p>
 				<ul>
 					<li>Using NPM: <code>npm install --save rythmoos-engine</code></li>
-					<li>Using Yarn: <code>yarn add --save rythmoos-engine</code></li>
+					<li>Using Yarn: <code>yarn add rythmoos-engine</code></li>
+				</ul>
+				<p>Prebuilt:</p>
+				<ul>
+					<li>Unminified: <a href="https://raw.githubusercontent.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.js">https://raw.githubusercontent.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.js</a></li>
+					<li>Minified: <a href="https://raw.githubusercontent.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.min.js">https://raw.githubusercontent.com/ChibiFR/rythmoos-engine/master/build/rythmoos-engine.min.js</a></li>
 				</ul>
 				<p>CDN:</p>
 				<ul>
@@ -84,6 +98,812 @@
 				</ul>
 				<h1 id="documentation">Documentation</h1>
 				<p>The references and documentation are available <a href="https://chibifr.github.io/rythmoos-engine/">here</a>.</p>
+				<h1 id="examples">Examples</h1>
+				<p>Examples are available in the examples directory.</p>
+				<p>You can see the results in there:</p>
+				<ul>
+					<li><a href="https://chibifr.github.io/rythmoos-engine/examples/fps-counter/index.html">FPS Counter</a></li>
+					<li><a href="https://chibifr.github.io/rythmoos-engine/examples/moving-sprite/index.html">Moving sprite</a></li>
+					<li><a href="https://chibifr.github.io/rythmoos-engine/examples/quick-start-example/public/index.html">Quick start example</a></li>
+					<li><a href="https://chibifr.github.io/rythmoos-engine/examples/rythm-clicker/public/index.html">Rythm Clicker</a></li>
+				</ul>
+				<h1 id="quick-start">Quick start</h1>
+				<h2 id="introduction">Introduction</h2>
+				<p>Let&#39;s make a very simple game just to see how the Rythmoos Engine works.</p>
+				<p>This game will simply spawn circles to random places on the screen and the player will have
+				to click the shapes in order to earn more score.</p>
+				<p>You can find the result <a href="https://chibifr.github.io/rythmoos-engine/examples/quick-start-example/public/index.html">here</a>.</p>
+				<h2 id="project-setup">Project setup</h2>
+				<p>Let&#39;s start!</p>
+				<p>For this example, we&#39;ll use <a href="https://webpack.js.org/">Webpack</a> so we can easily bundle our classes
+				into one single file.</p>
+				<p>The first thing to do, as for any project, create a directory and add the dependencies we need:</p>
+				<p><code>mkdir my-awesome-game &amp;&amp; cd my-awesome-game</code></p>
+				<p>Now we can initialise NPM and install our dependencies.
+					As I said earlier, we are going to use Webpack. We will also need to install the Rythmoos Engine and
+				we&#39;ll use express to serve our files:</p>
+				<ul>
+					<li>Initialise: <code>npm init -y</code></li>
+					<li>Dependencies: <code>npm install --save express rythmoos-engine</code></li>
+					<li>Dev dependencies: <code>npm install --save-dev webpack</code></li>
+				</ul>
+				<p>The project structure will look like so:</p>
+				<pre><code>* public/ (static files here)
+  -<span class="ruby"> index.html
+</span>  -<span class="ruby"> my-awesome-game.js (our game)
+</span>  -<span class="ruby"> style.css
+</span>* src/ (the source files of our game)
+  -<span class="ruby"> index.js (our main game <span class="hljs-class"><span class="hljs-keyword">class</span>, <span class="hljs-title">we</span>'<span class="hljs-title">ll</span> <span class="hljs-title">add</span> <span class="hljs-title">other</span> <span class="hljs-title">files</span>)</span>
+</span>* index.js (express server)
+* package.json (npm package file)
+* webpack.config.js (webpack config)
+</code></pre><p>You can copy paste these:</p>
+				<p><em>public/index.html</em></p>
+				<pre><code class="lang-html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Awesome Game<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"my-awesome-game.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+				<p><em>public/style.css</em></p>
+				<pre><code class="lang-css"><span class="hljs-comment">/* Make the canvas fit the screen */</span>
+<span class="hljs-selector-tag">html</span>, <span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-tag">canvas</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+</code></pre>
+				<p><em>index.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>);
+<span class="hljs-keyword">const</span> app = express();
+
+app.use(express.static(<span class="hljs-string">'public'</span>));
+app.listen(<span class="hljs-number">3000</span>, () =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'App listening on port 3000!'</span>);
+});
+</code></pre>
+				<p><em>package.json</em>
+				Created by NPM already, but you can add a &quot;watch&quot; script to it that we&#39;ll use later:</p>
+				<pre><code class="lang-json">&quot;scripts&quot;: {
+  &quot;watch&quot;: &quot;webpack --watch&quot;
+}
+</code></pre>
+				<p><em>webpack.config.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-comment">// The entry point of our app</span>
+  entry: path.join(__dirname, <span class="hljs-string">'src'</span>, <span class="hljs-string">'index.js'</span>),
+
+  <span class="hljs-comment">// The output file</span>
+  output: {
+    <span class="hljs-attr">path</span>: path.join(__dirname, <span class="hljs-string">'public'</span>),
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">'my-awesome-game.js'</span>
+  },
+
+  <span class="hljs-comment">// Source maps for ez debugging</span>
+  devtool: <span class="hljs-string">'source-map'</span>
+};
+</code></pre>
+				<p><strong>Note</strong> that we don&#39;t add the Rythmoos Engine to the external libraries of our webpack config. That&#39;s
+					because having the engine available in the window object also makes its global classes (Loader, State, etc...)
+					available from the window object, and we don&#39;t want that.
+					A better idea is to simply build the engine along with our code so that it is not available from the global
+				namespace.</p>
+				<p>Now that we are done setting up our project, let&#39;s start our server:
+					<code>node index.js</code>
+					and run Webpack as a watcher (using the script we added to the package.json file) so it builds our game everytime
+					we make changes to it:
+				<code>npm run watch</code></p>
+				<p>You can now open your browser at <a href="http://localhost:3000">http://localhost:3000</a> and see a blank page that we will fill with our awesome
+				game.</p>
+				<h2 id="game-class">Game class</h2>
+				<p>Every game starts with the Game class. Let&#39;s create our game&#39;s class that extends the engine&#39;s Game class:</p>
+				<p><em>src/index.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Game} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+}
+</code></pre>
+				<p>To start our game, we simply need to instantiate it. Let&#39;s add this bit of code below
+				our game class:</p>
+				<pre><code class="lang-javascript"><span class="hljs-comment">// When the window is loaded, create a new game</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
+  <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
+  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+}
+</code></pre>
+				<p>If you reload your page (<a href="http://localhost:3000">http://localhost:3000</a>) you should see a black screen...hm, that means
+				everything&#39;s working fine!</p>
+				<p>Since we don&#39;t have anything to render yet, the engine renders a black background and nothing else.</p>
+				<p>Before going further, let&#39;s see how the engine works. A simple way to explain it:</p>
+				<ul>
+					<li>Create a class that extends a class from the engine (game: Game class, scene: Scene class, etc).</li>
+					<li>Override the methods you need to use (create(), update(), etc).</li>
+					<li>Hm...that&#39;s it! ;o</li>
+				</ul>
+				<p>Here are the methods you can override from the game:</p>
+				<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Game</span> </span>{
+
+  <span class="hljs-comment">/**
+   * Ran just before the game starts.
+   * Example use: load assets (images, audio, etc).
+   */</span>
+  load() {
+  }
+
+  <span class="hljs-comment">/**
+   * Ran when the game is created.
+   * Example use: Initialise some states, set the game's scene.
+   */</span>
+  create() {
+  }
+
+  <span class="hljs-comment">/**
+   * Ran each frame, to update the game, before the rendering process.
+   * Example use: Update some game properties.
+   */</span>
+  update() {
+  }
+
+}
+</code></pre>
+				<p>We&#39;ll override some methods from the Game class later. For now, let&#39;s create a scene!</p>
+				<h2 id="scenes">Scenes</h2>
+				<p>A scene is basically a &quot;screen&quot; in our game. For example, a main screen (with a title, a start button, etc)
+					would be a scene. Another screen, let&#39;s say the settings screen, would be a scene too. And we&#39;d of course have
+				one (or more) scene for the gameplay.</p>
+				<p>Since our game is just a very simple one, we&#39;ll need only one scene. Let&#39;s create it now:</p>
+				<p><em>src/MainScene.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Scene} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// As for the game class, we extend the engine's Scene class.</span>
+<span class="hljs-comment">// We'll export the scene so we can use it from other files.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainScene</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Scene</span> </span>{
+}
+</code></pre>
+				<p>So, we know what a scene is, how to create one, let&#39;s now see how to actually code it!</p>
+				<p>Here are the methods you can override from the scene:</p>
+				<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Scene</span> </span>{
+
+  <span class="hljs-comment">/**
+   * This method is ran when the scene is created (new Scene()).
+   * Example use: initialise your scene's properties, add game objects, etc.
+   */</span>
+  create() {
+  }
+
+  <span class="hljs-comment">/**
+   * This method is ran every frame, before the rendering process, to update the scene.
+   * Example use: update your scene's properties.
+   */</span>
+  update() {
+  }
+
+}
+</code></pre>
+				<p>Hm, so...we need game objects! Let&#39;s create some.</p>
+				<h2 id="game-objects">Game objects</h2>
+				<p>To start, let&#39;s create a very simple game object: A FPS counter.
+				Its purpose is simple: renders the amount of frames per second our game is running at.</p>
+				<p>Let&#39;s create the class:</p>
+				<p><em>src/FPSCounter.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPSCounter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+}
+</code></pre>
+				<p>Before we add any code to it, here are the methods you can override from the GameObject class:</p>
+				<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">/**
+   * You already know it, ran when the game object is created.
+   * Example use: Initialise the game object's properties.
+   */</span>
+  create() {
+  }
+
+  <span class="hljs-comment">/**
+   * Same as for Game and Scene, ran every frame, before the rendering process.
+   * Example use: Update the game object's properties, check for input, etc.
+   */</span>
+  update() {
+  }
+
+  <span class="hljs-comment">/**
+   * Ran every frame, during the rendering process.
+   * 
+   * This is where things get interesting: we'll render our game object from here, using
+   * a simple 2D Rendering context, from the game's canvas.
+   * 
+   * The context automatically passed in by the renderer. Feel free to do whatever you want with it,
+   * its state is saved and restored for each game object, that way you can modify the context's properties
+   * (globalAlpha, fillStyle, etc...) without affecting the other game objects.
+   * @param {CanvasRenderingContext2D} context
+   */</span>
+  render(context) {
+  }
+
+}
+</code></pre>
+				<h2 id="the-mouse-class">The Mouse class</h2>
+				<p>Alright, let&#39;s actually code our FPS counter! But wait, how do we access the FPS value?
+				Well, all we need is the Time class, so let&#39;s import it:</p>
+				<p><em>src/FPSCounter.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Time} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPSCounter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// In order to render our object, we can simply override the render method.</span>
+  render(context) {
+    <span class="hljs-comment">// Some colour and font for the text</span>
+    context.fillStyle = <span class="hljs-string">'#ffffff'</span>;
+    context.font = <span class="hljs-string">'30px Arial'</span>;
+
+    <span class="hljs-comment">// This allows us to position the text from its top left corner</span>
+    context.textAlign = <span class="hljs-string">'left'</span>;
+    context.textBaseline = <span class="hljs-string">'top'</span>;
+
+    <span class="hljs-comment">// The FPS value is available from the Time.FPS property, let's render that:</span>
+    context.fillText(Time.FPS, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>);
+  }
+
+}
+</code></pre>
+				<p>Now that we have our FPS counter, let&#39;s add it to the scene:</p>
+				<p><em>src/MainScene.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Scene} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+<span class="hljs-comment">// Import our FPSCounter game object</span>
+<span class="hljs-keyword">import</span> FPSCounter <span class="hljs-keyword">from</span> <span class="hljs-string">'./FPSCounter'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainScene</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Scene</span> </span>{
+
+  <span class="hljs-comment">// We can add our game objects in the create method</span>
+  create() {
+    <span class="hljs-comment">// The scene class extends the Map class (see docs).</span>
+    <span class="hljs-comment">// We can set game objects using the set(name, value) method.</span>
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'fps counter'</span>, <span class="hljs-keyword">new</span> FPSCounter());
+  }
+
+}
+</code></pre>
+				<p>then we need to actually tell the game to render our MainScene:</p>
+				<p><em>src/index.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Game} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+<span class="hljs-comment">// Import our scene</span>
+<span class="hljs-keyword">import</span> MainScene <span class="hljs-keyword">from</span> <span class="hljs-string">'./MainScene'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+
+  <span class="hljs-comment">// We can set the scene in our create method</span>
+  create() {
+    <span class="hljs-comment">// The scene is a public property, so you can set it to whatever scene you want</span>
+    <span class="hljs-comment">// at any point in your game.</span>
+    <span class="hljs-keyword">this</span>.scene = <span class="hljs-keyword">new</span> MainScene();
+  }
+
+}
+
+<span class="hljs-comment">// When the window is loaded, create a new game</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
+  <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
+  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+}
+</code></pre>
+				<p>Alright! We created a game, created a scene, created a game object.</p>
+				<p>We then added the game object to the scene and the scene to the game.</p>
+				<p>You can see the result by reloading your game page at <a href="http://localhost:3000">http://localhost:3000</a>, you should
+				see this:</p>
+				<p><img src="https://chibifr.github.io/rythmoos-engine/examples/not-an-example/01.png" alt="Game screen 1"></p>
+				<p>Since the engine uses the animation frame, it should run at about 60 frames per second.
+					As you can see, the Time.FPS property retuns a decimal number, and we don&#39;t want that! We only want
+				the integer part of the number. So let&#39;s round that up.</p>
+				<p>By the way, in the FPSCounter class, we directly printed the Time.FPS property in the render method.
+					This is an okay thing, but a better practice is to put all the logics and values in the update method
+				and keep the render method for rendering purpose only:</p>
+				<p><em>src/FPSCounter.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Time} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPSCounter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Initialise our fps counter when the object is created.</span>
+  create() {
+    <span class="hljs-comment">// Let's round the FPS value and add 'fps' after it so we know what that number is about.</span>
+    <span class="hljs-keyword">this</span>.fps = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.round(Time.FPS)}</span>fps`</span>;
+  }
+
+  <span class="hljs-comment">// The Time.FPS value is updated every frame, so let's update our game object's fps property!</span>
+  update() {
+    <span class="hljs-keyword">this</span>.fps = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.round(Time.FPS)}</span>fps`</span>;
+  }
+
+  <span class="hljs-comment">// In order to render our object, we can simply override the render method.</span>
+  render(context) {
+    <span class="hljs-comment">// Some colour and font for the text</span>
+    context.fillStyle = <span class="hljs-string">'#ffffff'</span>;
+    context.font = <span class="hljs-string">'30px Arial'</span>;
+
+    <span class="hljs-comment">// This allows us to position the text from its top left corner</span>
+    context.textAlign = <span class="hljs-string">'left'</span>;
+    context.textBaseline = <span class="hljs-string">'top'</span>;
+
+    <span class="hljs-comment">// And let's render our game object's fps property here:</span>
+    context.fillText(<span class="hljs-keyword">this</span>.fps, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>);
+  }
+
+}
+</code></pre>
+				<p>Now you should see this:</p>
+				<p><img src="https://chibifr.github.io/rythmoos-engine/examples/not-an-example/02.png" alt="Game screen 2"></p>
+				<p>A legit FPS counter, yay.</p>
+				<p>Since we know how to create game objects, let&#39;s actually create our game.
+					We&#39;ll need two more game objects: A Circle (which will be the shape we have to click on in order to
+				earn more score points), and a Score (which will display our current score).</p>
+				<p>Let&#39;s create our Circle game object:</p>
+				<p><em>src/Circle.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+}
+</code></pre>
+				<h2 id="the-screen-class">The Screen class</h2>
+				<p>We&#39;ll need to create some properties, this is what I suggest for our circle:</p>
+				<ul>
+					<li>an x and a y coordinate</li>
+					<li>a radius</li>
+					<li>a colour</li>
+					<li>a boolean set to whether the mouse is hovering the circle or not</li>
+				</ul>
+				<p>Since we are going to need to know about the cursor position and the mouse click events,
+				we&#39;ll need to import the Mouse class from the engine. It contains everything we need.</p>
+				<p>Next, about the x and y coordinates, we want them to be random anywhere in the screen. Whenever you
+				need to access properties such as the width/height of your game, you can import the Screen class.</p>
+				<p>Don&#39;t forget to check out the documentation for all these classes to see what they contain! ;o</p>
+				<p>This is the final code we&#39;d come with, read the comments if you don&#39;t understand everything of it:</p>
+				<p><em>src/Circle.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Screen, Mouse} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Our circle game object</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Override the create method</span>
+  create() {
+    <span class="hljs-comment">// Let's set up our game object properties here</span>
+
+    <span class="hljs-comment">// The radius of our circle</span>
+    <span class="hljs-keyword">this</span>.radius = <span class="hljs-number">50</span>;
+
+    <span class="hljs-comment">// The x and y coordinates</span>
+    <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+    <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+
+    <span class="hljs-comment">// Let's set a boolean value that checks whether the mouse is hovering the circle or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// The colour of our circle (let's make it white when hovered)</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-string">'#ff00ff'</span>;
+  }
+
+  <span class="hljs-comment">// Override the update method</span>
+  update() {
+    <span class="hljs-comment">// This method is ran each frame, before the rendering process.</span>
+    <span class="hljs-comment">// Let's update our game object properties from here:</span>
+
+    <span class="hljs-comment">// If the circle is hovered, let's set its colour to white, or set it to</span>
+    <span class="hljs-comment">// #ff00ff otherwise.</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-keyword">this</span>.hovered ? <span class="hljs-string">'#ffffff'</span> : <span class="hljs-string">'#ff00ff'</span>;
+
+    <span class="hljs-comment">// If the mouse left button is clicked and the circle is hovered</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hovered &amp;&amp; Mouse.leftClick) {
+      <span class="hljs-comment">// Set new positions for our circle</span>
+      <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+      <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+    }
+  }
+
+  <span class="hljs-comment">// Override the render method</span>
+  render(context) {
+    <span class="hljs-comment">// We will render our object form here.</span>
+    context.fillStyle = <span class="hljs-keyword">this</span>.colour;
+
+    <span class="hljs-comment">// Draw the circle</span>
+    context.beginPath();
+    context.arc(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-keyword">this</span>.radius, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);
+    context.fill();
+
+    <span class="hljs-comment">// Since we drew our circle's path, we can use the context isPointInPath method to check</span>
+    <span class="hljs-comment">// whether the cursor is in the path or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = context.isPointInPath(Mouse.cursorX, Mouse.cursorY);
+  }
+
+  <span class="hljs-comment">/**
+   * Simple custom method to set our game object's x and y coordinates
+   * @param {number} max The max possible value
+   * @return A random x
+   */</span>
+  getNewPosition(max) {
+    <span class="hljs-comment">// Some very complex mathemical stuff</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.random() * (max - <span class="hljs-keyword">this</span>.radius * <span class="hljs-number">2</span>) + <span class="hljs-keyword">this</span>.radius;
+  }
+
+}
+</code></pre>
+				<p>Don&#39;t forget to add this game object to the scene!</p>
+				<p>Import it:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> FPSCounter <span class="hljs-keyword">from</span> <span class="hljs-string">'./FPSCounter'</span>;
+</code></pre>
+				<p>Add it (before the FPSCounter):</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.set(<span class="hljs-string">'circle'</span>, <span class="hljs-keyword">new</span> Circle());
+</code></pre>
+				<p>We are adding it before the FPS Counter before we want the circle to appear behind the counter.
+				The game objects are rendered in the order they are added to the scene.</p>
+				<h2 id="the-state-class">The State class</h2>
+				<p>Now we want to save the score, but where do we save it? We could save it in a property of our Circle
+					game object. But how can we use this value from the Score game object (that we&#39;ll create soon) in order
+				to display it to the screen?</p>
+				<p>The answer: the State class!</p>
+				<p>While many game engines use the word &quot;State&quot; to define a Scene, a State in the Rythmoos Engine is a value
+					(number, string, object, whatever) that is, most of the time, supposed to change, and that we need throughout
+				our game.</p>
+				<p>The State class allows us to set values, and get them, globally, just by importing the class.
+				Basically, you could set a state in your game&#39;s create or update method, and access it from a game object!</p>
+				<p>In this example, we will use it to share the score value between the Circle object (which will set the score)
+				and the Score object (which will display it).</p>
+				<p>The State class can be used as so:</p>
+				<pre><code class="lang-javascript"><span class="hljs-comment">// import it</span>
+<span class="hljs-keyword">import</span> {State} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Set a value</span>
+State.set(<span class="hljs-string">'my value'</span>, <span class="hljs-number">45</span>);
+
+<span class="hljs-comment">// Get the value</span>
+State.get(<span class="hljs-string">'my value'</span>);
+
+<span class="hljs-comment">// Update the value</span>
+State.set(<span class="hljs-string">'my value'</span>, <span class="hljs-number">48144478</span>);
+</code></pre>
+				<p>Let&#39;s give the player +1 point when the circle is sucessfully clicked, and I feel like being mean here
+				so we&#39;ll remove 1 point from the player&#39;s score everytime clicks but is not hovering the circle.</p>
+				<p>Okay that&#39;s mean, but not enough. Let&#39;s make it even more frustrating: we&#39;ll change the circle position
+				every time the user clicks, even if the click was missed.</p>
+				<p>So, that&#39;s what our Circle class should look like by now, as always the comments are here to help:</p>
+				<p><em>src/Circle.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Screen, Mouse, State} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Our circle game object</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Override the create method</span>
+  create() {
+    <span class="hljs-comment">// Let's set up our game object properties here</span>
+
+    <span class="hljs-comment">// The radius of our circle</span>
+    <span class="hljs-keyword">this</span>.radius = <span class="hljs-number">50</span>;
+
+    <span class="hljs-comment">// The x and y coordinates</span>
+    <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+    <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+
+    <span class="hljs-comment">// Let's set a boolean value that checks whether the mouse is hovering the circle or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// The colour of our circle (let's make it white when hovered)</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-string">'#ff00ff'</span>;
+  }
+
+  <span class="hljs-comment">// Override the update method</span>
+  update() {
+    <span class="hljs-comment">// This method is ran each frame, before the rendering process.</span>
+    <span class="hljs-comment">// Let's update our game object properties from here:</span>
+
+    <span class="hljs-comment">// If the circle is hovered, let's set its colour to white, or set it to</span>
+    <span class="hljs-comment">// #ff00ff otherwise.</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-keyword">this</span>.hovered ? <span class="hljs-string">'#ffffff'</span> : <span class="hljs-string">'#ff00ff'</span>;
+
+    <span class="hljs-comment">// If the mouse left button is clicked</span>
+    <span class="hljs-keyword">if</span> (Mouse.leftClick) {
+      <span class="hljs-comment">// Let's be mean here and remove 1 point from the player's score if he clicks outside</span>
+      <span class="hljs-comment">// of the circle.</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hovered === <span class="hljs-literal">false</span>) {
+        State.set(<span class="hljs-string">'score'</span>, State.get(<span class="hljs-string">'score'</span>) - <span class="hljs-number">1</span>);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Otherwise, we'll add 1 to the score</span>
+        State.set(<span class="hljs-string">'score'</span>, State.get(<span class="hljs-string">'score'</span>) + <span class="hljs-number">1</span>);
+      }
+
+      <span class="hljs-comment">// Set new positions to our circle when a click occurs</span>
+      <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+      <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+    }
+  }
+
+  <span class="hljs-comment">// Override the render method</span>
+  render(context) {
+    <span class="hljs-comment">// We will render our object form here.</span>
+    context.fillStyle = <span class="hljs-keyword">this</span>.colour;
+
+    <span class="hljs-comment">// Draw the circle</span>
+    context.beginPath();
+    context.arc(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-keyword">this</span>.radius, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);
+    context.fill();
+
+    <span class="hljs-comment">// Since we drew our circle's path, we can use the context isPointInPath method to check</span>
+    <span class="hljs-comment">// whether the cursor is in the path or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = context.isPointInPath(Mouse.cursorX, Mouse.cursorY);
+  }
+
+  <span class="hljs-comment">/**
+   * Simple custom method to set our game object's x and y coordinates
+   * @param {number} max The max possible value
+   * @return A random x
+   */</span>
+  getNewPosition(max) {
+    <span class="hljs-comment">// Some very complex mathemical stuff</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.random() * (max - <span class="hljs-keyword">this</span>.radius * <span class="hljs-number">2</span>) + <span class="hljs-keyword">this</span>.radius;
+  }
+
+}
+</code></pre>
+				<p>We can now access the score value from any game object, or even from the scene or the game classes.</p>
+				<p>Let&#39;s create our score game object now. It will simply display the score as a text, in the bottom left
+				of the screen. Nothing new here, you should end up with nearly this code:</p>
+				<p><em>src/Score.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, State, Screen} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Our score class</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Score</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Override the create method to set our properties</span>
+  create() {
+    <span class="hljs-keyword">this</span>.x = Screen.width - <span class="hljs-number">30</span>;
+    <span class="hljs-keyword">this</span>.y = Screen.height - <span class="hljs-number">30</span>;
+  }
+
+  <span class="hljs-comment">// Override the render method to render our score text</span>
+  render(context) {
+    context.fillStyle = <span class="hljs-string">'#ffffff'</span>;
+    context.font = <span class="hljs-string">'36px Arial'</span>;
+
+    <span class="hljs-comment">// That will allow us to position the text from its bottom right corner</span>
+    context.textAlign = <span class="hljs-string">'right'</span>;
+    context.textBaseline = <span class="hljs-string">'bottom'</span>;
+
+    context.fillText(<span class="hljs-string">`Score: <span class="hljs-subst">${State.get(<span class="hljs-string">'score'</span>)}</span>`</span>, <span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y);
+  }
+
+}
+</code></pre>
+				<p>The only thing left now is to add it to the scene, we&#39;ll also initialise the score state
+				in the scene.</p>
+				<p><em>src/MainScene.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Scene, State} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+<span class="hljs-keyword">import</span> Score <span class="hljs-keyword">from</span> <span class="hljs-string">'./Score'</span>;
+<span class="hljs-keyword">import</span> Circle <span class="hljs-keyword">from</span> <span class="hljs-string">'./Circle'</span>;
+<span class="hljs-keyword">import</span> FPSCounter <span class="hljs-keyword">from</span> <span class="hljs-string">'./FPSCounter'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainScene</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Scene</span> </span>{
+
+  <span class="hljs-comment">// We can add our game objects in the create method</span>
+  create() {
+    <span class="hljs-comment">// We can initialise the score state here</span>
+    State.set(<span class="hljs-string">'score'</span>, <span class="hljs-number">0</span>);
+
+    <span class="hljs-comment">// The scene class extends the Map class (see docs).</span>
+    <span class="hljs-comment">// We can set game objects using the set(name, value) method.</span>
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'circle'</span>, <span class="hljs-keyword">new</span> Circle());
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'score'</span>, <span class="hljs-keyword">new</span> Score());
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'fps counter'</span>, <span class="hljs-keyword">new</span> FPSCounter());
+  }
+
+}
+</code></pre>
+				<p>And here we are, our game is done!</p>
+				<p>See the result at <a href="http://localhost:3000">http://localhost:3000</a></p>
+				<p><a href="https://chibifr.github.io/rythmoos-engine/examples/not-an-example/03.png">Game screen 3</a></p>
+				<p><a href="https://chibifr.github.io/rythmoos-engine/examples/not-an-example/04.png">Game screen 4</a></p>
+				<p><a href="https://chibifr.github.io/rythmoos-engine/examples/not-an-example/05.png">Game screen 5</a></p>
+				<hr>
+				<h2 id="source-code">Source code</h2>
+				<p>Here is all the source code of our game:</p>
+				<p><em>src/index.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Game} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+<span class="hljs-comment">// Import our scene</span>
+<span class="hljs-keyword">import</span> MainScene <span class="hljs-keyword">from</span> <span class="hljs-string">'./MainScene'</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+
+  <span class="hljs-comment">// We can set the scene in our create method</span>
+  create() {
+    <span class="hljs-comment">// The scene is a public property, so you can set it to whatever scene you want</span>
+    <span class="hljs-comment">// at any point in your game.</span>
+    <span class="hljs-keyword">this</span>.scene = <span class="hljs-keyword">new</span> MainScene();
+  }
+
+}
+
+<span class="hljs-comment">// When the window is loaded, create a new game</span>
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
+  <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
+  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+}
+</code></pre>
+				<p><em>src/MainScene.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Scene, State} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+<span class="hljs-keyword">import</span> Score <span class="hljs-keyword">from</span> <span class="hljs-string">'./Score'</span>;
+<span class="hljs-keyword">import</span> Circle <span class="hljs-keyword">from</span> <span class="hljs-string">'./Circle'</span>;
+<span class="hljs-keyword">import</span> FPSCounter <span class="hljs-keyword">from</span> <span class="hljs-string">'./FPSCounter'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainScene</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Scene</span> </span>{
+
+  <span class="hljs-comment">// We can add our game objects in the create method</span>
+  create() {
+    <span class="hljs-comment">// We can initialise the score state here</span>
+    State.set(<span class="hljs-string">'score'</span>, <span class="hljs-number">0</span>);
+
+    <span class="hljs-comment">// The scene class extends the Map class (see docs).</span>
+    <span class="hljs-comment">// We can set game objects using the set(name, value) method.</span>
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'circle'</span>, <span class="hljs-keyword">new</span> Circle());
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'score'</span>, <span class="hljs-keyword">new</span> Score());
+    <span class="hljs-keyword">this</span>.set(<span class="hljs-string">'fps counter'</span>, <span class="hljs-keyword">new</span> FPSCounter());
+  }
+
+}
+</code></pre>
+				<p><em>src/FPSCounter.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Time} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FPSCounter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Initialise our fps counter when the object is created.</span>
+  create() {
+    <span class="hljs-comment">// Let's round the FPS value and add 'fps' after it so we know what that number is about.</span>
+    <span class="hljs-keyword">this</span>.fps = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.round(Time.FPS)}</span>fps`</span>;
+  }
+
+  <span class="hljs-comment">// The Time.FPS value is updated every frame, so let's update our game object's fps property!</span>
+  update() {
+    <span class="hljs-keyword">this</span>.fps = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-built_in">Math</span>.round(Time.FPS)}</span>fps`</span>;
+  }
+
+  <span class="hljs-comment">// In order to render our object, we can simply override the render method.</span>
+  render(context) {
+    <span class="hljs-comment">// Some colour and font for the text</span>
+    context.fillStyle = <span class="hljs-string">'#ffffff'</span>;
+    context.font = <span class="hljs-string">'30px Arial'</span>;
+
+    <span class="hljs-comment">// This allows us to position the text from its top left corner</span>
+    context.textAlign = <span class="hljs-string">'left'</span>;
+    context.textBaseline = <span class="hljs-string">'top'</span>;
+
+    <span class="hljs-comment">// And let's render our game object's fps property here:</span>
+    context.fillText(<span class="hljs-keyword">this</span>.fps, <span class="hljs-number">20</span>, <span class="hljs-number">20</span>);
+  }
+
+}
+</code></pre>
+				<p><em>src/Circle.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, Screen, Mouse, State} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Our circle game object</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Override the create method</span>
+  create() {
+    <span class="hljs-comment">// Let's set up our game object properties here</span>
+
+    <span class="hljs-comment">// The radius of our circle</span>
+    <span class="hljs-keyword">this</span>.radius = <span class="hljs-number">50</span>;
+
+    <span class="hljs-comment">// The x and y coordinates</span>
+    <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+    <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+
+    <span class="hljs-comment">// Let's set a boolean value that checks whether the mouse is hovering the circle or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = <span class="hljs-literal">false</span>;
+
+    <span class="hljs-comment">// The colour of our circle (let's make it white when hovered)</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-string">'#ff00ff'</span>;
+  }
+
+  <span class="hljs-comment">// Override the update method</span>
+  update() {
+    <span class="hljs-comment">// This method is ran each frame, before the rendering process.</span>
+    <span class="hljs-comment">// Let's update our game object properties from here:</span>
+
+    <span class="hljs-comment">// If the circle is hovered, let's set its colour to white, or set it to</span>
+    <span class="hljs-comment">// #ff00ff otherwise.</span>
+    <span class="hljs-keyword">this</span>.colour = <span class="hljs-keyword">this</span>.hovered ? <span class="hljs-string">'#ffffff'</span> : <span class="hljs-string">'#ff00ff'</span>;
+
+    <span class="hljs-comment">// If the mouse left button is clicked</span>
+    <span class="hljs-keyword">if</span> (Mouse.leftClick) {
+      <span class="hljs-comment">// Let's be mean here and remove 1 point from the player's score if he clicks outside</span>
+      <span class="hljs-comment">// of the circle.</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hovered === <span class="hljs-literal">false</span>) {
+        State.set(<span class="hljs-string">'score'</span>, State.get(<span class="hljs-string">'score'</span>) - <span class="hljs-number">1</span>);
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// Otherwise, we'll add 1 to the score</span>
+        State.set(<span class="hljs-string">'score'</span>, State.get(<span class="hljs-string">'score'</span>) + <span class="hljs-number">1</span>);
+      }
+
+      <span class="hljs-comment">// Set new positions to our circle when a click occurs</span>
+      <span class="hljs-keyword">this</span>.x = <span class="hljs-keyword">this</span>.getNewPosition(Screen.width);
+      <span class="hljs-keyword">this</span>.y = <span class="hljs-keyword">this</span>.getNewPosition(Screen.height);
+    }
+  }
+
+  <span class="hljs-comment">// Override the render method</span>
+  render(context) {
+    <span class="hljs-comment">// We will render our object form here.</span>
+    context.fillStyle = <span class="hljs-keyword">this</span>.colour;
+
+    <span class="hljs-comment">// Draw the circle</span>
+    context.beginPath();
+    context.arc(<span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y, <span class="hljs-keyword">this</span>.radius, <span class="hljs-number">0</span>, <span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI);
+    context.fill();
+
+    <span class="hljs-comment">// Since we drew our circle's path, we can use the context isPointInPath method to check</span>
+    <span class="hljs-comment">// whether the cursor is in the path or not.</span>
+    <span class="hljs-keyword">this</span>.hovered = context.isPointInPath(Mouse.cursorX, Mouse.cursorY);
+  }
+
+  <span class="hljs-comment">/**
+   * Simple custom method to set our game object's x and y coordinates
+   * @param {number} max The max possible value
+   * @return A random x
+   */</span>
+  getNewPosition(max) {
+    <span class="hljs-comment">// Some very complex mathemical stuff</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.random() * (max - <span class="hljs-keyword">this</span>.radius * <span class="hljs-number">2</span>) + <span class="hljs-keyword">this</span>.radius;
+  }
+
+}
+</code></pre>
+				<p><em>src/Score.js</em></p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {GameObject, State, Screen} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
+
+<span class="hljs-comment">// Our score class</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Score</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
+
+  <span class="hljs-comment">// Override the create method to set our properties</span>
+  create() {
+    <span class="hljs-keyword">this</span>.x = Screen.width - <span class="hljs-number">30</span>;
+    <span class="hljs-keyword">this</span>.y = Screen.height - <span class="hljs-number">30</span>;
+  }
+
+  <span class="hljs-comment">// Override the render method to render our score text</span>
+  render(context) {
+    context.fillStyle = <span class="hljs-string">'#ffffff'</span>;
+    context.font = <span class="hljs-string">'36px Arial'</span>;
+
+    <span class="hljs-comment">// That will allow us to position the text from its bottom right corner</span>
+    context.textAlign = <span class="hljs-string">'right'</span>;
+    context.textBaseline = <span class="hljs-string">'bottom'</span>;
+
+    context.fillText(<span class="hljs-string">`Score: <span class="hljs-subst">${State.get(<span class="hljs-string">'score'</span>)}</span>`</span>, <span class="hljs-keyword">this</span>.x, <span class="hljs-keyword">this</span>.y);
+  }
+
+}
+</code></pre>
+				<p>You could now add a main menu as a new scene that will be the start-up scene of your game.
+				Why not also check out the Keyboard class to add some gameplay to it?</p>
+				<p>You could also load sprites instead of drawing a circle, add music etc...
+				You can take a loot at the examples section and examples directory to see some more examples. ;o</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
