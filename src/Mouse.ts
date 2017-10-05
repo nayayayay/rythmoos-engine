@@ -6,6 +6,8 @@ import {IUpdatable} from './IUpdatable';
 export abstract class Mouse {
   private static _cursorX: number = 0;
   private static _cursorY: number = 0;
+  private static _movementX: number = 0;
+  private static _movementY: number = 0;
   private static _leftButton: boolean = false;
   private static _leftClick: boolean = false;
   private static _middleButton: boolean = false;
@@ -27,6 +29,20 @@ export abstract class Mouse {
    */
   public static get cursorY(): number {
     return this._cursorY;
+  }
+
+  /**
+   * The cursor movement in the X axis, in pixels.
+   */
+  public static get movementX(): number {
+    return this._movementX;
+  }
+
+  /**
+   * The cursor movement in the Y axis, in pixels.
+   */
+  public static get movementY(): number {
+    return this._movementY;
   }
 
   /**
@@ -123,6 +139,8 @@ export abstract class Mouse {
     canvas.addEventListener('mousemove', e => {
       this._cursorX = e.clientX - canvas.offsetLeft;
       this._cursorY = e.clientY - canvas.offsetTop;
+      this._movementX = e.movementX;
+      this._movementY = e.movementY;
     });
 
     canvas.addEventListener('mousedown', e => {
@@ -201,6 +219,8 @@ export abstract class Mouse {
    * Used internally to update the mouse input states.
    */
   public static _update(): void {
+    this._movementX = 0;
+    this._movementY = 0;
     this._scrollX = 0;
     this._scrollY = 0;
     this._leftClick = false;
