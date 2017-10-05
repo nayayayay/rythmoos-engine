@@ -6,7 +6,7 @@ import {Keys} from './Keys';
  */
 export abstract class Keyboard {
   /** Whether to prevent the default key action or not. Defaults to false. */
-  private static preventDefault: boolean;
+  public static preventDefault: boolean;
   private static _keys: Map<boolean>;
   private static _pressed: Keys[];
   private static _lastKey: Keys|null;
