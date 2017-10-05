@@ -160,7 +160,7 @@ var Loader = /** @class */ (function () {
         }
     };
     /** The base path to the assets directory. */
-    Loader.basePath = '';
+    Loader.basePath = '.';
     Loader._loaded = false;
     Loader._images = new Map_1.Map();
     Loader._videos = new Map_1.Map();

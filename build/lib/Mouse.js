@@ -26,6 +26,26 @@ var Mouse = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Mouse, "movementX", {
+        /**
+         * The cursor movement in the X axis, in pixels.
+         */
+        get: function () {
+            return this._movementX;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "movementY", {
+        /**
+         * The cursor movement in the Y axis, in pixels.
+         */
+        get: function () {
+            return this._movementY;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Mouse, "leftButtonDown", {
         /**
          * Whether the left button is down or not.
@@ -157,6 +177,8 @@ var Mouse = /** @class */ (function () {
         canvas.addEventListener('mousemove', function (e) {
             _this._cursorX = e.clientX - canvas.offsetLeft;
             _this._cursorY = e.clientY - canvas.offsetTop;
+            _this._movementX = e.movementX;
+            _this._movementY = e.movementY;
         });
         canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -229,6 +251,8 @@ var Mouse = /** @class */ (function () {
      * Used internally to update the mouse input states.
      */
     Mouse._update = function () {
+        this._movementX = 0;
+        this._movementY = 0;
         this._scrollX = 0;
         this._scrollY = 0;
         this._leftClick = false;
@@ -237,6 +261,8 @@ var Mouse = /** @class */ (function () {
     };
     Mouse._cursorX = 0;
     Mouse._cursorY = 0;
+    Mouse._movementX = 0;
+    Mouse._movementY = 0;
     Mouse._leftButton = false;
     Mouse._leftClick = false;
     Mouse._middleButton = false;

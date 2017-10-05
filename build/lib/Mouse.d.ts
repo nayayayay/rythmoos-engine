@@ -4,6 +4,8 @@
 export declare abstract class Mouse {
     private static _cursorX;
     private static _cursorY;
+    private static _movementX;
+    private static _movementY;
     private static _leftButton;
     private static _leftClick;
     private static _middleButton;
@@ -20,6 +22,14 @@ export declare abstract class Mouse {
      * The Y position of the cursor in the window.
      */
     static readonly cursorY: number;
+    /**
+     * The cursor movement in the X axis, in pixels.
+     */
+    static readonly movementX: number;
+    /**
+     * The cursor movement in the Y axis, in pixels.
+     */
+    static readonly movementY: number;
     /**
      * Whether the left button is down or not.
      */

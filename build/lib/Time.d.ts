@@ -21,6 +21,12 @@ export declare abstract class Time {
      */
     static readonly time: number;
     /**
+     * The deltaTime in second. Useful for animations.<br>
+     * Let's say we want our gameObject.x property to move 10 pixels per second, we can do that:
+     * gameObject.x += 10 * Time.second;
+     */
+    static readonly second: number;
+    /**
      * The average amount of frames per second based on the current deltaTime.
      */
     static readonly FPS: number;

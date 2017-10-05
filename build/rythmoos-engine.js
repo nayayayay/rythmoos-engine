@@ -61,7 +61,7 @@ var RythmoosEngine =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -233,7 +233,9 @@ var Scene = /** @class */ (function (_super) {
     Scene.prototype._runRender = function (context) {
         for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
             var gameObject = _a[_i];
+            context.save();
             gameObject.render(context);
+            context.restore();
         }
     };
     return Scene;
@@ -328,6 +330,18 @@ var Time = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Time, "second", {
+        /**
+         * The deltaTime in second. Useful for animations.<br>
+         * Let's say we want our gameObject.x property to move 10 pixels per second, we can do that:
+         * gameObject.x += 10 * Time.second;
+         */
+        get: function () {
+            return 1 / this._deltaTime;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Time, "FPS", {
         /**
          * The average amount of frames per second based on the current deltaTime.
@@ -374,6 +388,26 @@ var Mouse = /** @class */ (function () {
          */
         get: function () {
             return this._cursorY;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "movementX", {
+        /**
+         * The cursor movement in the X axis, in pixels.
+         */
+        get: function () {
+            return this._movementX;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "movementY", {
+        /**
+         * The cursor movement in the Y axis, in pixels.
+         */
+        get: function () {
+            return this._movementY;
         },
         enumerable: true,
         configurable: true
@@ -509,6 +543,8 @@ var Mouse = /** @class */ (function () {
         canvas.addEventListener('mousemove', function (e) {
             _this._cursorX = e.clientX - canvas.offsetLeft;
             _this._cursorY = e.clientY - canvas.offsetTop;
+            _this._movementX = e.movementX;
+            _this._movementY = e.movementY;
         });
         canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -581,6 +617,8 @@ var Mouse = /** @class */ (function () {
      * Used internally to update the mouse input states.
      */
     Mouse._update = function () {
+        this._movementX = 0;
+        this._movementY = 0;
         this._scrollX = 0;
         this._scrollY = 0;
         this._leftClick = false;
@@ -589,6 +627,8 @@ var Mouse = /** @class */ (function () {
     };
     Mouse._cursorX = 0;
     Mouse._cursorY = 0;
+    Mouse._movementX = 0;
+    Mouse._movementY = 0;
     Mouse._leftButton = false;
     Mouse._leftClick = false;
     Mouse._middleButton = false;
@@ -932,7 +972,7 @@ var Loader = /** @class */ (function () {
         }
     };
     /** The base path to the assets directory. */
-    Loader.basePath = '';
+    Loader.basePath = '.';
     Loader._loaded = false;
     Loader._images = new Map_1.Map();
     Loader._videos = new Map_1.Map();
@@ -994,14 +1034,81 @@ exports.State = State;
 
 "use strict";
 
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * A Canvas' 2D rendering context that is not rendered.<br>
+ * Useful to work with ImageData objects, TextMetrics, to create bitmap data and
+ * anything else a 2D context allows you to do.
+ */
+var VirtualContext = /** @class */ (function () {
+    function VirtualContext() {
+    }
+    /**
+     * Used internally to initialise the virual context.
+     */
+    VirtualContext._init = function () {
+        this._context = document.createElement('canvas').getContext('2d');
+        this._width = 0;
+        this._height = 0;
+    };
+    /**
+     * Request the virtual context.
+     * @param width The width to request from the context.
+     * @param height The height to request from the context.
+     * @return The context object.
+     */
+    VirtualContext.requestBuffer = function (width, height) {
+        this._context.restore();
+        this._context.clearRect(0, 0, this._width, this._height);
+        this._context.save();
+        this._width = width;
+        this._height = height;
+        return this._context;
+    };
+    /**
+     * Get the image data from an image object.
+     * @param image The image to get the data from.
+     * @param width The width of the image (defaults to the actual image's width).
+     * @param height The height of the image (defaults to the actual image's height).
+     */
+    VirtualContext.getImageData = function (image, width, height) {
+        width = width !== undefined ? width : image.width;
+        height = height !== undefined ? height : image.height;
+        var context = this.requestBuffer(width, height);
+        context.drawImage(image, 0, 0, width, height);
+        return context.getImageData(0, 0, width, height);
+    };
+    /**
+     * Get the width of a text with a specific font.
+     * @param text The text to measure.
+     * @param font The font to use.
+     */
+    VirtualContext.measureText = function (text, font) {
+        this._context.save();
+        this._context.font = font;
+        var textMeasure = this._context.measureText(text);
+        this._context.restore();
+        return textMeasure.width;
+    };
+    return VirtualContext;
+}());
+exports.VirtualContext = VirtualContext;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(11));
 __export(__webpack_require__(12));
-__export(__webpack_require__(6));
 __export(__webpack_require__(13));
+__export(__webpack_require__(6));
+__export(__webpack_require__(14));
 __export(__webpack_require__(8));
 __export(__webpack_require__(3));
 __export(__webpack_require__(0));
@@ -1011,10 +1118,11 @@ __export(__webpack_require__(2));
 __export(__webpack_require__(7));
 __export(__webpack_require__(9));
 __export(__webpack_require__(4));
+__export(__webpack_require__(10));
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1028,6 +1136,7 @@ var Keyboard_1 = __webpack_require__(6);
 var Screen_1 = __webpack_require__(7);
 var Loader_1 = __webpack_require__(8);
 var State_1 = __webpack_require__(9);
+var VirtualContext_1 = __webpack_require__(10);
 /**
  * The base class of any game.
  */
@@ -1049,6 +1158,7 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        VirtualContext_1.VirtualContext._init();
         Screen_1.Screen._init(this._canvas);
         Mouse_1.Mouse._init(this._canvas);
         Keyboard_1.Keyboard._init();
@@ -1097,7 +1207,7 @@ exports.Game = Game;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1138,7 +1248,7 @@ exports.GameObject = GameObject;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -16,4 +16,5 @@ __export(require("./Scene"));
 __export(require("./Screen"));
 __export(require("./State"));
 __export(require("./Time"));
+__export(require("./VirtualContext"));
 //# sourceMappingURL=index.js.map

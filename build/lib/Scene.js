@@ -54,7 +54,9 @@ var Scene = /** @class */ (function (_super) {
     Scene.prototype._runRender = function (context) {
         for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
             var gameObject = _a[_i];
+            context.save();
             gameObject.render(context);
+            context.restore();
         }
     };
     return Scene;

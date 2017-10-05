@@ -1,3 +1,13 @@
+v1.1.0:
+  * The engine now comes with a virtual context making it easy to work with bitmap data,
+    text metrics, image data and all that is possible to do with a context.
+  * Mouse now contains the movementX and movementY properties, making it easy to work
+    with point locks or with games that have a different resolution than the screen.
+  * Time now contains the "second" property that returns the deltaTime in second. Useful
+    for animations.
+  * Fixed the keyboard prevent default visibility.
+  * Updated documentation with game examples.
+
 v1.0.0:
   * Bug fixes and improvements.
   * An example game was added to the documentation in the docs/examples directory.

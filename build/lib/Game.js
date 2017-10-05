@@ -8,6 +8,7 @@ var Keyboard_1 = require("./Keyboard");
 var Screen_1 = require("./Screen");
 var Loader_1 = require("./Loader");
 var State_1 = require("./State");
+var VirtualContext_1 = require("./VirtualContext");
 /**
  * The base class of any game.
  */
@@ -29,6 +30,7 @@ var Game = /** @class */ (function () {
         this._canvas.width = this.width;
         this._canvas.height = this.height;
         this.container.appendChild(this._canvas);
+        VirtualContext_1.VirtualContext._init();
         Screen_1.Screen._init(this._canvas);
         Mouse_1.Mouse._init(this._canvas);
         Keyboard_1.Keyboard._init();

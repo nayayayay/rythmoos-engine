@@ -1,0 +1,16 @@
+{
+  "name": "my-awesome-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "rythmoos-engine": "^1.0.0"
+  }
+}

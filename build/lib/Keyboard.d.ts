@@ -4,7 +4,7 @@ import { Keys } from './Keys';
  */
 export declare abstract class Keyboard {
     /** Whether to prevent the default key action or not. Defaults to false. */
-    private static preventDefault;
+    static preventDefault: boolean;
     private static _keys;
     private static _pressed;
     private static _lastKey;
