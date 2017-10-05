@@ -14,3 +14,4 @@ export * from './Scene';
 export * from './Screen';
 export * from './State';
 export * from './Time';
+export * from './VirtualContext';

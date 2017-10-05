@@ -7,6 +7,7 @@ import {Keyboard} from './Keyboard';
 import {Screen} from './Screen';
 import {Loader} from './Loader';
 import {State} from './State';
+import {VirtualContext} from './VirtualContext';
 
 /**
  * The base class of any game.
@@ -43,6 +44,7 @@ export class Game implements IUpdatable {
     this._canvas.height = this.height;
     this.container.appendChild(this._canvas);
 
+    VirtualContext._init();
     Screen._init(this._canvas);
     Mouse._init(this._canvas);
     Keyboard._init();
