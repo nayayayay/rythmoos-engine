@@ -8,7 +8,7 @@ import {Game} from './Game';
  */
 export abstract class Loader {
   /** The base path to the assets directory. */
-  public static basePath: string = '';
+  public static basePath: string = '.';
   private static _game: Game;
   private static _loaded: boolean = false;
   private static _images: Map<HTMLImageElement> = new Map<HTMLImageElement>();
