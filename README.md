@@ -973,3 +973,7 @@ Why not also check out the Keyboard class to add some gameplay to it?
 
 You could also load sprites instead of drawing a circle, add music etc...
 You can take a loot at the examples section and examples directory to see some more examples. ;o
+
+--------------
+
+# <3.
