@@ -32,6 +32,15 @@ export abstract class Time {
   }
 
   /**
+   * The deltaTime in second. Useful for animations.<br>
+   * Let's say we want our gameObject.x property to move 10 pixels per second, we can do that:
+   * gameObject.x += 10 * Time.second;
+   */
+  public static get second(): number {
+    return 1 / this._deltaTime;
+  }
+
+  /**
    * The average amount of frames per second based on the current deltaTime.
    */
   public static get FPS(): number {
