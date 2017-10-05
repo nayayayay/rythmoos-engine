@@ -766,11 +766,11 @@ And here we are, our game is done!
 
 See the result at http://localhost:3000
 
-[Game screen 3](https://chibifr.github.io/rythmoos-engine/media/not-an-example/03.png)
+![Game screen 3](https://chibifr.github.io/rythmoos-engine/media/not-an-example/03.png)
 
-[Game screen 4](https://chibifr.github.io/rythmoos-engine/media/not-an-example/04.png)
+![Game screen 4](https://chibifr.github.io/rythmoos-engine/media/not-an-example/04.png)
 
-[Game screen 5](https://chibifr.github.io/rythmoos-engine/media/not-an-example/05.png)
+![Game screen 5](https://chibifr.github.io/rythmoos-engine/media/not-an-example/05.png)
 
 ___
 
