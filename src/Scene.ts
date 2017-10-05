@@ -49,7 +49,9 @@ export class Scene extends Map<GameObject> implements IUpdatable, IRunnable {
    */
   public _runRender(context: CanvasRenderingContext2D): void {
     for (const gameObject of this.getAll()) {
+      context.save();
       gameObject.render(context);
+      context.restore();
     }
   }
 }
