@@ -1,6 +1,6 @@
 /**
  * A collection with a non-indexed key.<br>
- * Useful to store a set of objects of the same type.
+ * Useful to store a set of values of the same type.
  */
 export class Map<T> {
   private _keys: string[];
@@ -12,9 +12,9 @@ export class Map<T> {
   }
 
   /**
-   * Get an object from the map.
-   * @param key The name of the object to get.
-   * @return The object, or null if the object does not exist in the map.
+   * Get an value from the map.
+   * @param key The name of the value to get.
+   * @return The value, or null if the value does not exist in the map.
    */
   public get(key: string): T|null {
     const index = this._keys.indexOf(key);
@@ -27,9 +27,9 @@ export class Map<T> {
   }
 
   /**
-   * Add or update an object.
-   * @param key The name of the object to set.
-   * @param value The value to set for this object.
+   * Add or update an value.
+   * @param key The name of the value to set.
+   * @param value The value to set for this value.
    */
   public set(key: string, value: T): void {
     const index = this._keys.indexOf(key);
@@ -43,9 +43,9 @@ export class Map<T> {
   }
 
   /**
-   * Remove an object from the map.
-   * @param key The object's name to be removed from the map.
-   * @return True if the object was removed, false if the object was not found.
+   * Remove an value from the map.
+   * @param key The value's name to be removed from the map.
+   * @return True if the value was removed, false if the value was not found.
    */
   public remove(key: string): boolean {
     const index = this._keys.indexOf(key);
@@ -61,7 +61,7 @@ export class Map<T> {
   }
 
   /**
-   * Get an array containing all the objects of the map.
+   * Get an array containing all the values of the map.
    */
   public getAll(): T[] {
     return [...this._values];

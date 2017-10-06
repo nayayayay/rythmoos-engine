@@ -1,7 +1,7 @@
 /**
  * A Canvas' 2D rendering context that is not rendered.<br>
  * Useful to work with ImageData objects, TextMetrics, to create bitmap data and
- * anything else a 2D context allows you to do.
+ * anything else you can do with a 2D context.
  */
 export abstract class VirtualContext {
   private static _context: CanvasRenderingContext2D;
@@ -52,7 +52,7 @@ export abstract class VirtualContext {
   }
 
   /**
-   * Get the width of a text with a specific font.
+   * Get the width of a text with a specified font.
    * @param text The text to measure.
    * @param font The font to use.
    */

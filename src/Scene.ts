@@ -5,7 +5,7 @@ import {Map} from './Map';
 import {GameObject} from './GameObject';
 
 /**
- * A scene contains all the game objects in a specific "word" of your game.<br>
+ * A scene contains all the game objects in a specific "screen" of your game.<br>
  * For example, you may have a "MainScreen" scene that will contain everything
  * that is in the main screen of your game.<br>
  * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
@@ -18,7 +18,7 @@ export class Scene extends Map<GameObject> implements IUpdatable, IRunnable {
   }
 
   /**
-   * Called the the scene is created.<br>
+   * Called when the scene is created.<br>
    * You can set your game objects (UI, characters, music, etc) from here.
    */
   public create(): void {

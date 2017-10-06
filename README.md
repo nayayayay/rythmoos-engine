@@ -54,6 +54,7 @@ to click the shapes in order to earn more score.
 
 You can find the result [here](https://chibifr.github.io/rythmoos-engine/media/quick-start-example/public/index.html).
 
+
 ## Project setup
 
 Let's start!
@@ -63,7 +64,7 @@ into one single file.
 
 The first thing to do, as for any project, create a directory and add the dependencies we need:
 
-`mkdir my-awesome-game && cd my-awesome-game`
+`mkdir awesome-game && cd awesome-game`
 
 Now we can initialise NPM and install our dependencies.
 As I said earlier, we are going to use Webpack. We will also need to install the Rythmoos Engine and
@@ -78,7 +79,7 @@ The project structure will look like so:
 ```
 * public/ (static files here)
   - index.html
-  - my-awesome-game.js (our game)
+  - awesome-game.js (our game)
   - style.css
 * src/ (the source files of our game)
   - index.js (our main game class, we'll add other files)
@@ -97,11 +98,11 @@ You can copy paste these:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Awesome Game</title>
+    <title>Awesome Game</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <script src="my-awesome-game.js"></script>
+    <script src="awesome-game.js"></script>
   </body>
 </html>
 ```
@@ -151,7 +152,7 @@ module.exports = {
   // The output file
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'my-awesome-game.js'
+    filename: 'awesome-game.js'
   },
 
   // Source maps for ez debugging
@@ -174,6 +175,7 @@ we make changes to it:
 You can now open your browser at http://localhost:3000 and see a blank page that we will fill with our awesome
 game.
 
+
 ## Game class
 
 Every game starts with the Game class. Let's create our game's class that extends the engine's Game class:
@@ -182,7 +184,7 @@ Every game starts with the Game class. Let's create our game's class that extend
 ```javascript
 import {Game} from 'rythmoos-engine';
 
-class MyAwesomeGame extends Game {
+class AwesomeGame extends Game {
 }
 ```
 
@@ -193,7 +195,7 @@ our game class:
 window.onload = () => {
   // A game instance needs a width, height and a container.
   // Let's give it the window's width and height, and the body as container.
-  new MyAwesomeGame(window.innerWidth, window.innerHeight, document.body);
+  new AwesomeGame(window.innerWidth, window.innerHeight, document.body);
 }
 ```
 
@@ -281,6 +283,7 @@ class Scene {
 
 Hm, so...we need game objects! Let's create some.
 
+
 ## Game objects
 
 To start, let's create a very simple game object: A FPS counter.
@@ -331,7 +334,8 @@ class GameObject {
 }
 ```
 
-## The Mouse class
+
+## Time
 
 Alright, let's actually code our FPS counter! But wait, how do we access the FPS value?
 Well, all we need is the Time class, so let's import it:
@@ -387,7 +391,7 @@ import {Game} from 'rythmoos-engine';
 // Import our scene
 import MainScene from './MainScene';
 
-class MyAwesomeGame extends Game {
+class AwesomeGame extends Game {
 
   // We can set the scene in our create method
   create() {
@@ -402,7 +406,7 @@ class MyAwesomeGame extends Game {
 window.onload = () => {
   // A game instance needs a width, height and a container.
   // Let's give it the window's width and height, and the body as container.
-  new MyAwesomeGame(window.innerWidth, window.innerHeight, document.body);
+  new AwesomeGame(window.innerWidth, window.innerHeight, document.body);
 }
 ```
 
@@ -477,7 +481,8 @@ export default class Circle extends GameObject {
 }
 ```
 
-## The Screen class
+
+## Inputs
 
 We'll need to create some properties, this is what I suggest for our circle:
 - an x and a y coordinate
@@ -582,7 +587,8 @@ this.set('circle', new Circle());
 We are adding it before the FPS Counter before we want the circle to appear behind the counter.
 The game objects are rendered in the order they are added to the scene.
 
-## The State class
+
+## States
 
 Now we want to save the score, but where do we save it? We could save it in a property of our Circle
 game object. But how can we use this value from the Score game object (that we'll create soon) in order
@@ -774,7 +780,8 @@ See the result at http://localhost:3000
 
 ___
 
-## Source code
+
+## Final code
 
 Here is all the source code of our game:
 
@@ -784,7 +791,7 @@ import {Game} from 'rythmoos-engine';
 // Import our scene
 import MainScene from './MainScene';
 
-class MyAwesomeGame extends Game {
+class AwesomeGame extends Game {
 
   // We can set the scene in our create method
   create() {
@@ -799,7 +806,7 @@ class MyAwesomeGame extends Game {
 window.onload = () => {
   // A game instance needs a width, height and a container.
   // Let's give it the window's width and height, and the body as container.
-  new MyAwesomeGame(window.innerWidth, window.innerHeight, document.body);
+  new AwesomeGame(window.innerWidth, window.innerHeight, document.body);
 }
 ```
 
@@ -972,7 +979,7 @@ You could now add a main menu as a new scene that will be the start-up scene of 
 Why not also check out the Keyboard class to add some gameplay to it?
 
 You could also load sprites instead of drawing a circle, add music etc...
-You can take a loot at the examples section and examples directory to see some more examples. ;o
+You can take a look at the examples section and examples directory to see some more examples. ;o
 
 --------------
 
