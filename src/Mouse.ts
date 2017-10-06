@@ -164,7 +164,7 @@ export abstract class Mouse {
       }
 
       window.addEventListener('mouseup', e => {
-        if (!this._leftButton || !this._middleButton || !this._rightButton) return;
+        if (!this._leftButton && !this._middleButton && !this._rightButton) return;
 
         e.preventDefault();
 
