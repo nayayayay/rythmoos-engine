@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A scene contains all the game objects in a specific &quot;word&quot; of your game.<br>
+						<p>A scene contains all the game objects in a specific &quot;screen&quot; of your game.<br>
 							For example, you may have a &quot;MainScreen&quot; scene that will contain everything
 							that is in the main screen of your game.<br>
 						You could then have a &quot;Level1&quot; scene that will contain the level 1 of you game. etc.</p>
@@ -136,7 +136,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="map.html">Map</a>.<a href="map.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Scene.ts#L13">Scene.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Scene.ts#L13">Scene.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="scene.html" class="tsd-signature-type">Scene</a></h4>
@@ -157,7 +157,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/irunnable.html">IRunnable</a>.<a href="../interfaces/irunnable.html#_runrender">_runRender</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Scene.ts#L50">Scene.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Scene.ts#L50">Scene.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,7 +189,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/irunnable.html">IRunnable</a>.<a href="../interfaces/irunnable.html#_runupdate">_runUpdate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Scene.ts#L38">Scene.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Scene.ts#L38">Scene.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,12 +211,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Scene.ts#L24">Scene.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Scene.ts#L24">Scene.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called the the scene is created.<br>
+									<p>Called when the scene is created.<br>
 									You can set your game objects (UI, characters, music, etc) from here.</p>
 								</div>
 							</div>
@@ -235,12 +235,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="map.html">Map</a>.<a href="map.html#get">get</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Map.ts#L19">Map.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Map.ts#L19">Map.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get an object from the map.</p>
+									<p>Get an value from the map.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -248,7 +248,7 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The name of the object to get.</p>
+										<p>The name of the value to get.</p>
 									</div>
 								</li>
 							</ul>
@@ -256,7 +256,7 @@
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">null</span>
 							</h4>
-							<p>The object, or null if the object does not exist in the map.</p>
+							<p>The value, or null if the value does not exist in the map.</p>
 						</li>
 					</ul>
 				</section>
@@ -271,12 +271,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="map.html">Map</a>.<a href="map.html#getall">getAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Map.ts#L66">Map.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Map.ts#L66">Map.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get an array containing all the objects of the map.</p>
+									<p>Get an array containing all the values of the map.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="gameobject.html" class="tsd-signature-type">GameObject</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -294,12 +294,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="map.html">Map</a>.<a href="map.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Map.ts#L50">Map.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Map.ts#L50">Map.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Remove an object from the map.</p>
+									<p>Remove an value from the map.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -307,12 +307,12 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The object&#39;s name to be removed from the map.</p>
+										<p>The value&#39;s name to be removed from the map.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>True if the object was removed, false if the object was not found.</p>
+							<p>True if the value was removed, false if the value was not found.</p>
 						</li>
 					</ul>
 				</section>
@@ -327,7 +327,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="map.html">Map</a>.<a href="map.html#removeall">removeAll</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Map.ts#L73">Map.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Map.ts#L73">Map.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,12 +350,12 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="map.html">Map</a>.<a href="map.html#set">set</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Map.ts#L34">Map.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Map.ts#L34">Map.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Add or update an object.</p>
+									<p>Add or update an value.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -363,13 +363,13 @@
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The name of the object to set.</p>
+										<p>The name of the value to set.</p>
 									</div>
 								</li>
 								<li>
 									<h5>value: <a href="gameobject.html" class="tsd-signature-type">GameObject</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The value to set for this object.</p>
+										<p>The value to set for this value.</p>
 									</div>
 								</li>
 							</ul>
@@ -388,7 +388,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/iupdatable.html">IUpdatable</a>.<a href="../interfaces/iupdatable.html#update">update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Scene.ts#L32">Scene.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Scene.ts#L32">Scene.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

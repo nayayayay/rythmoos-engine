@@ -1,3 +1,8 @@
+v1.1.1:
+  * Fixed the Mouse button up and movement properties. Add buttonUp properties.
+  * Add a get() method to the Loader to make assets easier to get with one method.
+  * Fixed some typos in the documentation.
+
 v1.1.0:
   * The engine now comes with a virtual context making it easy to work with bitmap data,
     text metrics, image data and all that is possible to do with a context.
@@ -11,6 +16,7 @@ v1.1.0:
 v1.0.0:
   * Bug fixes and improvements.
   * An example game was added to the documentation in the docs/examples directory.
+
 
 v0.2.0:
   * Possibility to prevent the default action for keyboard's keys at any time in the game.

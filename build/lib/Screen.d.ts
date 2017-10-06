@@ -1,5 +1,5 @@
 /**
- * This class represent the game's screen (canvas).<br>
+ * This class represents the game's screen (canvas).<br>
  * It makes it easy to access the width, height and offsets properties of the
  * game's screen from anywhere in your game.
  */

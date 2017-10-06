@@ -76,6 +76,36 @@ var Mouse = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Mouse, "leftButtonUp", {
+        /**
+         * Whether the left button is up or not.
+         */
+        get: function () {
+            return !this._leftButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "middleButtonUp", {
+        /**
+         * Whether the middle button (wheel) is up or not.
+         */
+        get: function () {
+            return !this._middleButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "rightButtonUp", {
+        /**
+         * Whether the right button is up or not.
+         */
+        get: function () {
+            return !this._rightButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Mouse, "leftClick", {
         /**
          * Evaluate to true when a left click occurs.
@@ -177,8 +207,8 @@ var Mouse = /** @class */ (function () {
         canvas.addEventListener('mousemove', function (e) {
             _this._cursorX = e.clientX - canvas.offsetLeft;
             _this._cursorY = e.clientY - canvas.offsetTop;
-            _this._movementX = e.movementX;
-            _this._movementY = e.movementY;
+            _this._movementX += e.movementX;
+            _this._movementY += e.movementY;
         });
         canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -199,7 +229,7 @@ var Mouse = /** @class */ (function () {
                     break;
             }
             window.addEventListener('mouseup', function (e) {
-                if (!_this._leftButton || !_this._middleButton || !_this._rightButton)
+                if (!_this._leftButton && !_this._middleButton && !_this._rightButton)
                     return;
                 e.preventDefault();
                 switch (e.button) {

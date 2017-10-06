@@ -98,6 +98,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#_init" class="tsd-kind-icon">_init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#audio" class="tsd-kind-icon">audio</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#image" class="tsd-kind-icon">image</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#json" class="tsd-kind-icon">json</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="loader.html#loadaudio" class="tsd-kind-icon">load<wbr>Audio</a></li>
@@ -119,7 +120,7 @@
 					<div class="tsd-signature tsd-kind-icon">base<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;.&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L11">Loader.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L11">Loader.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -141,7 +142,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L24">Loader.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L24">Loader.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -172,7 +173,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L169">Loader.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L198">Loader.ts:198</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -200,6 +201,49 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="get" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>fileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLImageElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLAudioElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">HTMLVideoElement</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L155">Loader.ts:155</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a file from the loader.<br>
+										If the file was loaded on the fly, it may not be ready yet! You can
+									check whether the file was loaded or not using the loaded() method.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fileName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the file to get.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">HTMLImageElement</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">HTMLAudioElement</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">HTMLVideoElement</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">any</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+							<p>The file, or null if the Loader does not contain the specified file.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="image" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> image</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -209,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L147">Loader.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L176">Loader.ts:176</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +290,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L180">Loader.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L209">Loader.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -283,12 +327,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L91">Loader.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L97">Loader.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Load an audio file.</p>
+									<p>Load an audio file.<br>
+										If the file can&#39;t be loaded, the game won&#39;t start and a message will
+									be logged to the console.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -320,12 +366,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L39">Loader.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L41">Loader.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Load an image file.</p>
+									<p>Load an image file.<br>
+										If the file can&#39;t be loaded, the game won&#39;t start and a message will
+									be logged to the console.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -357,12 +405,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L117">Loader.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L125">Loader.ts:125</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Load a json file.</p>
+									<p>Load a json file.<br>
+										If the file can&#39;t be loaded, the game won&#39;t start and a message will
+									be logged to the console.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -394,12 +444,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L65">Loader.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L69">Loader.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Load a video file.</p>
+									<p>Load a video file.<br>
+										If the file can&#39;t be loaded, the game won&#39;t start and a message will
+									be logged to the console.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -431,7 +483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L188">Loader.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L217">Loader.ts:217</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -462,7 +514,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d9e12c5/src/Loader.ts#L158">Loader.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Loader.ts#L187">Loader.ts:187</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -526,6 +578,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="loader.html#audio" class="tsd-kind-icon">audio</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="loader.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="loader.html#image" class="tsd-kind-icon">image</a>

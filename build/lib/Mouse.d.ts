@@ -43,6 +43,18 @@ export declare abstract class Mouse {
      */
     static readonly rightButtonDown: boolean;
     /**
+     * Whether the left button is up or not.
+     */
+    static readonly leftButtonUp: boolean;
+    /**
+     * Whether the middle button (wheel) is up or not.
+     */
+    static readonly middleButtonUp: boolean;
+    /**
+     * Whether the right button is up or not.
+     */
+    static readonly rightButtonUp: boolean;
+    /**
      * Evaluate to true when a left click occurs.
      */
     static readonly leftClick: boolean;

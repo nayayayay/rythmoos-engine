@@ -12,8 +12,6 @@ export declare abstract class Time {
     static _setFrame(frame: number): void;
     /**
      * The time elapsed since the last frame, in milliseconds.<br>
-     * Useful for smooth animations that will run at the same speed regardless
-     * of the rendering speed.
      */
     static readonly deltaTime: number;
     /**
@@ -22,7 +20,7 @@ export declare abstract class Time {
     static readonly time: number;
     /**
      * The deltaTime in second. Useful for animations.<br>
-     * Let's say we want our gameObject.x property to move 10 pixels per second, we can do that:
+     * Let's say we want our gameObject.x property to move +10 pixels per second, we can do that:
      * gameObject.x += 10 * Time.second;
      */
     static readonly second: number;

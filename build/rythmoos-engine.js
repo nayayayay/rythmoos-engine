@@ -73,7 +73,7 @@ var RythmoosEngine =
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * A collection with a non-indexed key.<br>
- * Useful to store a set of objects of the same type.
+ * Useful to store a set of values of the same type.
  */
 var Map = /** @class */ (function () {
     function Map() {
@@ -81,9 +81,9 @@ var Map = /** @class */ (function () {
         this._values = [];
     }
     /**
-     * Get an object from the map.
-     * @param key The name of the object to get.
-     * @return The object, or null if the object does not exist in the map.
+     * Get an value from the map.
+     * @param key The name of the value to get.
+     * @return The value, or null if the value does not exist in the map.
      */
     Map.prototype.get = function (key) {
         var index = this._keys.indexOf(key);
@@ -93,9 +93,9 @@ var Map = /** @class */ (function () {
         return null;
     };
     /**
-     * Add or update an object.
-     * @param key The name of the object to set.
-     * @param value The value to set for this object.
+     * Add or update an value.
+     * @param key The name of the value to set.
+     * @param value The value to set for this value.
      */
     Map.prototype.set = function (key, value) {
         var index = this._keys.indexOf(key);
@@ -108,9 +108,9 @@ var Map = /** @class */ (function () {
         }
     };
     /**
-     * Remove an object from the map.
-     * @param key The object's name to be removed from the map.
-     * @return True if the object was removed, false if the object was not found.
+     * Remove an value from the map.
+     * @param key The value's name to be removed from the map.
+     * @return True if the value was removed, false if the value was not found.
      */
     Map.prototype.remove = function (key) {
         var index = this._keys.indexOf(key);
@@ -122,7 +122,7 @@ var Map = /** @class */ (function () {
         return false;
     };
     /**
-     * Get an array containing all the objects of the map.
+     * Get an array containing all the values of the map.
      */
     Map.prototype.getAll = function () {
         return this._values.slice();
@@ -191,7 +191,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = __webpack_require__(0);
 /**
- * A scene contains all the game objects in a specific "word" of your game.<br>
+ * A scene contains all the game objects in a specific "screen" of your game.<br>
  * For example, you may have a "MainScreen" scene that will contain everything
  * that is in the main screen of your game.<br>
  * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
@@ -204,7 +204,7 @@ var Scene = /** @class */ (function (_super) {
         return _this;
     }
     /**
-     * Called the the scene is created.<br>
+     * Called when the scene is created.<br>
      * You can set your game objects (UI, characters, music, etc) from here.
      */
     Scene.prototype.create = function () {
@@ -311,8 +311,6 @@ var Time = /** @class */ (function () {
     Object.defineProperty(Time, "deltaTime", {
         /**
          * The time elapsed since the last frame, in milliseconds.<br>
-         * Useful for smooth animations that will run at the same speed regardless
-         * of the rendering speed.
          */
         get: function () {
             return this._deltaTime;
@@ -333,7 +331,7 @@ var Time = /** @class */ (function () {
     Object.defineProperty(Time, "second", {
         /**
          * The deltaTime in second. Useful for animations.<br>
-         * Let's say we want our gameObject.x property to move 10 pixels per second, we can do that:
+         * Let's say we want our gameObject.x property to move +10 pixels per second, we can do that:
          * gameObject.x += 10 * Time.second;
          */
         get: function () {
@@ -442,6 +440,36 @@ var Mouse = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(Mouse, "leftButtonUp", {
+        /**
+         * Whether the left button is up or not.
+         */
+        get: function () {
+            return !this._leftButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "middleButtonUp", {
+        /**
+         * Whether the middle button (wheel) is up or not.
+         */
+        get: function () {
+            return !this._middleButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Mouse, "rightButtonUp", {
+        /**
+         * Whether the right button is up or not.
+         */
+        get: function () {
+            return !this._rightButton;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(Mouse, "leftClick", {
         /**
          * Evaluate to true when a left click occurs.
@@ -543,8 +571,8 @@ var Mouse = /** @class */ (function () {
         canvas.addEventListener('mousemove', function (e) {
             _this._cursorX = e.clientX - canvas.offsetLeft;
             _this._cursorY = e.clientY - canvas.offsetTop;
-            _this._movementX = e.movementX;
-            _this._movementY = e.movementY;
+            _this._movementX += e.movementX;
+            _this._movementY += e.movementY;
         });
         canvas.addEventListener('mousedown', function (e) {
             e.preventDefault();
@@ -565,7 +593,7 @@ var Mouse = /** @class */ (function () {
                     break;
             }
             window.addEventListener('mouseup', function (e) {
-                if (!_this._leftButton || !_this._middleButton || !_this._rightButton)
+                if (!_this._leftButton && !_this._middleButton && !_this._rightButton)
                     return;
                 e.preventDefault();
                 switch (e.button) {
@@ -726,7 +754,7 @@ exports.Keyboard = Keyboard;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * This class represent the game's screen (canvas).<br>
+ * This class represents the game's screen (canvas).<br>
  * It makes it easy to access the width, height and offsets properties of the
  * game's screen from anywhere in your game.
  */
@@ -833,7 +861,9 @@ var Loader = /** @class */ (function () {
         }
     };
     /**
-     * Load an image file.
+     * Load an image file.<br>
+     * If the file can't be loaded, the game won't start and a message will
+     * be logged to the console.
      * @param fileName The name to save this file as in the loader.
      * @param filePath The path to the file to load.
      */
@@ -854,7 +884,9 @@ var Loader = /** @class */ (function () {
         image.src = filePath;
     };
     /**
-     * Load a video file.
+     * Load a video file.<br>
+     * If the file can't be loaded, the game won't start and a message will
+     * be logged to the console.
      * @param fileName The name to save this file as in the loader.
      * @param filePath The path to the file to load.
      */
@@ -875,7 +907,9 @@ var Loader = /** @class */ (function () {
         video.src = filePath;
     };
     /**
-     * Load an audio file.
+     * Load an audio file.<br>
+     * If the file can't be loaded, the game won't start and a message will
+     * be logged to the console.
      * @param fileName The name to save this file as in the loader.
      * @param filePath The path to the file to load.
      */
@@ -896,7 +930,9 @@ var Loader = /** @class */ (function () {
         audio.src = filePath;
     };
     /**
-     * Load a json file.
+     * Load a json file.<br>
+     * If the file can't be loaded, the game won't start and a message will
+     * be logged to the console.
      * @param fileName The name to save this file as in the loader.
      * @param filePath The path to the file to load.
      */
@@ -917,6 +953,30 @@ var Loader = /** @class */ (function () {
         });
         xhr.open('GET', filePath, true);
         xhr.send();
+    };
+    /**
+     * Get a file from the loader.<br>
+     * If the file was loaded on the fly, it may not be ready yet! You can
+     * check whether the file was loaded or not using the loaded() method.
+     * @param fileName The name of the file to get.
+     * @return The file, or null if the Loader does not contain the specified file.
+     */
+    Loader.get = function (fileName) {
+        if (this._images.get(fileName) !== null) {
+            return this.image(fileName);
+        }
+        else if (this._videos.get(fileName) !== null) {
+            return this.video(fileName);
+        }
+        else if (this._audios.get(fileName) !== null) {
+            return this.audio(fileName);
+        }
+        else if (this._json.get(fileName) !== null) {
+            return this.json(fileName);
+        }
+        else {
+            return null;
+        }
     };
     /**
      * Get an image that was loaded.<br>
@@ -993,9 +1053,9 @@ exports.Loader = Loader;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = __webpack_require__(0);
 /**
- * The State class is used to store data that can be accessed throughout you game.<br>
+ * The State class is used to store data that can be accessed throughout your game.<br>
  * For example, you can use it from a game object to update a state value, then
- * access this state value from the game update.<br>
+ * access this state value from the game's update method or from another game object.<br>
  * Think of it as a big container available from anywhere you import it.
  */
 var State = /** @class */ (function () {
@@ -1038,7 +1098,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * A Canvas' 2D rendering context that is not rendered.<br>
  * Useful to work with ImageData objects, TextMetrics, to create bitmap data and
- * anything else a 2D context allows you to do.
+ * anything else you can do with a 2D context.
  */
 var VirtualContext = /** @class */ (function () {
     function VirtualContext() {
@@ -1079,7 +1139,7 @@ var VirtualContext = /** @class */ (function () {
         return context.getImageData(0, 0, width, height);
     };
     /**
-     * Get the width of a text with a specific font.
+     * Get the width of a text with a specified font.
      * @param text The text to measure.
      * @param font The font to use.
      */

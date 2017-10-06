@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = require("./Map");
 /**
- * The State class is used to store data that can be accessed throughout you game.<br>
+ * The State class is used to store data that can be accessed throughout your game.<br>
  * For example, you can use it from a game object to update a state value, then
- * access this state value from the game update.<br>
+ * access this state value from the game's update method or from another game object.<br>
  * Think of it as a big container available from anywhere you import it.
  */
 var State = /** @class */ (function () {

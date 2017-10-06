@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * A collection with a non-indexed key.<br>
- * Useful to store a set of objects of the same type.
+ * Useful to store a set of values of the same type.
  */
 var Map = /** @class */ (function () {
     function Map() {
@@ -10,9 +10,9 @@ var Map = /** @class */ (function () {
         this._values = [];
     }
     /**
-     * Get an object from the map.
-     * @param key The name of the object to get.
-     * @return The object, or null if the object does not exist in the map.
+     * Get an value from the map.
+     * @param key The name of the value to get.
+     * @return The value, or null if the value does not exist in the map.
      */
     Map.prototype.get = function (key) {
         var index = this._keys.indexOf(key);
@@ -22,9 +22,9 @@ var Map = /** @class */ (function () {
         return null;
     };
     /**
-     * Add or update an object.
-     * @param key The name of the object to set.
-     * @param value The value to set for this object.
+     * Add or update an value.
+     * @param key The name of the value to set.
+     * @param value The value to set for this value.
      */
     Map.prototype.set = function (key, value) {
         var index = this._keys.indexOf(key);
@@ -37,9 +37,9 @@ var Map = /** @class */ (function () {
         }
     };
     /**
-     * Remove an object from the map.
-     * @param key The object's name to be removed from the map.
-     * @return True if the object was removed, false if the object was not found.
+     * Remove an value from the map.
+     * @param key The value's name to be removed from the map.
+     * @return True if the value was removed, false if the value was not found.
      */
     Map.prototype.remove = function (key) {
         var index = this._keys.indexOf(key);
@@ -51,7 +51,7 @@ var Map = /** @class */ (function () {
         return false;
     };
     /**
-     * Get an array containing all the objects of the map.
+     * Get an array containing all the values of the map.
      */
     Map.prototype.getAll = function () {
         return this._values.slice();

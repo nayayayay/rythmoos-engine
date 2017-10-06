@@ -118,7 +118,7 @@
 				<p>For this example, we&#39;ll use <a href="https://webpack.js.org/">Webpack</a> so we can easily bundle our classes
 				into one single file.</p>
 				<p>The first thing to do, as for any project, create a directory and add the dependencies we need:</p>
-				<p><code>mkdir my-awesome-game &amp;&amp; cd my-awesome-game</code></p>
+				<p><code>mkdir awesome-game &amp;&amp; cd awesome-game</code></p>
 				<p>Now we can initialise NPM and install our dependencies.
 					As I said earlier, we are going to use Webpack. We will also need to install the Rythmoos Engine and
 				we&#39;ll use express to serve our files:</p>
@@ -130,7 +130,7 @@
 				<p>The project structure will look like so:</p>
 				<pre><code>* public/ (static files here)
   -<span class="ruby"> index.html
-</span>  -<span class="ruby"> my-awesome-game.js (our game)
+</span>  -<span class="ruby"> awesome-game.js (our game)
 </span>  -<span class="ruby"> style.css
 </span>* src/ (the source files of our game)
   -<span class="ruby"> index.js (our main game <span class="hljs-class"><span class="hljs-keyword">class</span>, <span class="hljs-title">we</span>'<span class="hljs-title">ll</span> <span class="hljs-title">add</span> <span class="hljs-title">other</span> <span class="hljs-title">files</span>)</span>
@@ -145,11 +145,11 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My Awesome Game<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Awesome Game<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"style.css"</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"my-awesome-game.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"awesome-game.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
@@ -191,7 +191,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
   <span class="hljs-comment">// The output file</span>
   output: {
     <span class="hljs-attr">path</span>: path.join(__dirname, <span class="hljs-string">'public'</span>),
-    <span class="hljs-attr">filename</span>: <span class="hljs-string">'my-awesome-game.js'</span>
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">'awesome-game.js'</span>
   },
 
   <span class="hljs-comment">// Source maps for ez debugging</span>
@@ -215,7 +215,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 				<p><em>src/index.js</em></p>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Game} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
 }
 </code></pre>
 				<p>To start our game, we simply need to instantiate it. Let&#39;s add this bit of code below
@@ -224,7 +224,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
   <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
-  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+  <span class="hljs-keyword">new</span> AwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
 }
 </code></pre>
 				<p>If you reload your page (<a href="http://localhost:3000">http://localhost:3000</a>) you should see a black screen...hm, that means
@@ -340,7 +340,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 
 }
 </code></pre>
-				<h2 id="the-mouse-class">The Mouse class</h2>
+				<h2 id="time">Time</h2>
 				<p>Alright, let&#39;s actually code our FPS counter! But wait, how do we access the FPS value?
 				Well, all we need is the Time class, so let&#39;s import it:</p>
 				<p><em>src/FPSCounter.js</em></p>
@@ -387,7 +387,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 <span class="hljs-comment">// Import our scene</span>
 <span class="hljs-keyword">import</span> MainScene <span class="hljs-keyword">from</span> <span class="hljs-string">'./MainScene'</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
 
   <span class="hljs-comment">// We can set the scene in our create method</span>
   create() {
@@ -402,7 +402,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
   <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
-  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+  <span class="hljs-keyword">new</span> AwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
 }
 </code></pre>
 				<p>Alright! We created a game, created a scene, created a game object.</p>
@@ -461,7 +461,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">GameObject</span> </span>{
 }
 </code></pre>
-				<h2 id="the-screen-class">The Screen class</h2>
+				<h2 id="inputs">Inputs</h2>
 				<p>We&#39;ll need to create some properties, this is what I suggest for our circle:</p>
 				<ul>
 					<li>an x and a y coordinate</li>
@@ -552,7 +552,7 @@ app.listen(<span class="hljs-number">3000</span>, () =&gt; {
 </code></pre>
 				<p>We are adding it before the FPS Counter before we want the circle to appear behind the counter.
 				The game objects are rendered in the order they are added to the scene.</p>
-				<h2 id="the-state-class">The State class</h2>
+				<h2 id="states">States</h2>
 				<p>Now we want to save the score, but where do we save it? We could save it in a property of our Circle
 					game object. But how can we use this value from the Score game object (that we&#39;ll create soon) in order
 				to display it to the screen?</p>
@@ -718,14 +718,14 @@ State.set(<span class="hljs-string">'my value'</span>, <span class="hljs-number"
 				<p><img src="https://chibifr.github.io/rythmoos-engine/media/not-an-example/04.png" alt="Game screen 4"></p>
 				<p><img src="https://chibifr.github.io/rythmoos-engine/media/not-an-example/05.png" alt="Game screen 5"></p>
 				<hr>
-				<h2 id="source-code">Source code</h2>
+				<h2 id="final-code">Final code</h2>
 				<p>Here is all the source code of our game:</p>
 				<p><em>src/index.js</em></p>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Game} <span class="hljs-keyword">from</span> <span class="hljs-string">'rythmoos-engine'</span>;
 <span class="hljs-comment">// Import our scene</span>
 <span class="hljs-keyword">import</span> MainScene <span class="hljs-keyword">from</span> <span class="hljs-string">'./MainScene'</span>;
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AwesomeGame</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Game</span> </span>{
 
   <span class="hljs-comment">// We can set the scene in our create method</span>
   create() {
@@ -740,7 +740,7 @@ State.set(<span class="hljs-string">'my value'</span>, <span class="hljs-number"
 <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
   <span class="hljs-comment">// A game instance needs a width, height and a container.</span>
   <span class="hljs-comment">// Let's give it the window's width and height, and the body as container.</span>
-  <span class="hljs-keyword">new</span> MyAwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
+  <span class="hljs-keyword">new</span> AwesomeGame(<span class="hljs-built_in">window</span>.innerWidth, <span class="hljs-built_in">window</span>.innerHeight, <span class="hljs-built_in">document</span>.body);
 }
 </code></pre>
 				<p><em>src/MainScene.js</em></p>
@@ -903,7 +903,9 @@ State.set(<span class="hljs-string">'my value'</span>, <span class="hljs-number"
 				<p>You could now add a main menu as a new scene that will be the start-up scene of your game.
 				Why not also check out the Keyboard class to add some gameplay to it?</p>
 				<p>You could also load sprites instead of drawing a circle, add music etc...
-				You can take a loot at the examples section and examples directory to see some more examples. ;o</p>
+				You can take a look at the examples section and examples directory to see some more examples. ;o</p>
+				<hr>
+				<h1 id="-3-">&lt;3.</h1>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
