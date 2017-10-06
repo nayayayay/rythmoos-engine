@@ -32,7 +32,9 @@ export abstract class Loader {
   }
 
   /**
-   * Load an image file.
+   * Load an image file.<br>
+   * If the file can't be loaded, the game won't start and a message will
+   * be logged to the console.
    * @param fileName The name to save this file as in the loader.
    * @param filePath The path to the file to load.
    */
@@ -58,7 +60,9 @@ export abstract class Loader {
   }
 
   /**
-   * Load a video file.
+   * Load a video file.<br>
+   * If the file can't be loaded, the game won't start and a message will
+   * be logged to the console.
    * @param fileName The name to save this file as in the loader.
    * @param filePath The path to the file to load.
    */
@@ -84,7 +88,9 @@ export abstract class Loader {
   }
 
   /**
-   * Load an audio file.
+   * Load an audio file.<br>
+   * If the file can't be loaded, the game won't start and a message will
+   * be logged to the console.
    * @param fileName The name to save this file as in the loader.
    * @param filePath The path to the file to load.
    */
@@ -110,7 +116,9 @@ export abstract class Loader {
   }
 
   /**
-   * Load a json file.
+   * Load a json file.<br>
+   * If the file can't be loaded, the game won't start and a message will
+   * be logged to the console.
    * @param fileName The name to save this file as in the loader.
    * @param filePath The path to the file to load.
    */
@@ -135,6 +143,27 @@ export abstract class Loader {
 
     xhr.open('GET', filePath, true);
     xhr.send();
+  }
+
+  /**
+   * Get a file from the loader.<br>
+   * If the file was loaded on the fly, it may not be ready yet! You can
+   * check whether the file was loaded or not using the loaded() method.
+   * @param fileName The name of the file to get.
+   * @return The file, or null if the Loader does not contain the specified file.
+   */
+  public static get(fileName: string): HTMLImageElement|HTMLAudioElement|HTMLVideoElement|object|null {
+    if (this._images.get(fileName) !== null) {
+      return this.image(fileName);
+    } else if (this._videos.get(fileName) !== null) {
+      return this.video(fileName);
+    } else if (this._audios.get(fileName) !== null) {
+      return this.audio(fileName);
+    } else if (this._json.get(fileName) !== null) {
+      return this.json(fileName);
+    } else {
+      return null;
+    }
   }
 
   /**
