@@ -67,6 +67,27 @@ export abstract class Mouse {
   }
 
   /**
+   * Whether the left button is up or not.
+   */
+  public static get leftButtonUp(): boolean {
+    return !this._leftButton;
+  }
+
+  /**
+   * Whether the middle button (wheel) is up or not.
+   */
+  public static get middleButtonUp(): boolean {
+    return !this._middleButton;
+  }
+
+  /**
+   * Whether the right button is up or not.
+   */
+  public static get rightButtonUp(): boolean {
+    return !this._rightButton;
+  }
+
+  /**
    * Evaluate to true when a left click occurs.
    */
   public static get leftClick(): boolean {
@@ -139,8 +160,8 @@ export abstract class Mouse {
     canvas.addEventListener('mousemove', e => {
       this._cursorX = e.clientX - canvas.offsetLeft;
       this._cursorY = e.clientY - canvas.offsetTop;
-      this._movementX = e.movementX;
-      this._movementY = e.movementY;
+      this._movementX += e.movementX;
+      this._movementY += e.movementY;
     });
 
     canvas.addEventListener('mousedown', e => {
