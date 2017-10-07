@@ -1,4 +1,4 @@
-v1.2.0:
+v1.2.1:
   * You can now set the game's framerate. The game class uses its own loop making it able to
     choose between the animation frame (safer, 60fps), or the interval timing system (less
     accurate but more choices).
