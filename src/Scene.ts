@@ -1,8 +1,8 @@
 import {IUpdatable} from './IUpdatable';
 import {IRenderable} from './IRenderable';
-import {IRunnable} from './IRunnable';
 import {Map} from './Map';
 import {GameObject} from './GameObject';
+import {Game} from './Game';
 
 /**
  * A scene contains all the game objects in a specific "screen" of your game.<br>
@@ -10,10 +10,13 @@ import {GameObject} from './GameObject';
  * that is in the main screen of your game.<br>
  * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
  */
-export class Scene extends Map<GameObject> implements IUpdatable, IRunnable {
-  constructor() {
-    super();
+export class Scene implements IUpdatable {
+  /** A reference to your main Game instance. */
+  public game: Game;
+  private _gameObjects: Map<GameObject>;
 
+  constructor() {
+    this._gameObjects = new Map<GameObject>();
     this.create();
   }
 
@@ -33,25 +36,36 @@ export class Scene extends Map<GameObject> implements IUpdatable, IRunnable {
   }
 
   /**
-   * Used internally to update the scene and its game objects.
+   * Get a game object from the scene.
+   * @param gameObjectName The game object to get.
+   * @return The requested game object, or null if it does not exist in the scene.
    */
-  public _runUpdate() {
-    this.update();
-
-    for (const gameObject of this.getAll()) {
-      gameObject.update();
-    }
+  public get(gameObjectName: string): GameObject|null {
+    return this._gameObjects.get(gameObjectName);
   }
 
   /**
-   * Used internally by the renderer to render the scene.
-   * @param context The renderer's context, automatically passed in.
+   * Set a game object.
+   * @param gameObjectName The name of the game object to set.
+   * @param gameObject The game object.
    */
-  public _runRender(context: CanvasRenderingContext2D): void {
-    for (const gameObject of this.getAll()) {
-      context.save();
-      gameObject.render(context);
-      context.restore();
-    }
+  public set(gameObjectName: string, gameObject: GameObject): void {
+    gameObject.scene = this;
+    this._gameObjects.set(gameObjectName, gameObject);
+  }
+
+  /**
+   * Remove a game object.
+   * @param gameObjectName The name of the game object to remove.
+   */
+  public remove(gameObjectName: string): boolean {
+    return this._gameObjects.remove(gameObjectName);
+  }
+
+  /**
+   * Get all the game objects of this scene as an array.
+   */
+  public getAll(): GameObject[] {
+    return this._gameObjects.getAll();
   }
 }
