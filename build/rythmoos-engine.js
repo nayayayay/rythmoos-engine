@@ -1397,9 +1397,13 @@ var Game = /** @class */ (function () {
         var _this = this;
         // Request update if needed
         if (this._loopEngine === 0) {
-            this._frameID = requestAnimationFrame(function () {
+            this._frameID = requestAnimationFrame(function (frame) {
+                Time_1.Time._setFrame(frame);
                 _this._loop();
             });
+        }
+        else {
+            Time_1.Time._setFrame(this._getNewTime());
         }
         // Update time
         Time_1.Time._setFrame(this._getNewTime());
@@ -1417,7 +1421,7 @@ var Game = /** @class */ (function () {
         Keyboard_1.Keyboard._update();
     };
     Game.prototype._getNewTime = function () {
-        return this._startTime - this._now();
+        return this._now() - this._startTime;
     };
     return Game;
 }());

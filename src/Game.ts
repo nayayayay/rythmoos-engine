@@ -210,9 +210,12 @@ export class Game implements IUpdatable {
   private _loop(): void {
     // Request update if needed
     if (this._loopEngine === 0) {
-      this._frameID = requestAnimationFrame(() => {
+      this._frameID = requestAnimationFrame((frame) => {
+        Time._setFrame(frame);
         this._loop();
-      })
+      });
+    } else {
+      Time._setFrame(this._getNewTime());
     }
     
     // Update time
@@ -235,6 +238,6 @@ export class Game implements IUpdatable {
   }
 
   private _getNewTime(): number {
-    return this._startTime - this._now();
+    return this._now() - this._startTime;
   }
 }
