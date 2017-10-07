@@ -217,9 +217,6 @@ export class Game implements IUpdatable {
     } else {
       Time._setFrame(this._getNewTime());
     }
-    
-    // Update time
-    Time._setFrame(this._getNewTime());
 
     // Update game, scene, game objects
     this.update();

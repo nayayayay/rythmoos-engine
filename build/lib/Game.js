@@ -220,8 +220,6 @@ var Game = /** @class */ (function () {
         else {
             Time_1.Time._setFrame(this._getNewTime());
         }
-        // Update time
-        Time_1.Time._setFrame(this._getNewTime());
         // Update game, scene, game objects
         this.update();
         this._scene.update();
