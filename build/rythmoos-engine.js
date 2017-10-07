@@ -1417,7 +1417,7 @@ var Game = /** @class */ (function () {
         Keyboard_1.Keyboard._update();
     };
     Game.prototype._getNewTime = function () {
-        return this._now() - this._startTime;
+        return this._startTime - this._now();
     };
     return Game;
 }());

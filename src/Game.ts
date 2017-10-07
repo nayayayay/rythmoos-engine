@@ -214,7 +214,7 @@ export class Game implements IUpdatable {
         this._loop();
       })
     }
-
+    
     // Update time
     Time._setFrame(this._getNewTime());
 
@@ -235,6 +235,6 @@ export class Game implements IUpdatable {
   }
 
   private _getNewTime(): number {
-    return this._now() - this._startTime;
+    return this._startTime - this._now();
   }
 }
