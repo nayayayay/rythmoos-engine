@@ -22,4 +22,19 @@ export declare abstract class State {
      * @return The value of the state, null if the state was not set.
      */
     static get(key: string): any;
+    /**
+     * Increment a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    static inc(key: string): void;
+    /**
+     * Decrement a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    static dec(key: string): void;
+    /**
+     * Reverse a state value. If the state is not a boolean, nothing happens.
+     * @param key The key of a boolean state.
+     */
+    static reverse(key: string): void;
 }

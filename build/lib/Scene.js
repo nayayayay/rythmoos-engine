@@ -1,14 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = require("./Map");
 /**
@@ -17,12 +7,10 @@ var Map_1 = require("./Map");
  * that is in the main screen of your game.<br>
  * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
  */
-var Scene = /** @class */ (function (_super) {
-    __extends(Scene, _super);
+var Scene = /** @class */ (function () {
     function Scene() {
-        var _this = _super.call(this) || this;
-        _this.create();
-        return _this;
+        this._gameObjects = new Map_1.Map();
+        this.create();
     }
     /**
      * Called when the scene is created.<br>
@@ -38,28 +26,36 @@ var Scene = /** @class */ (function (_super) {
     Scene.prototype.update = function () {
     };
     /**
-     * Used internally to update the scene and its game objects.
+     * Get a game object from the scene.
+     * @param gameObjectName The game object to get.
+     * @return The requested game object, or null if it does not exist in the scene.
      */
-    Scene.prototype._runUpdate = function () {
-        this.update();
-        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
-            var gameObject = _a[_i];
-            gameObject.update();
-        }
+    Scene.prototype.get = function (gameObjectName) {
+        return this._gameObjects.get(gameObjectName);
     };
     /**
-     * Used internally by the renderer to render the scene.
-     * @param context The renderer's context, automatically passed in.
+     * Set a game object.
+     * @param gameObjectName The name of the game object to set.
+     * @param gameObject The game object.
      */
-    Scene.prototype._runRender = function (context) {
-        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
-            var gameObject = _a[_i];
-            context.save();
-            gameObject.render(context);
-            context.restore();
-        }
+    Scene.prototype.set = function (gameObjectName, gameObject) {
+        gameObject.scene = this;
+        this._gameObjects.set(gameObjectName, gameObject);
+    };
+    /**
+     * Remove a game object.
+     * @param gameObjectName The name of the game object to remove.
+     */
+    Scene.prototype.remove = function (gameObjectName) {
+        return this._gameObjects.remove(gameObjectName);
+    };
+    /**
+     * Get all the game objects of this scene as an array.
+     */
+    Scene.prototype.getAll = function () {
+        return this._gameObjects.getAll();
     };
     return Scene;
-}(Map_1.Map));
+}());
 exports.Scene = Scene;
 //# sourceMappingURL=Scene.js.map

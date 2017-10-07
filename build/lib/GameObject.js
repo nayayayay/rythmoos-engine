@@ -8,6 +8,16 @@ var GameObject = /** @class */ (function () {
     function GameObject() {
         this.create();
     }
+    Object.defineProperty(GameObject.prototype, "game", {
+        /**
+         * A reference to your main Game instance.
+         */
+        get: function () {
+            return this.scene.game;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * Called when the game object is created.<br>
      * You can set the game object's properties in here, use the loader
