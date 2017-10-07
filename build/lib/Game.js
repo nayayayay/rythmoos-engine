@@ -31,10 +31,21 @@ var Game = /** @class */ (function () {
         this._startTime = 0;
         this._loopEngine = 0;
         if (window.performance !== undefined) {
-            this._now = performance.now || Date.now;
+            if (performance.now !== undefined) {
+                this._now = function () {
+                    return performance.now();
+                };
+            }
+            else {
+                this._now = function () {
+                    return Date.now();
+                };
+            }
         }
         else {
-            this._now = Date.now;
+            this._now = function () {
+                return Date.now();
+            };
         }
         this._canvas.width = width;
         this._canvas.height = height;

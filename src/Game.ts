@@ -43,9 +43,19 @@ export class Game implements IUpdatable {
     this._loopEngine = 0;
     
     if (window.performance !== undefined) {
-      this._now = performance.now || Date.now;
+      if (performance.now !== undefined) {
+        this._now = () => {
+          return performance.now();
+        }
+      } else {
+        this._now = () => {
+          return Date.now();
+        }
+      }
     } else {
-      this._now = Date.now;
+      this._now = () => {
+        return Date.now();
+      }
     }
 
     this._canvas.width = width;
