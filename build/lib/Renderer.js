@@ -13,6 +13,16 @@ var Renderer = /** @class */ (function () {
         this.backgroundColour = '#000000';
         this._context = context;
     }
+    Object.defineProperty(Renderer.prototype, "context", {
+        /**
+         * The renderer's context.
+         */
+        get: function () {
+            return this._context;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * Set properties to apply to the context everytime the render method is called.<br>
      * It could for example be used to apply a default fillStyle or a global composite

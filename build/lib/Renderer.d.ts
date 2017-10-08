@@ -13,6 +13,10 @@ export declare class Renderer {
      */
     constructor(context: CanvasRenderingContext2D);
     /**
+     * The renderer's context.
+     */
+    readonly context: CanvasRenderingContext2D;
+    /**
      * Set properties to apply to the context everytime the render method is called.<br>
      * It could for example be used to apply a default fillStyle or a global composite
      * operation to all your game objects.

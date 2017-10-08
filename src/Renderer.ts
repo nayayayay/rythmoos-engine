@@ -19,6 +19,13 @@ export class Renderer {
   }
 
   /**
+   * The renderer's context.
+   */
+  public get context(): CanvasRenderingContext2D {
+    return this._context;
+  }
+
+  /**
    * Set properties to apply to the context everytime the render method is called.<br>
    * It could for example be used to apply a default fillStyle or a global composite
    * operation to all your game objects.
