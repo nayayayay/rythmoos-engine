@@ -35,7 +35,7 @@ export abstract class Time {
    * gameObject.x += 10 * Time.second;
    */
   public static get second(): number {
-    return 1 / this._deltaTime;
+    return this._deltaTime / 1000;
   }
 
   /**

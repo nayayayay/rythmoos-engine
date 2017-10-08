@@ -42,7 +42,7 @@ var Time = /** @class */ (function () {
          * gameObject.x += 10 * Time.second;
          */
         get: function () {
-            return 1 / this._deltaTime;
+            return this._deltaTime / 1000;
         },
         enumerable: true,
         configurable: true
