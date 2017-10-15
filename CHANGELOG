@@ -1,3 +1,19 @@
+v1.2.1:
+  * You can now set the game's framerate. The game class uses its own loop making it able to
+    choose between the animation frame (safer, 60fps), or the interval timing system (less
+    accurate but more choices).
+  * Added a reference to the game instance to all scenes and game objects, and a reference
+    to the parent scene to all game objects.
+  * The Renderer now contains an overridable method contextSettings() that allows you to specify
+    the default properties of the renderer's context.
+  * The Scene class does not extend the class Map anymore.
+  * Added some helper functions to the State class (increment, decrement, reverse booleans...).
+  * Fixed the Keyboard's lastKey properties which was a function but is now a getter.
+  * [TODO]: Add a generic load() method to the Loader, add a way to load binary files as buffers.
+  * [TODO]: Add a way to preload() assets (json for example), before loading the other assets. Making
+            it easy to load JSON datas (that could contain all sprites URL for example), and then load
+            the sprites from this, before the game starts.
+
 v1.1.1:
   * Fixed the Mouse button up and movement properties. Add buttonUp properties.
   * Add a get() method to the Loader to make assets easier to get with one method.

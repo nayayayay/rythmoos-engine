@@ -8,7 +8,6 @@ __export(require("./GameObject"));
 __export(require("./Keyboard"));
 __export(require("./Keys"));
 __export(require("./Loader"));
-__export(require("./Loop"));
 __export(require("./Map"));
 __export(require("./Mouse"));
 __export(require("./Renderer"));

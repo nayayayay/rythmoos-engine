@@ -21,16 +21,19 @@ var Keyboard = /** @class */ (function () {
     Keyboard.keyPressed = function (key) {
         return this._pressed.indexOf(key) !== -1;
     };
-    /**
-     * Get the last key that was pressed.<br>
-     * Can for example be used in a settings menu when asking the user the desired
-     * key-binding.<br>
-     * The value is reset to null or to the new last key each frame.
-     * @return The last key pressed, or null if no key was previously pressed.
-     */
-    Keyboard.lastKey = function () {
-        return this._lastKey;
-    };
+    Object.defineProperty(Keyboard, "lastKey", {
+        /**
+         * Tast key that was pressed.<br>
+         * Can for example be used in a settings menu when asking the user the desired
+         * key-binding.<br>
+         * The value is reset to null or to the new last key each frame.
+         */
+        get: function () {
+            return this._lastKey;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * Used internally to initialise the keyboard input.
      */

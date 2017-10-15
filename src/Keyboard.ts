@@ -28,13 +28,12 @@ export abstract class Keyboard {
   }
 
   /**
-   * Get the last key that was pressed.<br>
+   * Tast key that was pressed.<br>
    * Can for example be used in a settings menu when asking the user the desired
    * key-binding.<br>
    * The value is reset to null or to the new last key each frame.
-   * @return The last key pressed, or null if no key was previously pressed.
    */
-  public static lastKey(): Keys|null {
+  public static get lastKey(): Keys|null {
     return this._lastKey;
   }
 

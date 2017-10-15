@@ -93,8 +93,21 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="renderer.html#backgroundcolour" class="tsd-kind-icon">background<wbr>Colour</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="renderer.html#context" class="tsd-kind-icon">context</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="renderer.html#contextproperties" class="tsd-kind-icon">context<wbr>Properties</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="renderer.html#render" class="tsd-kind-icon">render</a></li>
 							</ul>
 						</section>
@@ -113,7 +126,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Renderer.ts#L8">Renderer.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/37eca57/src/Renderer.ts#L10">Renderer.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -138,7 +151,83 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="backgroundcolour" class="tsd-anchor"></a>
+					<h3>background<wbr>Colour</h3>
+					<div class="tsd-signature tsd-kind-icon">background<wbr>Colour<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/37eca57/src/Renderer.ts#L9">Renderer.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The game&#39;s background colour. Defaults to black (#000000).</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="context" class="tsd-anchor"></a>
+					<h3>context</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> context<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/37eca57/src/Renderer.ts#L24">Renderer.ts:24</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The renderer&#39;s context.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">CanvasRenderingContext2D</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="contextproperties" class="tsd-anchor"></a>
+					<h3>context<wbr>Properties</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">context<wbr>Properties<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CanvasRenderingContext2D</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/37eca57/src/Renderer.ts#L34">Renderer.ts:34</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set properties to apply to the context everytime the render method is called.<br>
+										It could for example be used to apply a default fillStyle or a global composite
+									operation to all your game objects.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <span class="tsd-signature-type">CanvasRenderingContext2D</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The renderer&#39;s context, automatically passed in.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="render" class="tsd-anchor"></a>
 					<h3>render</h3>
@@ -149,7 +238,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/d119b58/src/Renderer.ts#L22">Renderer.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/ChibiFR/rythmoos-engine/blob/37eca57/src/Renderer.ts#L41">Renderer.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -197,9 +286,6 @@
 					<li class=" tsd-kind-class">
 						<a href="loader.html" class="tsd-kind-icon">Loader</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="loop.html" class="tsd-kind-icon">Loop</a>
-					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="map.html" class="tsd-kind-icon">Map</a>
 					</li>
@@ -213,6 +299,15 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="renderer.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="renderer.html#backgroundcolour" class="tsd-kind-icon">background<wbr>Colour</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="renderer.html#context" class="tsd-kind-icon">context</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="renderer.html#contextproperties" class="tsd-kind-icon">context<wbr>Properties</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="renderer.html#render" class="tsd-kind-icon">render</a>
@@ -238,9 +333,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/irenderable.html" class="tsd-kind-icon">IRenderable</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/irunnable.html" class="tsd-kind-icon">IRunnable</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iupdatable.html" class="tsd-kind-icon">IUpdatable</a>

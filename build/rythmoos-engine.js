@@ -61,7 +61,7 @@ var RythmoosEngine =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -156,16 +156,41 @@ var Renderer = /** @class */ (function () {
      * @param context The context of the canvas to render to.
      */
     function Renderer(context) {
+        this.backgroundColour = '#000000';
         this._context = context;
     }
+    Object.defineProperty(Renderer.prototype, "context", {
+        /**
+         * The renderer's context.
+         */
+        get: function () {
+            return this._context;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Set properties to apply to the context everytime the render method is called.<br>
+     * It could for example be used to apply a default fillStyle or a global composite
+     * operation to all your game objects.
+     * @param context The renderer's context, automatically passed in.
+     */
+    Renderer.prototype.contextProperties = function (context) {
+    };
     /**
      * Render a scene to the canvas.
      * @param scene The scene to render.
      */
     Renderer.prototype.render = function (scene) {
-        this._context.fillStyle = '#000000';
+        this._context.fillStyle = this.backgroundColour;
         this._context.fillRect(0, 0, this._context.canvas.width, this._context.canvas.height);
-        scene._runRender(this._context);
+        this.contextProperties(this._context);
+        for (var _i = 0, _a = scene.getAll(); _i < _a.length; _i++) {
+            var gameObject = _a[_i];
+            this._context.save();
+            gameObject.render(this._context);
+            this._context.restore();
+        }
     };
     return Renderer;
 }());
@@ -178,16 +203,6 @@ exports.Renderer = Renderer;
 
 "use strict";
 
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Map_1 = __webpack_require__(0);
 /**
@@ -196,12 +211,10 @@ var Map_1 = __webpack_require__(0);
  * that is in the main screen of your game.<br>
  * You could then have a "Level1" scene that will contain the level 1 of you game. etc.
  */
-var Scene = /** @class */ (function (_super) {
-    __extends(Scene, _super);
+var Scene = /** @class */ (function () {
     function Scene() {
-        var _this = _super.call(this) || this;
-        _this.create();
-        return _this;
+        this._gameObjects = new Map_1.Map();
+        this.create();
     }
     /**
      * Called when the scene is created.<br>
@@ -217,148 +230,42 @@ var Scene = /** @class */ (function (_super) {
     Scene.prototype.update = function () {
     };
     /**
-     * Used internally to update the scene and its game objects.
+     * Get a game object from the scene.
+     * @param gameObjectName The game object to get.
+     * @return The requested game object, or null if it does not exist in the scene.
      */
-    Scene.prototype._runUpdate = function () {
-        this.update();
-        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
-            var gameObject = _a[_i];
-            gameObject.update();
-        }
+    Scene.prototype.get = function (gameObjectName) {
+        return this._gameObjects.get(gameObjectName);
     };
     /**
-     * Used internally by the renderer to render the scene.
-     * @param context The renderer's context, automatically passed in.
+     * Set a game object.
+     * @param gameObjectName The name of the game object to set.
+     * @param gameObject The game object.
      */
-    Scene.prototype._runRender = function (context) {
-        for (var _i = 0, _a = this.getAll(); _i < _a.length; _i++) {
-            var gameObject = _a[_i];
-            context.save();
-            gameObject.render(context);
-            context.restore();
-        }
+    Scene.prototype.set = function (gameObjectName, gameObject) {
+        gameObject.scene = this;
+        this._gameObjects.set(gameObjectName, gameObject);
+    };
+    /**
+     * Remove a game object.
+     * @param gameObjectName The name of the game object to remove.
+     */
+    Scene.prototype.remove = function (gameObjectName) {
+        return this._gameObjects.remove(gameObjectName);
+    };
+    /**
+     * Get all the game objects of this scene as an array.
+     */
+    Scene.prototype.getAll = function () {
+        return this._gameObjects.getAll();
     };
     return Scene;
-}(Map_1.Map));
+}());
 exports.Scene = Scene;
 
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var Time_1 = __webpack_require__(4);
-/**
- * Used internally to run the game.
- */
-var Loop = /** @class */ (function () {
-    function Loop() {
-    }
-    Loop.start = function (callback) {
-        var _this = this;
-        if (this._animationFrame === 0) {
-            this._callback = callback;
-            this._animationFrame = window.requestAnimationFrame(function (frame) {
-                _this._update(frame);
-            });
-        }
-    };
-    Loop.stop = function () {
-        if (this._animationFrame !== 0) {
-            window.cancelAnimationFrame(this._animationFrame);
-            this._animationFrame = 0;
-        }
-    };
-    Loop._update = function (frame) {
-        var _this = this;
-        this._animationFrame = window.requestAnimationFrame(function (frame) {
-            _this._update(frame);
-        });
-        Time_1.Time._setFrame(frame);
-        this._callback();
-    };
-    Loop._animationFrame = 0;
-    return Loop;
-}());
-exports.Loop = Loop;
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Store time values and make them easy to access from anywhere
- * in your game just by importing this static class.
- */
-var Time = /** @class */ (function () {
-    function Time() {
-    }
-    /**
-     * Used internally to update the time data.
-     * @param frame The total time elapsed in milliseconds, passed in by the browser.
-     */
-    Time._setFrame = function (frame) {
-        this._deltaTime = frame - this._time;
-        this._time = frame;
-    };
-    Object.defineProperty(Time, "deltaTime", {
-        /**
-         * The time elapsed since the last frame, in milliseconds.<br>
-         */
-        get: function () {
-            return this._deltaTime;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Time, "time", {
-        /**
-         * The time elapsed since the game has started being rendered, in milliseconds.
-         */
-        get: function () {
-            return this._time;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Time, "second", {
-        /**
-         * The deltaTime in second. Useful for animations.<br>
-         * Let's say we want our gameObject.x property to move +10 pixels per second, we can do that:
-         * gameObject.x += 10 * Time.second;
-         */
-        get: function () {
-            return 1 / this._deltaTime;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Time, "FPS", {
-        /**
-         * The average amount of frames per second based on the current deltaTime.
-         */
-        get: function () {
-            return 1000 / this._deltaTime;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Time._deltaTime = 0;
-    Time._time = 0;
-    return Time;
-}());
-exports.Time = Time;
-
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -671,7 +578,7 @@ exports.Mouse = Mouse;
 
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -698,16 +605,19 @@ var Keyboard = /** @class */ (function () {
     Keyboard.keyPressed = function (key) {
         return this._pressed.indexOf(key) !== -1;
     };
-    /**
-     * Get the last key that was pressed.<br>
-     * Can for example be used in a settings menu when asking the user the desired
-     * key-binding.<br>
-     * The value is reset to null or to the new last key each frame.
-     * @return The last key pressed, or null if no key was previously pressed.
-     */
-    Keyboard.lastKey = function () {
-        return this._lastKey;
-    };
+    Object.defineProperty(Keyboard, "lastKey", {
+        /**
+         * Tast key that was pressed.<br>
+         * Can for example be used in a settings menu when asking the user the desired
+         * key-binding.<br>
+         * The value is reset to null or to the new last key each frame.
+         */
+        get: function () {
+            return this._lastKey;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * Used internally to initialise the keyboard input.
      */
@@ -747,7 +657,7 @@ exports.Keyboard = Keyboard;
 
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -834,7 +744,7 @@ exports.Screen = Screen;
 
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1045,7 +955,7 @@ exports.Loader = Loader;
 
 
 /***/ }),
-/* 9 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1083,13 +993,111 @@ var State = /** @class */ (function () {
     State.get = function (key) {
         return this._states.get(key);
     };
+    /**
+     * Increment a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    State.inc = function (key) {
+        if (typeof this._states.get(key) === 'number') {
+            this._states.set(key, this._states.get(key) + 1);
+        }
+    };
+    /**
+     * Decrement a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    State.dec = function (key) {
+        if (typeof this._states.get(key) === 'number') {
+            this._states.set(key, this._states.get(key) - 1);
+        }
+    };
+    /**
+     * Reverse a state value. If the state is not a boolean, nothing happens.
+     * @param key The key of a boolean state.
+     */
+    State.reverse = function (key) {
+        if (typeof this._states.get(key) === 'boolean') {
+            this._states.set(key, !this._states.get(key));
+        }
+    };
     return State;
 }());
 exports.State = State;
 
 
 /***/ }),
-/* 10 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Store time values and make them easy to access from anywhere
+ * in your game just by importing this static class.
+ */
+var Time = /** @class */ (function () {
+    function Time() {
+    }
+    /**
+     * Used internally to update the time data.
+     * @param frame The total time elapsed in milliseconds, passed in by the browser.
+     */
+    Time._setFrame = function (frame) {
+        this._deltaTime = frame - this._time;
+        this._time = frame;
+    };
+    Object.defineProperty(Time, "deltaTime", {
+        /**
+         * The time elapsed since the last frame, in milliseconds.<br>
+         */
+        get: function () {
+            return this._deltaTime;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Time, "time", {
+        /**
+         * The time elapsed since the game has started being rendered, in milliseconds.
+         */
+        get: function () {
+            return this._time;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Time, "second", {
+        /**
+         * The deltaTime in second. Useful for animations.<br>
+         * Let's say we want our gameObject.x property to move +10 pixels per second, we can do that:
+         * gameObject.x += 10 * Time.second;
+         */
+        get: function () {
+            return this._deltaTime / 1000;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Time, "FPS", {
+        /**
+         * The average amount of frames per second based on the current deltaTime.
+         */
+        get: function () {
+            return 1000 / this._deltaTime;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Time._deltaTime = 0;
+    Time._time = 0;
+    return Time;
+}());
+exports.Time = Time;
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1156,7 +1164,7 @@ exports.VirtualContext = VirtualContext;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1165,24 +1173,23 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(11));
 __export(__webpack_require__(12));
+__export(__webpack_require__(4));
 __export(__webpack_require__(13));
 __export(__webpack_require__(6));
-__export(__webpack_require__(14));
-__export(__webpack_require__(8));
-__export(__webpack_require__(3));
 __export(__webpack_require__(0));
-__export(__webpack_require__(5));
+__export(__webpack_require__(3));
 __export(__webpack_require__(1));
 __export(__webpack_require__(2));
+__export(__webpack_require__(5));
 __export(__webpack_require__(7));
+__export(__webpack_require__(8));
 __export(__webpack_require__(9));
-__export(__webpack_require__(4));
-__export(__webpack_require__(10));
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1190,13 +1197,13 @@ __export(__webpack_require__(10));
 Object.defineProperty(exports, "__esModule", { value: true });
 var Renderer_1 = __webpack_require__(1);
 var Scene_1 = __webpack_require__(2);
-var Loop_1 = __webpack_require__(3);
-var Mouse_1 = __webpack_require__(5);
-var Keyboard_1 = __webpack_require__(6);
-var Screen_1 = __webpack_require__(7);
-var Loader_1 = __webpack_require__(8);
-var State_1 = __webpack_require__(9);
-var VirtualContext_1 = __webpack_require__(10);
+var Mouse_1 = __webpack_require__(3);
+var Keyboard_1 = __webpack_require__(4);
+var Screen_1 = __webpack_require__(5);
+var Loader_1 = __webpack_require__(6);
+var State_1 = __webpack_require__(7);
+var Time_1 = __webpack_require__(8);
+var VirtualContext_1 = __webpack_require__(9);
 /**
  * The base class of any game.
  */
@@ -1208,16 +1215,36 @@ var Game = /** @class */ (function () {
      * @param container The HTML parent element for the game's canvas.
      */
     function Game(width, height, container) {
-        this.width = width;
-        this.height = height;
-        this.container = container;
-        this.scene = new Scene_1.Scene();
+        this._container = container;
+        this._scene = new Scene_1.Scene();
+        this._scene.game = this;
         this._canvas = document.createElement('canvas');
         this._renderer = new Renderer_1.Renderer(this._canvas.getContext('2d'));
         this._running = false;
-        this._canvas.width = this.width;
-        this._canvas.height = this.height;
-        this.container.appendChild(this._canvas);
+        this._framerate = 60;
+        this._frameID = 0;
+        this._startTime = 0;
+        this._loopEngine = 0;
+        if (window.performance !== undefined) {
+            if (performance.now !== undefined) {
+                this._now = function () {
+                    return performance.now();
+                };
+            }
+            else {
+                this._now = function () {
+                    return Date.now();
+                };
+            }
+        }
+        else {
+            this._now = function () {
+                return Date.now();
+            };
+        }
+        this._canvas.width = width;
+        this._canvas.height = height;
+        this._container.appendChild(this._canvas);
         VirtualContext_1.VirtualContext._init();
         Screen_1.Screen._init(this._canvas);
         Mouse_1.Mouse._init(this._canvas);
@@ -1225,6 +1252,114 @@ var Game = /** @class */ (function () {
         State_1.State._init();
         Loader_1.Loader._init(this);
     }
+    Object.defineProperty(Game.prototype, "width", {
+        /**
+         * The width of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.width;
+        },
+        set: function (width) {
+            this._canvas.width = width;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "height", {
+        /**
+         * The height of the game's canvas.
+         */
+        get: function () {
+            return this._canvas.height;
+        },
+        set: function (height) {
+            this._canvas.height = height;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "container", {
+        /**
+         * The HTML element that contains the game's canvas.
+         */
+        get: function () {
+            return this._container;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "canvas", {
+        /**
+         * The game's canvas object.
+         */
+        get: function () {
+            return this._canvas;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "running", {
+        /**
+         * Whether the game is running or not.
+         */
+        get: function () {
+            return this._running;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "renderer", {
+        /**
+         * The game's renderer.
+         */
+        get: function () {
+            return this._renderer;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "scene", {
+        /**
+         * The game's current scene.
+         */
+        get: function () {
+            return this._scene;
+        },
+        set: function (scene) {
+            scene.game = this;
+            this._scene = scene;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Game.prototype, "framerate", {
+        /**
+         * The framerate of the game.<br>
+         * If you need the actual FPS the game is rendering, refer to Time#FPS.
+         */
+        get: function () {
+            return this._framerate;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    /**
+     * Set a new framerate for the game.<br>
+     * Set to 0 to uncap the framerate (some chromium based browsers will cap it at 250fps).
+     * @param framerate The new framerate to use.
+     */
+    Game.prototype.setFramerate = function (framerate) {
+        if (this._framerate === framerate)
+            return;
+        if (this._loopEngine === 0) {
+            cancelAnimationFrame(this._frameID);
+        }
+        else {
+            clearInterval(this._frameID);
+        }
+        this._framerate = framerate;
+        this._startLoop();
+    };
     /**
      * Called when the game is launched.<br>
      * Useful for assets loading.
@@ -1247,19 +1382,54 @@ var Game = /** @class */ (function () {
      * Used internally to start the game.
      */
     Game.prototype._start = function () {
-        var _this = this;
         if (this._running)
             return;
         this._running = true;
         this.create();
         window.focus();
-        Loop_1.Loop.start(function () {
-            _this.update();
-            _this.scene._runUpdate();
-            _this._renderer.render(_this.scene);
-            Mouse_1.Mouse._update();
-            Keyboard_1.Keyboard._update();
-        });
+        this._startTime = this._now();
+        this._startLoop();
+    };
+    Game.prototype._startLoop = function () {
+        var _this = this;
+        if (this.framerate === 60) {
+            this._loopEngine = 0;
+            this._loop();
+        }
+        else {
+            this._loopEngine = 1;
+            this._frameID = setInterval(function () {
+                _this._loop();
+            }, 1000 / this.framerate);
+        }
+    };
+    Game.prototype._loop = function () {
+        var _this = this;
+        // Request update if needed
+        if (this._loopEngine === 0) {
+            this._frameID = requestAnimationFrame(function (frame) {
+                Time_1.Time._setFrame(frame);
+                _this._loop();
+            });
+        }
+        else {
+            Time_1.Time._setFrame(this._getNewTime());
+        }
+        // Update game, scene, game objects
+        this.update();
+        this._scene.update();
+        for (var _i = 0, _a = this._scene.getAll(); _i < _a.length; _i++) {
+            var gameObject = _a[_i];
+            gameObject.update();
+        }
+        // Render scene
+        this._renderer.render(this._scene);
+        // Update input states
+        Mouse_1.Mouse._update();
+        Keyboard_1.Keyboard._update();
+    };
+    Game.prototype._getNewTime = function () {
+        return this._now() - this._startTime;
     };
     return Game;
 }());
@@ -1267,7 +1437,7 @@ exports.Game = Game;
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1281,6 +1451,16 @@ var GameObject = /** @class */ (function () {
     function GameObject() {
         this.create();
     }
+    Object.defineProperty(GameObject.prototype, "game", {
+        /**
+         * A reference to your main Game instance.
+         */
+        get: function () {
+            return this.scene.game;
+        },
+        enumerable: true,
+        configurable: true
+    });
     /**
      * Called when the game object is created.<br>
      * You can set the game object's properties in here, use the loader
@@ -1308,7 +1488,7 @@ exports.GameObject = GameObject;
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

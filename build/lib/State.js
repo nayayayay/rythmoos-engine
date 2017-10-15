@@ -32,6 +32,33 @@ var State = /** @class */ (function () {
     State.get = function (key) {
         return this._states.get(key);
     };
+    /**
+     * Increment a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    State.inc = function (key) {
+        if (typeof this._states.get(key) === 'number') {
+            this._states.set(key, this._states.get(key) + 1);
+        }
+    };
+    /**
+     * Decrement a state. If the state is not a number, nothing happens.
+     * @param key The key of a numeric state.
+     */
+    State.dec = function (key) {
+        if (typeof this._states.get(key) === 'number') {
+            this._states.set(key, this._states.get(key) - 1);
+        }
+    };
+    /**
+     * Reverse a state value. If the state is not a boolean, nothing happens.
+     * @param key The key of a boolean state.
+     */
+    State.reverse = function (key) {
+        if (typeof this._states.get(key) === 'boolean') {
+            this._states.set(key, !this._states.get(key));
+        }
+    };
     return State;
 }());
 exports.State = State;

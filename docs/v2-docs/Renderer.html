@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Renderer - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Audio.html">Audio</a><ul class='methods'><li data-type='method'><a href="Audio.html#getFrequency">getFrequency</a></li><li data-type='method'><a href="Audio.html#getWaveform">getWaveform</a></li><li data-type='method'><a href="Audio.html#pause">pause</a></li><li data-type='method'><a href="Audio.html#play">play</a></li><li data-type='method'><a href="Audio.html#stop">stop</a></li></ul></li><li><a href="Circle.html">Circle</a></li><li><a href="Clock.html">Clock</a></li><li><a href="Font.html">Font</a><ul class='methods'><li data-type='method'><a href="Font.html#clone">clone</a></li><li data-type='method'><a href="Font.html#toString">toString</a></li></ul></li><li><a href="Game.html">Game</a><ul class='methods'><li data-type='method'><a href="Game.html#create">create</a></li><li data-type='method'><a href="Game.html#load">load</a></li><li data-type='method'><a href="Game.html#preload">preload</a></li><li data-type='method'><a href="Game.html#update">update</a></li></ul></li><li><a href="GameObject.html">GameObject</a><ul class='methods'><li data-type='method'><a href="GameObject.html#contains">contains</a></li><li data-type='method'><a href="GameObject.html#create">create</a></li><li data-type='method'><a href="GameObject.html#get">get</a></li><li data-type='method'><a href="GameObject.html#remove">remove</a></li><li data-type='method'><a href="GameObject.html#set">set</a></li><li data-type='method'><a href="GameObject.html#update">update</a></li></ul></li><li><a href="Graphics.html">Graphics</a><ul class='methods'><li data-type='method'><a href="Graphics.html#render">render</a></li></ul></li><li><a href="Image.html">Image</a></li><li><a href="Keyboard.html">Keyboard</a><ul class='methods'><li data-type='method'><a href="Keyboard.html#.keyDown">keyDown</a></li><li data-type='method'><a href="Keyboard.html#.keyPressed">keyPressed</a></li></ul></li><li><a href="Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="Loader.html#.get">get</a></li><li data-type='method'><a href="Loader.html#.load">load</a></li><li data-type='method'><a href="Loader.html#.loadAudio">loadAudio</a></li><li data-type='method'><a href="Loader.html#.loadImage">loadImage</a></li><li data-type='method'><a href="Loader.html#.loadJSON">loadJSON</a></li><li data-type='method'><a href="Loader.html#.loadVideo">loadVideo</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.buttonClicked">buttonClicked</a></li><li data-type='method'><a href="Mouse.html#.buttonDown">buttonDown</a></li></ul></li><li><a href="Path.html">Path</a><ul class='methods'><li data-type='method'><a href="Path.html#addPoint">addPoint</a></li></ul></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Renderer.html">Renderer</a><ul class='methods'><li data-type='method'><a href="Renderer.html#render">render</a></li></ul></li><li><a href="Scene.html">Scene</a><ul class='methods'><li data-type='method'><a href="Scene.html#create">create</a></li><li data-type='method'><a href="Scene.html#get">get</a></li><li data-type='method'><a href="Scene.html#remove">remove</a></li><li data-type='method'><a href="Scene.html#set">set</a></li><li data-type='method'><a href="Scene.html#update">update</a></li></ul></li><li><a href="Sound.html">Sound</a><ul class='methods'><li data-type='method'><a href="Sound.html#play">play</a></li><li data-type='method'><a href="Sound.html#stop">stop</a></li></ul></li><li><a href="System.html">System</a></li><li><a href="Text.html">Text</a></li><li><a href="Thread.html">Thread</a><ul class='methods'><li data-type='method'><a href="Thread.html#on">on</a></li><li data-type='method'><a href="Thread.html#send">send</a></li><li data-type='method'><a href="Thread.html#start">start</a></li><li data-type='method'><a href="Thread.html#stop">stop</a></li></ul></li><li><a href="Time.html">Time</a></li><li><a href="Timer.html">Timer</a><ul class='methods'><li data-type='method'><a href="Timer.html#start">start</a></li></ul></li><li><a href="Video.html">Video</a><ul class='methods'><li data-type='method'><a href="Video.html#pause">pause</a></li><li data-type='method'><a href="Video.html#play">play</a></li><li data-type='method'><a href="Video.html#stop">stop</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ClockMode">ClockMode</a></li><li><a href="global.html#Key">Key</a></li><li><a href="global.html#MouseButton">MouseButton</a></li><li><a href="global.html#OS">OS</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Renderer</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Renderer
+        </h2>
+        
+            <div class="class-description">The renderer is used to render scenes to the canvas.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Renderer"><span class="type-signature"></span>new Renderer<span class="signature">(game)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rendering_Renderer.js.html">rendering/Renderer.js</a>, <a href="rendering_Renderer.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Create a renderer.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>game</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Game.html">Game</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A reference to the game instance.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="context"><span class="type-signature">(readonly) </span>context<span class="type-signature"> :CanvasRenderingContext2D</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rendering_Renderer.js.html">rendering/Renderer.js</a>, <a href="rendering_Renderer.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    The game's canvas context.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">CanvasRenderingContext2D</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="render"><span class="type-signature"></span>render<span class="signature">(scene)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="rendering_Renderer.js.html">rendering/Renderer.js</a>, <a href="rendering_Renderer.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    Render a scene to the canvas.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scene</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Scene.html">Scene</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scene to render.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

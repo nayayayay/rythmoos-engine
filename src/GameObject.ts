@@ -1,13 +1,25 @@
 import {IUpdatable} from './IUpdatable';
 import {IRenderable} from './IRenderable';
+import {Scene} from './Scene';
+import {Game} from './Game';
 
 /**
  * A game object defines an entity in your game's world.<br>
  * It can be for example the player's character, a button, etc.
  */
 export class GameObject implements IUpdatable, IRenderable {
+  /** The current or last scene this game object's instance belonged to. */
+  public scene: Scene;
+
   constructor() {
     this.create();
+  }
+
+  /**
+   * A reference to your main Game instance.
+   */
+  public get game(): Game {
+    return this.scene.game;
   }
 
   /**

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>system/System.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Audio.html">Audio</a><ul class='methods'><li data-type='method'><a href="Audio.html#getFrequency">getFrequency</a></li><li data-type='method'><a href="Audio.html#getWaveform">getWaveform</a></li><li data-type='method'><a href="Audio.html#pause">pause</a></li><li data-type='method'><a href="Audio.html#play">play</a></li><li data-type='method'><a href="Audio.html#stop">stop</a></li></ul></li><li><a href="Circle.html">Circle</a></li><li><a href="Clock.html">Clock</a></li><li><a href="Font.html">Font</a><ul class='methods'><li data-type='method'><a href="Font.html#clone">clone</a></li><li data-type='method'><a href="Font.html#toString">toString</a></li></ul></li><li><a href="Game.html">Game</a><ul class='methods'><li data-type='method'><a href="Game.html#create">create</a></li><li data-type='method'><a href="Game.html#load">load</a></li><li data-type='method'><a href="Game.html#preload">preload</a></li><li data-type='method'><a href="Game.html#update">update</a></li></ul></li><li><a href="GameObject.html">GameObject</a><ul class='methods'><li data-type='method'><a href="GameObject.html#contains">contains</a></li><li data-type='method'><a href="GameObject.html#create">create</a></li><li data-type='method'><a href="GameObject.html#get">get</a></li><li data-type='method'><a href="GameObject.html#remove">remove</a></li><li data-type='method'><a href="GameObject.html#set">set</a></li><li data-type='method'><a href="GameObject.html#update">update</a></li></ul></li><li><a href="Graphics.html">Graphics</a><ul class='methods'><li data-type='method'><a href="Graphics.html#render">render</a></li></ul></li><li><a href="Image.html">Image</a></li><li><a href="Keyboard.html">Keyboard</a><ul class='methods'><li data-type='method'><a href="Keyboard.html#.keyDown">keyDown</a></li><li data-type='method'><a href="Keyboard.html#.keyPressed">keyPressed</a></li></ul></li><li><a href="Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="Loader.html#.get">get</a></li><li data-type='method'><a href="Loader.html#.load">load</a></li><li data-type='method'><a href="Loader.html#.loadAudio">loadAudio</a></li><li data-type='method'><a href="Loader.html#.loadImage">loadImage</a></li><li data-type='method'><a href="Loader.html#.loadJSON">loadJSON</a></li><li data-type='method'><a href="Loader.html#.loadVideo">loadVideo</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.buttonClicked">buttonClicked</a></li><li data-type='method'><a href="Mouse.html#.buttonDown">buttonDown</a></li></ul></li><li><a href="Path.html">Path</a><ul class='methods'><li data-type='method'><a href="Path.html#addPoint">addPoint</a></li></ul></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Renderer.html">Renderer</a><ul class='methods'><li data-type='method'><a href="Renderer.html#render">render</a></li></ul></li><li><a href="Scene.html">Scene</a><ul class='methods'><li data-type='method'><a href="Scene.html#create">create</a></li><li data-type='method'><a href="Scene.html#get">get</a></li><li data-type='method'><a href="Scene.html#remove">remove</a></li><li data-type='method'><a href="Scene.html#set">set</a></li><li data-type='method'><a href="Scene.html#update">update</a></li></ul></li><li><a href="Sound.html">Sound</a><ul class='methods'><li data-type='method'><a href="Sound.html#play">play</a></li><li data-type='method'><a href="Sound.html#stop">stop</a></li></ul></li><li><a href="System.html">System</a></li><li><a href="Text.html">Text</a></li><li><a href="Thread.html">Thread</a><ul class='methods'><li data-type='method'><a href="Thread.html#on">on</a></li><li data-type='method'><a href="Thread.html#send">send</a></li><li data-type='method'><a href="Thread.html#start">start</a></li><li data-type='method'><a href="Thread.html#stop">stop</a></li></ul></li><li><a href="Time.html">Time</a></li><li><a href="Timer.html">Timer</a><ul class='methods'><li data-type='method'><a href="Timer.html#start">start</a></li></ul></li><li><a href="Video.html">Video</a><ul class='methods'><li data-type='method'><a href="Video.html#pause">pause</a></li><li data-type='method'><a href="Video.html#play">play</a></li><li data-type='method'><a href="Video.html#stop">stop</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ClockMode">ClockMode</a></li><li><a href="global.html#Key">Key</a></li><li><a href="global.html#MouseButton">MouseButton</a></li><li><a href="global.html#OS">OS</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">system/System.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const OS = require('./OS');
+
+/**
+ * Contain information about the user's system and browser.
+ * @abstract
+ */
+class System {
+
+  /**
+   * Whether the cookies are enabled on the user's web browser.
+   * @type {boolean}
+   * @readonly
+   */
+  static get cookieEnabled() {
+    return navigator.cookieEnabled;
+  }
+
+  /**
+   * The number of physical CPU cores of the user's machine.
+   * @type {number}
+   * @readonly
+   */
+  static get cpus() {
+    return navigator.hardwareConcurrency;
+  }
+
+  /**
+   * The language of the user (e.g 'en').
+   * @type {string}
+   * @readonly
+   */
+  static get language() {
+    return navigator.language;
+  }
+
+  /**
+   * The users' preferred languages.
+   * @type {string[]}
+   * @readonly
+   */
+  static get preferredLanguages() {
+    return navigator.languages;
+  }
+
+  /**
+   * The user's operating system.
+   * @type {OS}
+   * @readonly
+   */
+  static get os() {
+    const appVersion = navigator.appVersion.toLocaleLowerCase();
+
+    if (appVersion.indexOf('win') !== -1) {
+      return OS.WINDOWS;
+    } else if (appVersion.indexOf('mac') !== -1) {
+      return OS.MAC;
+    } else {
+      return OS.LINUX;
+    }
+  }
+}
+
+module.exports = System;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

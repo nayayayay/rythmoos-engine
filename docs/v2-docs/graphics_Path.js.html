@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>graphics/Path.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Audio.html">Audio</a><ul class='methods'><li data-type='method'><a href="Audio.html#getFrequency">getFrequency</a></li><li data-type='method'><a href="Audio.html#getWaveform">getWaveform</a></li><li data-type='method'><a href="Audio.html#pause">pause</a></li><li data-type='method'><a href="Audio.html#play">play</a></li><li data-type='method'><a href="Audio.html#stop">stop</a></li></ul></li><li><a href="Circle.html">Circle</a></li><li><a href="Clock.html">Clock</a></li><li><a href="Font.html">Font</a><ul class='methods'><li data-type='method'><a href="Font.html#clone">clone</a></li><li data-type='method'><a href="Font.html#toString">toString</a></li></ul></li><li><a href="Game.html">Game</a><ul class='methods'><li data-type='method'><a href="Game.html#create">create</a></li><li data-type='method'><a href="Game.html#load">load</a></li><li data-type='method'><a href="Game.html#preload">preload</a></li><li data-type='method'><a href="Game.html#update">update</a></li></ul></li><li><a href="GameObject.html">GameObject</a><ul class='methods'><li data-type='method'><a href="GameObject.html#contains">contains</a></li><li data-type='method'><a href="GameObject.html#create">create</a></li><li data-type='method'><a href="GameObject.html#get">get</a></li><li data-type='method'><a href="GameObject.html#remove">remove</a></li><li data-type='method'><a href="GameObject.html#set">set</a></li><li data-type='method'><a href="GameObject.html#update">update</a></li></ul></li><li><a href="Graphics.html">Graphics</a><ul class='methods'><li data-type='method'><a href="Graphics.html#render">render</a></li></ul></li><li><a href="Image.html">Image</a></li><li><a href="Keyboard.html">Keyboard</a><ul class='methods'><li data-type='method'><a href="Keyboard.html#.keyDown">keyDown</a></li><li data-type='method'><a href="Keyboard.html#.keyPressed">keyPressed</a></li></ul></li><li><a href="Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="Loader.html#.get">get</a></li><li data-type='method'><a href="Loader.html#.load">load</a></li><li data-type='method'><a href="Loader.html#.loadAudio">loadAudio</a></li><li data-type='method'><a href="Loader.html#.loadImage">loadImage</a></li><li data-type='method'><a href="Loader.html#.loadJSON">loadJSON</a></li><li data-type='method'><a href="Loader.html#.loadVideo">loadVideo</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.buttonClicked">buttonClicked</a></li><li data-type='method'><a href="Mouse.html#.buttonDown">buttonDown</a></li></ul></li><li><a href="Path.html">Path</a><ul class='methods'><li data-type='method'><a href="Path.html#addPoint">addPoint</a></li></ul></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Renderer.html">Renderer</a><ul class='methods'><li data-type='method'><a href="Renderer.html#render">render</a></li></ul></li><li><a href="Scene.html">Scene</a><ul class='methods'><li data-type='method'><a href="Scene.html#create">create</a></li><li data-type='method'><a href="Scene.html#get">get</a></li><li data-type='method'><a href="Scene.html#remove">remove</a></li><li data-type='method'><a href="Scene.html#set">set</a></li><li data-type='method'><a href="Scene.html#update">update</a></li></ul></li><li><a href="Sound.html">Sound</a><ul class='methods'><li data-type='method'><a href="Sound.html#play">play</a></li><li data-type='method'><a href="Sound.html#stop">stop</a></li></ul></li><li><a href="System.html">System</a></li><li><a href="Text.html">Text</a></li><li><a href="Thread.html">Thread</a><ul class='methods'><li data-type='method'><a href="Thread.html#on">on</a></li><li data-type='method'><a href="Thread.html#send">send</a></li><li data-type='method'><a href="Thread.html#start">start</a></li><li data-type='method'><a href="Thread.html#stop">stop</a></li></ul></li><li><a href="Time.html">Time</a></li><li><a href="Timer.html">Timer</a><ul class='methods'><li data-type='method'><a href="Timer.html#start">start</a></li></ul></li><li><a href="Video.html">Video</a><ul class='methods'><li data-type='method'><a href="Video.html#pause">pause</a></li><li data-type='method'><a href="Video.html#play">play</a></li><li data-type='method'><a href="Video.html#stop">stop</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ClockMode">ClockMode</a></li><li><a href="global.html#Key">Key</a></li><li><a href="global.html#MouseButton">MouseButton</a></li><li><a href="global.html#OS">OS</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">graphics/Path.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Graphics = require('./Graphics');
+
+/**
+ * A path made of a sequence of points.
+ * @extends Graphics
+ */
+class Path extends Graphics {
+
+  /**
+   * Create a path.
+   * @param {number} [x=0] The X position (the starting point's x).
+   * @param {number} [y=0] The Y position (the starting point's y).
+   */
+  constructor(x = 0, y = 0) {
+    super();
+
+    /**
+     * The X position (relative to the game object).
+     * @type {number}
+     */
+    this.x = x;
+
+    /**
+     * The Y position (relative to the game object).
+     * @type {number}
+     */
+    this.y = y;
+
+    /**
+     * The opacity in percentage.
+     * @type {number}
+     * @default
+     */
+    this.opacity = 100;
+
+    /**
+     * The width of the strokes.
+     * @type {number}
+     * @default
+     */
+    this.lineWidth = 1;
+
+    /**
+     * The line cap to use.
+     * @type {'butt'|'round'|'square'}
+     * @default
+     */
+    this.lineCap = 'butt';
+    
+    /**
+     * The line join to use.
+     * @type {'miter'|'round'|'bevel'}
+     * @default
+     */
+    this.lineJoin = 'miter';
+
+    /**
+     * The colour to fill the path with.
+     * @type {CanvasTexture}
+     * @default
+     */
+    this.fillStyle = '#ff00ff';
+
+    /**
+     * The colour to stroke the path with.
+     * @type {CanvasTexture}
+     * @default
+     */
+    this.strokeStyle = '#ffffff';
+
+    /**
+     * Whether to fill the path.
+     * @type {boolean}
+     * @default
+     */
+    this.fill = true;
+
+    /**
+     * Whether to stroke the path.
+     * @type {boolean}
+     * @default
+     */
+    this.stroke = false;
+
+    /**
+     * The points contained in the path, in the order they were added.
+     * @type {Point[]}
+     * @default
+     */
+    this.path = [];
+  }
+
+  /**
+   * Add a point to the path.
+   * @param {number} x The X property of the point.
+   * @param {*} y The Y property of the point.
+   */
+  addPoint(x, y) {
+    this.path.push({
+      x: x,
+      y: y
+    });
+  }
+
+  /**
+   * Render the path.
+   * @param {CanvasRenderingContext2D} context The renderer's context.
+   * @ignore
+   */
+  render(context) {
+    // Properties
+    context.translate(this.x, this.y);
+    context.globalAlpha = this.opacity / 100;
+    context.lineCap = this.lineCap;
+    context.lineJoin = this.lineJoin;
+    context.fillStyle = this.fillStyle;
+    context.strokeStyle = this.strokeStyle;
+    
+    // Draw
+    context.beginPath();
+    context.moveTo(this.path[0].x, this.path[0].y);
+
+    for (let i = 1; i &lt; this.path.length; i++) {
+      context.lineTo(this.path[i].x, this.path[i].y);
+    }
+
+    context.closePath();
+
+    // Fill/Stroke
+    if (this.fill) {
+      context.fill();
+    }
+
+    if (this.stroke) {
+      context.stroke();
+    }
+  }
+}
+
+module.exports = Path;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

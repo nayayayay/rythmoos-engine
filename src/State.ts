@@ -33,4 +33,34 @@ export abstract class State {
   public static get(key: string): any {
     return this._states.get(key);
   }
+
+  /**
+   * Increment a state. If the state is not a number, nothing happens.
+   * @param key The key of a numeric state.
+   */
+  public static inc(key: string): void {
+    if (typeof this._states.get(key) === 'number') {
+      this._states.set(key, this._states.get(key) + 1);
+    }
+  }
+
+  /**
+   * Decrement a state. If the state is not a number, nothing happens.
+   * @param key The key of a numeric state.
+   */
+  public static dec(key: string): void {
+    if (typeof this._states.get(key) === 'number') {
+      this._states.set(key, this._states.get(key) - 1);
+    }
+  }
+
+  /**
+   * Reverse a state value. If the state is not a boolean, nothing happens.
+   * @param key The key of a boolean state.
+   */
+  public static reverse(key: string): void {
+    if (typeof this._states.get(key) === 'boolean') {
+      this._states.set(key, !this._states.get(key));
+    }
+  }
 }
