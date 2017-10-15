@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>containers/Game.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Audio.html">Audio</a><ul class='methods'><li data-type='method'><a href="Audio.html#getFrequency">getFrequency</a></li><li data-type='method'><a href="Audio.html#getWaveform">getWaveform</a></li><li data-type='method'><a href="Audio.html#pause">pause</a></li><li data-type='method'><a href="Audio.html#play">play</a></li><li data-type='method'><a href="Audio.html#stop">stop</a></li></ul></li><li><a href="Circle.html">Circle</a></li><li><a href="Clock.html">Clock</a></li><li><a href="Font.html">Font</a><ul class='methods'><li data-type='method'><a href="Font.html#clone">clone</a></li><li data-type='method'><a href="Font.html#toString">toString</a></li></ul></li><li><a href="Game.html">Game</a><ul class='methods'><li data-type='method'><a href="Game.html#create">create</a></li><li data-type='method'><a href="Game.html#load">load</a></li><li data-type='method'><a href="Game.html#preload">preload</a></li><li data-type='method'><a href="Game.html#update">update</a></li></ul></li><li><a href="GameObject.html">GameObject</a><ul class='methods'><li data-type='method'><a href="GameObject.html#contains">contains</a></li><li data-type='method'><a href="GameObject.html#create">create</a></li><li data-type='method'><a href="GameObject.html#get">get</a></li><li data-type='method'><a href="GameObject.html#remove">remove</a></li><li data-type='method'><a href="GameObject.html#set">set</a></li><li data-type='method'><a href="GameObject.html#update">update</a></li></ul></li><li><a href="Graphics.html">Graphics</a><ul class='methods'><li data-type='method'><a href="Graphics.html#render">render</a></li></ul></li><li><a href="Image.html">Image</a></li><li><a href="Keyboard.html">Keyboard</a><ul class='methods'><li data-type='method'><a href="Keyboard.html#.keyDown">keyDown</a></li><li data-type='method'><a href="Keyboard.html#.keyPressed">keyPressed</a></li></ul></li><li><a href="Loader.html">Loader</a><ul class='methods'><li data-type='method'><a href="Loader.html#.get">get</a></li><li data-type='method'><a href="Loader.html#.load">load</a></li><li data-type='method'><a href="Loader.html#.loadAudio">loadAudio</a></li><li data-type='method'><a href="Loader.html#.loadImage">loadImage</a></li><li data-type='method'><a href="Loader.html#.loadJSON">loadJSON</a></li><li data-type='method'><a href="Loader.html#.loadVideo">loadVideo</a></li></ul></li><li><a href="Mouse.html">Mouse</a><ul class='methods'><li data-type='method'><a href="Mouse.html#.buttonClicked">buttonClicked</a></li><li data-type='method'><a href="Mouse.html#.buttonDown">buttonDown</a></li></ul></li><li><a href="Path.html">Path</a><ul class='methods'><li data-type='method'><a href="Path.html#addPoint">addPoint</a></li></ul></li><li><a href="Rectangle.html">Rectangle</a></li><li><a href="Renderer.html">Renderer</a><ul class='methods'><li data-type='method'><a href="Renderer.html#render">render</a></li></ul></li><li><a href="Scene.html">Scene</a><ul class='methods'><li data-type='method'><a href="Scene.html#create">create</a></li><li data-type='method'><a href="Scene.html#get">get</a></li><li data-type='method'><a href="Scene.html#remove">remove</a></li><li data-type='method'><a href="Scene.html#set">set</a></li><li data-type='method'><a href="Scene.html#update">update</a></li></ul></li><li><a href="Sound.html">Sound</a><ul class='methods'><li data-type='method'><a href="Sound.html#play">play</a></li><li data-type='method'><a href="Sound.html#stop">stop</a></li></ul></li><li><a href="System.html">System</a></li><li><a href="Text.html">Text</a></li><li><a href="Thread.html">Thread</a><ul class='methods'><li data-type='method'><a href="Thread.html#on">on</a></li><li data-type='method'><a href="Thread.html#send">send</a></li><li data-type='method'><a href="Thread.html#start">start</a></li><li data-type='method'><a href="Thread.html#stop">stop</a></li></ul></li><li><a href="Time.html">Time</a></li><li><a href="Timer.html">Timer</a><ul class='methods'><li data-type='method'><a href="Timer.html#start">start</a></li></ul></li><li><a href="Video.html">Video</a><ul class='methods'><li data-type='method'><a href="Video.html#pause">pause</a></li><li data-type='method'><a href="Video.html#play">play</a></li><li data-type='method'><a href="Video.html#stop">stop</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#ClockMode">ClockMode</a></li><li><a href="global.html#Key">Key</a></li><li><a href="global.html#MouseButton">MouseButton</a></li><li><a href="global.html#OS">OS</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">containers/Game.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Renderer = require('../rendering/Renderer');
+const Scene = require('./Scene');
+const Loader = require('../media/Loader');
+const Time = require('../timing/Time');
+const Mouse = require('../inputs/Mouse');
+const Keyboard = require('../inputs/Keyboard');
+
+/**
+ * The root and base class of any game.&lt;br>
+ * You can override this class' methods or extend it to create your game.
+ * @example &lt;caption>Overriding&lt;/caption>
+ * const game = new Game(500, 500, document.body);
+ * 
+ * // Set scenes
+ * game.scene = new SomeScene(game);
+ * 
+ * // Override method
+ * game.create = () => {
+ *   console.log('game being created');
+ * }
+ * 
+ * game.update = () => {
+ *   console.log('game updating!');
+ * }
+ * 
+ * @example &lt;caption>Extending&lt;/caption>
+ * import {Game} from 'rythmoos-engine';
+ * 
+ * class AwesomeGame extends Game {
+ *   create() {
+ *     this.scene = new SomeScene(this);
+ *     console.log('game being created');
+ *   }
+ * 
+ *   update() {
+ *     console.log('game updating!');
+ *   }
+ * }
+ * 
+ * new AwesomeGame(500, 500, document.body);
+ */
+class Game {
+
+  /**
+   * Create a Game.
+   * @param {number} width The width of the canvas to create.
+   * @param {number} height The height of the canvas to create.
+   * @param {HTMLElement} container The parent element which to append the canvas to.
+   */
+  constructor(width, height, container) {
+
+    /**
+     * The game's canvas.
+     * @type {HTMLCanvasElement}
+     * @readonly
+     */
+    this.canvas = document.createElement('canvas');
+
+    /**
+     * The game's renderer.
+     * @type {Renderer}
+     * @readonly
+     */
+    this.renderer = new Renderer(this);
+
+    /**
+     * The game's current active scene.
+     * @type {Scene}
+     * @readonly
+     */
+    this.scene = new Scene(this);
+
+    // Set up and append the canvas
+    this.canvas.width = width;
+    this.canvas.height = height;
+    container.appendChild(this.canvas);
+
+    // Render an empty scene
+    this.renderer.render(this.scene);
+
+    // Start the game
+    Loader.waitFor(this.preload).then(() => {
+      Loader.waitFor(this.load).then(() => {
+        // Initialise the inputs
+        Mouse.init(this);
+
+        this.create();
+
+        // The game loop
+        const update = (frame) => {
+          requestAnimationFrame((frame) => {
+            update(frame);
+          });
+
+          Time.setFrame(frame);
+
+          this.update();
+          this.scene.update();
+
+          for (const name in this.scene.gameObjects) {
+            this.scene.gameObjects[name].update();
+          }
+
+          this.renderer.render(this.scene);
+          
+          Mouse.reset();
+          Keyboard.reset();
+        }
+
+        // Start the loop
+        requestAnimationFrame((frame) => {
+          update(frame);
+        });
+      });
+    });
+  }
+
+  /**
+   * &lt;b>Override this method.&lt;/b>&lt;br>
+   * Run first, before the game loads an starts.&lt;br>
+   * @example
+   * import {Game, Loader} from 'rythmoos-engine';
+   * 
+   * class AwesomeGame extends Game {
+   *   // Preload JSON that will contain the links to our assets.
+   *   preload() {
+   *     Loader.load('sprite links', 'sprite-links.json');
+   *     Loader.load('audio links', 'audio-links.json');
+   *   }
+   * 
+   *   // Load the assets using the data we preloaded.
+   *   load() {
+   *     const sprites = Loader.get('sprite links');
+   *     const audios = Loader.get('audio links');
+   * 
+   *     Loader.load('hero', sprites.hero);
+   *     Loader.load('rock tile', sprites.rock);
+   *     Loader.load('grass tile', sprites.grass);
+   * 
+   *     Loader.load('background music', audios.background);
+   *     Loader.load('hero sound', audios.hero);
+   *   }
+   * }
+   */
+  preload() {
+
+  }
+
+  /**
+   * &lt;b>Override this method.&lt;/b>&lt;br>
+   * Run after preload, and before the game starts.&lt;br>
+   * You can load assets from here, files loaded in preload are now available.
+   * @example
+   * import {Game, Loader} from 'rythmoos-engine';
+   *
+   * class AwesomeGame extends Game {
+   *   // Load some assets before the game starts.
+   *   load() {
+   *     Loader.load('hero', 'hero.png');
+   *     Loader.load('background video', 'background.mp4');
+   *   }
+   * }
+   */
+  load() {
+
+  }
+
+  /**
+   * &lt;b>Override this method.&lt;/b>&lt;br>
+   * Run when the game is create, after preload and load are complete.&lt;br>
+   * You can for example set the game's starting scene from here.
+   * @example
+   * import {Game, Scene} from 'rythmoos-engine';
+   * 
+   * class AwesomeScene extends Scene {
+   *   // My awesome scene
+   * }
+   *
+   * class AwesomeGame extends Game {
+   *   // Add a scene when the game starts.
+   *   create() {
+   *     this.scene = new AwesomeScene(this);
+   *   }
+   * }
+   */
+  create() {
+
+  }
+
+  /**
+   * &lt;b>Override this method.&lt;/b>&lt;br>
+   * Run every frame, before updating the scene and its game objects.&lt;br>
+   * The update loop occurs before the rendering loop.
+   */
+  update() {
+
+  }
+}
+
+module.exports = Game;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
