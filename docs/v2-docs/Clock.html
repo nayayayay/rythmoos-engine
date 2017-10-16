@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line6">line 6</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -114,6 +114,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>import {Clock} from 'rythmoos-engine';</code></pre>
 
 
 
@@ -161,7 +166,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line142">line 142</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line189">line 189</a>
     </li></ul></dd>
     
 
@@ -201,7 +206,7 @@
 
 
 <div class="description">
-    The mode to use for the clock.
+    The <a href="global.html#ClockMode">mode</a> to use for the clock.
 </div>
 
 
@@ -220,6 +225,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>import {Clock, ClockMode} from 'rythmoos-engine';// 24-hour formatClock.clockMode = ClockMode.H24;console.log(Clock.now); // => '15:04:47'// 12-hour-formatClock.clockMode = ClockMode.H12;console.log(Clock.now); // => '3:04:47pm'</code></pre>
+
+
 
         
             
@@ -234,7 +244,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line67">line 67</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -293,6 +303,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's November, 14thClock.date; // => 14</code></pre>
+
+
 
         
             
@@ -307,7 +322,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line58">line 58</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -366,6 +381,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's fridayClock.day; // => 5</code></pre>
+
+
 
         
             
@@ -380,7 +400,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line85">line 85</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line114">line 114</a>
     </li></ul></dd>
     
 
@@ -439,6 +459,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's fridayClock.day3; // => 'fri'</code></pre>
+
+
 
         
             
@@ -453,7 +478,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line22">line 22</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -512,6 +537,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's 3pmClock.hours; // => 3</code></pre>
+
+
 
         
             
@@ -526,7 +556,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line49">line 49</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -585,6 +615,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's 15 hours, 4 minutes, 54seconds and 542msClock.milliseconds; // => 542</code></pre>
+
+
 
         
             
@@ -599,7 +634,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line31">line 31</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -658,6 +693,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's 3:04pmClock.minutes; // => 4</code></pre>
+
+
 
         
             
@@ -672,7 +712,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line76">line 76</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -731,6 +771,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say we're in NovemberClock.month; // => 11</code></pre>
+
+
 
         
             
@@ -745,7 +790,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line94">line 94</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -804,6 +849,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say we're in NovemberClock.month3; // => 'nov'</code></pre>
+
+
 
         
             
@@ -818,7 +868,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line103">line 103</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -858,7 +908,7 @@
 
 
 <div class="description">
-    The current clock's time (e.g 15:04:47 or 3:04:47pm).
+    The current clock's time.
 </div>
 
 
@@ -877,6 +927,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// At 3:04:47pmClock.now; // => '15:04:47' (with Clock.clockMode set to H24)// orClock.now; // => '3:04:47pm' (with Click.clockMode set to H12)</code></pre>
+
+
 
         
             
@@ -891,7 +946,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line40">line 40</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -950,6 +1005,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say it's 3:04:54pmClock.seconds; // => 54</code></pre>
+
+
 
         
             
@@ -964,7 +1024,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line13">line 13</a>
+        <a href="timing_Clock.js.html">timing/Clock.js</a>, <a href="timing_Clock.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -1004,7 +1064,7 @@
 
 
 <div class="description">
-    The timestamp, in milliseconds, based on the UTC time zone.
+    The current UTC time's timestamp, in milliseconds.
 </div>
 
 
@@ -1021,6 +1081,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Get the current UTC time.Clock.time;</code></pre>
 
 
 
@@ -1044,7 +1109,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:26 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -41,6 +41,28 @@
  * The loader makes it easy to load and preload assets, before the game starts
  * or on-the-fly.
  * @abstract
+ * @example
+ * import {Loader} from 'rythmoos-engine';
+ * @example &lt;caption>Preloading assets&lt;/caption>
+ * import {Game, Loader} from 'rythmoos-engine';
+ * 
+ * // Create a game
+ * const game = new Game(500, 500, document.body);
+ * 
+ * // Load assets before the game starts
+ * game.load = () => {
+ *   Loader.load('some file', 'assets/some-file.png');
+ *   Loader.load('some other file', 'assets/some-other-file.mp3');
+ * };
+ * @example &lt;caption>Loading assets on-the-fly&lt;/caption>
+ * // Anywhere outside of the Game.load and Game.preload methods
+ * Loader.load('an image', 'an-image.jpg').then(img => {
+ *   // Image loaded, also available at Loader.get('an image');
+ * });
+ * 
+ * Loader.load('a video', 'a-video.mp4').then(video => {
+ *   // Video loaded, also available at Loader.get('a video');
+ * });
  */
 class Loader {
 
@@ -48,17 +70,36 @@ class Loader {
    * Get a loaded file.
    * @param {string} name The name of the file.
    * @return The file or undefined if the file was not loaded.
+   * @example
+   * // Let's say we loaded a file that we named 'my sprite'
+   * Loader.get('my sprite'); // => An HTMLImageElement of our sprite
+   * 
+   * // Getting a file that we did not load
+   * Loader.get('a file that i did not load'); // => undefined
    */
   static get(name) {
     return Loader._files[name];
   }
 
   /**
-   * Load a file.
+   * Load a file.&lt;br>
+   * You can tell the Loader which type your file is, or let the Loader guess it
+   * from the extension.
    * @param {string} name The name to use for the file.
    * @param {string} pathname The path name to the file to load.
    * @param {'audio'|'video'|'image'|'json'|'other'} [type] The type of file.
    * @return {Promise&lt;*>} A promise that should contain the loaded file.
+   * @example
+   * // Load images/audios/videos or JSON
+   * Loader.load('a file', 'a-file.jpeg').then(myFile => {
+   *   // File is loaded, and also available from Loader.get('a file');
+   * });
+   * 
+   * // Or load other types
+   * Loader.load('an unknown type of file', 'unknown-type-of.file').then(myFile => {
+   *   // File is loaded, and also available from Loader.get('an unknown type of file');
+   *   // myFile is a Reponse object from the fetch() method
+   * });
    */
   static load(name, pathname) {
     const exp = pathname.split('.');
@@ -83,7 +124,7 @@ class Loader {
     return new Promise((resolve, reject) => {
       const id = Loader._loaded.push(false) - 1;
 
-      fetch(pathname).then(response => {
+      fetch(Loader.normalisePath(pathname)).then(response => {
         Loader._files[name] = response;
         Loader._loaded[id] = true;
 
@@ -103,6 +144,9 @@ class Loader {
    * @param {string} name The name to use for the file.
    * @param {string} pathname The pathname to the file.
    * @return A promise that should contain the image element once loaded.
+   * @example Loader.loadImage('my image', 'path/to/my/image.png').then(image => {
+   *   // Image loaded, also available from Loader.get('my image');
+   * });
    */
   static loadImage(name, pathname) {
     return new Promise((resolve, reject) => {
@@ -124,7 +168,7 @@ class Loader {
         reject(err);
       };
 
-      image.src = pathname;
+      image.src = Loader.normalisePath(pathname);
     });
   }
 
@@ -133,6 +177,9 @@ class Loader {
    * @param {string} name The name to use for the file.
    * @param {string} pathname The pathname to the file.
    * @return A promise that should contain the video element once loaded.
+   * @example Loader.loadVideo('my video', 'path/to/my/video.mp4').then(video => {
+   *   // Video loaded, also available from Loader.get('my video');
+   * });
    */
   static loadVideo(name, pathname) {
     return new Promise((resolve, reject) => {
@@ -154,7 +201,7 @@ class Loader {
         reject(err);
       };
 
-      video.src = pathname;
+      video.src = Loader.normalisePath(pathname);
     });
   }
 
@@ -163,6 +210,9 @@ class Loader {
    * @param {string} name The name to use for the file.
    * @param {string} pathname The pathname to the file.
    * @return A promise that should contain the audio element once loaded.
+   * @example Loader.loadAudio('my audio', 'path/to/my/audio.mp3').then(audio => {
+   *   // Audio loaded, also available from Loader.get('my audio');
+   * });
    */
   static loadAudio(name, pathname) {
     return new Promise((resolve, reject) => {
@@ -184,7 +234,7 @@ class Loader {
         reject(err);
       };
 
-      audio.src = pathname;
+      audio.src = Loader.normalisePath(pathname);
     });
   }
 
@@ -193,12 +243,15 @@ class Loader {
    * @param {string} name The name to use for the file.
    * @param {string} pathname The pathname to the JSON file.
    * @return A promise that should contain the parsed JSON once loaded.
+   * @example Loader.loadJSON('my json', 'path/to/my/json.json').then(json => {
+   *   // JSON loaded, also available from Loader.get('my json');
+   * });
    */
   static loadJSON(name, pathname) {
     return new Promise((resolve, reject) => {
       const id = Loader._loaded.push(false) - 1;
 
-      fetch(pathname).then(response => {
+      fetch(Loader.normalisePath(pathname)).then(response => {
         response.json().then(value => {
           this._files[name] = value;
           this._loaded[id] = true;
@@ -248,12 +301,31 @@ class Loader {
       }, 0);
     });
   }
+
+  /**
+   * Normalise a pathname with the Loader's basePath.
+   * @param {string} pathname The pathname to normalise.
+   * @return {string} The normalised path.
+   * @private
+   */
+  static normalisePath(pathname) {
+    Loader._a.href = `${Loader.basePath}/${pathname}`;
+
+    return Loader._a.href;
+  }
 }
 
 /**
  * The base path to use for loading assets.
  * @type {string}
  * @default
+ * @example
+ * // Let's say all our assets are in the assets folder, we dont want to specify
+ * // the assets directory in the path everytime we load an assets
+ * Loader.basePath = 'assets';
+ * 
+ * // We can now load, for example, `assets/my-image.png` as so:
+ * Loader.load('my image', 'my-image.png');
  */
 Loader.basePath = '.';
 
@@ -271,6 +343,13 @@ Loader._files = {};
  */
 Loader._loaded = [];
 
+/**
+ * Used to normalise paths.
+ * @type {HTMLElement}
+ * @private
+ */
+Loader._a = document.createElement('a');
+
 module.exports = Loader;
 </code></pre>
         </article>
@@ -284,7 +363,7 @@ module.exports = Loader;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:25 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

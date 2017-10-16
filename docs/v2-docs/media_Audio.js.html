@@ -38,7 +38,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A playable audio file that can be analysed through its FFT data.
+ * A &lt;b>playable audio&lt;/b> file that can be analysed through its &lt;b>FFT data&lt;/b>.&lt;br>
+ * The instance &lt;i>inherits&lt;/i> from the {@link Audio#file|audio file} passed in the
+ * constructor (loop, volume, etc).
+ * @example
+ * import {Audio} from 'rythmoos-engine';
+ * @example &lt;caption>Creating from an &amp;lt;audio&amp;gt; tag&lt;/caption>
+ * const myAudioTag = document.querySelector('.my-audio-tag');
+ * const myAudio = new Audio(myAudioTag);
+ * @example &lt;caption>Creating from a loaded audio&lt;/caption>
+ * const myAudio = new Audio(Loader.get('my-audio'));
  */
 class Audio {
 
@@ -53,6 +62,7 @@ class Audio {
      * The audio file to use.
      * @type {HTMLAudioElement}
      * @readonly
+     * @example myAudio.file; // HTMLAudioElement
      */
     this.file = audio;
 
@@ -101,23 +111,46 @@ class Audio {
    * Whether the audio is playing.
    * @type {boolean}
    * @readonly
+   * @example
+   * // Create an audio
+   * const myAudio = new Audio(someAudioElement);
+   * 
+   * myAudio.play();
+   * console.log(myAudio.playing); // => true
+   * 
+   * myAudio.stop();
+   * console.log(myAudio.playing); // => false
    */
   get playing() {
     return !this.file.paused;
   }
 
   /**
-   * The duration in seconds of the audio file.
+   * The duration in &lt;i>seconds&lt;/i> of the audio file.
    * @type {number}
    * @readonly
+   * @example
+   * // Assume we loaded a 3 minutes long audio file named 'my audio'.
+   * const myAudio = new Audio(Loader.get('my audio'));
+   * 
+   * console.log(myAudio.duration); // => // 180
    */
   get duration() {
     return this.file.duration;
   }
 
   /**
-   * The current time in the track.
+   * The current time, in &lt;i>seconds&lt;/i>, in the track.
    * @type {number}
+   * @example &lt;caption>Getting the current time&lt;/caption>
+   * // Assume our myAudio object has been playing for 15 seconds.
+   * console.log(myAudio.currentTime); // => 15
+   * @example &lt;caption>Setting the current time&lt;/caption>
+   * myAudio.currentTime = 60; // Skips to 60 sec
+   * console.log(myAudio.currentTime); // => 60
+   * 
+   * myAudio.currentTime -= 30; // Skips back to 30 sec
+   * console.log(myAudio.currentTime); // => 30
    */
   get currentTime() {
     return this.file.currentTime;
@@ -128,8 +161,17 @@ class Audio {
   }
 
   /**
-   * The playback speed of the audio, in percentage.
+   * The playback speed of the audio, in &lt;b>percentage&lt;/b>.
    * @type {number}
+   * @example
+   * console.log(myAudio.speed); // => 100
+   * 
+   * // Play the audio at 2x speed
+   * myAudio.speed = 200; // 200% speed
+   * 
+   * // Go back to normal speed
+   * myAudio.speed = 100; // 100% speed
+   *
    */
   get speed() {
     return this.file.playbackRate * 100;
@@ -140,7 +182,16 @@ class Audio {
   }
 
   /**
-   * The volume of the audio, in percentage.
+   * The volume of the audio, in &lt;b>percentage&lt;/b>.
+   * @type {number}
+   * @example
+   * console.log(myAudio.volume); // => 100
+   * 
+   * // Play the audio at half volume
+   * myAudio.volume = 50; // 50%
+   * 
+   * // Play the audio at max volume
+   * myAudio.volume = 100; // 100%
    */
   get volume() {
     return this.file.volume * 100;
@@ -153,6 +204,13 @@ class Audio {
   /**
    * Whether to loop the audio.
    * @type {boolean}
+   * @example
+   * console.log(myAudio.loop) // => false
+   * 
+   * // Make the audio loop (auto restarts when it ends)
+   * myAudio.loop = true;
+   * 
+   * console.log(myAudio.loop); // => true
    */
   get loop() {
     return this.file.loop;
@@ -163,8 +221,15 @@ class Audio {
   }
 
   /**
-   * The size of the fft buffer for frequency and waveform data analysis.
+   * The size of the fft buffer for &lt;i>frequency and waveform&lt;/i> data analysis.&lt;br>
+   * Must be a &lt;b>non-zero power of 2 between 32 and 32768&lt;/b>.
    * @type {number}
+   * @example
+   * myAudio.fftSize = 2048;
+   * console.log(myAudio.getFrequency().length); // => 2048
+   * 
+   * myAudio.fftSize = 512;
+   * console.log(myAudio.getFrequency().length); // => 512
    */
   get fftSize() {
     return this._analyser.frequencyBinCount;
@@ -178,6 +243,7 @@ class Audio {
 
   /**
    * Play the audio.
+   * @example myAudio.play();
    */
   play() {
     this.file.play();
@@ -185,6 +251,7 @@ class Audio {
 
   /**
    * Pause the audio.
+   * @example myAudio.pause();
    */
   pause() {
     this.file.pause();
@@ -192,6 +259,11 @@ class Audio {
 
   /**
    * Stop the audio.
+   * @example
+   * console.log(myAudio.currentTime); // => 56
+   * 
+   * myAudio.stop();
+   * console.log(myAudio.currentTime); // => 0
    */
   stop() {
     this.file.pause();
@@ -199,9 +271,10 @@ class Audio {
   }
 
   /**
-   * Get the byte frequency data.&lt;br>
-   * The size of the array is defined by the fftSize property.
+   * Get the &lt;i>byte&lt;/i> frequency data.&lt;br>
+   * The size of the array is defined by the {@link Audio#fftSize|fftSize} property.
    * @return {Uint8Array}
+   * @example myAudio.getFrequency();
    */
   getFrequency() {
     this._analyser.getByteFrequencyData(this._fftFrequencyBuffer);
@@ -210,9 +283,10 @@ class Audio {
   }
 
   /**
-   * Get the byte waveform data.&lt;br>
-   * The size of the array is defined by the fftSize property.
+   * Get the &lt;i>byte&lt;/i> waveform data.&lt;br>
+   * The size of the array is defined by the {@link Audio#fftSize|fftSize} property.
    * @return {Uint8Array}
+   * @example myAudio.getWaveform();
    */
   getWaveform() {
     this._analyser.getByteTimeDomainData(this._fftWaveformBuffer);
@@ -234,7 +308,7 @@ module.exports = Audio;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:25 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line5">line 5</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -118,6 +118,13 @@
 
 
 
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>import {Thread} from 'rythmoos-engine';</code></pre>
+
+    <pre class="prettyprint"><code>const myThread = new Thread(myFunction);</code></pre>
 
 
 
@@ -214,7 +221,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line32">line 32</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -287,7 +294,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line39">line 39</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -360,7 +367,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line25">line 25</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -433,7 +440,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line18">line 18</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -492,6 +499,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's make a runnable function that will send 'hi' every secondconst myRunnable = () => {  setInterval(() => {    postMessage('hi');  }, 1000);}const myThread = new Thread(myRunnable);</code></pre>
+
+
 
         
             
@@ -506,7 +518,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line46">line 46</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -565,6 +577,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>if (myThread.running) {  // Thread is running}</code></pre>
+
+
 
         
     
@@ -589,7 +606,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line109">line 109</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line166">line 166</a>
     </li></ul></dd>
     
 
@@ -638,6 +655,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's make a runnable function that will send 'hi' every secondconst myRunnable = () => {  setInterval(() => {    postMessage('hi');  }, 1000);}// Create the threadconst myThread = new Thread(myRunnable);// Log the 'hi' from the thread, to the consolemyThread.on('message', (msg) => {  console.log(msg.data);});// Start the threadmyThread.start();// Will log 'hi' every second</code></pre>
 
 
 
@@ -748,7 +770,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line126">line 126</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line209">line 209</a>
     </li></ul></dd>
     
 
@@ -797,6 +819,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// A runnable that replies either 'yes' or 'no' when it receives a messageconst myRunnable = () => {  onmessage = () => {    if (Math.random() > 0.5) {      postMessage('yes');    } else {      postMesage('no');    }  }}// Create a threadconst myThread = new Thread(myRunnable);// Log the thread's messages to the consolemyThread.on('message', (msg) => {  console.log(msg.data); // will log either 'yes' or 'no'});// Start the threadmyThread.start();// Send messages to the threadmyThread.send('say yes or no'); // Will log a random answermyThread.send('do it again'); // Will log a random answer</code></pre>
 
 
 
@@ -881,7 +908,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line73">line 73</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -932,6 +959,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's make a runnable function that will send 'hi' every secondconst myRunnable = () => {  setInterval(() => {    postMessage('hi');  }, 1000);}// Create the threadconst myThread = new Thread(myRunnable);// Start the threadmyThread.start();</code></pre>
+
+
 
 
 
@@ -965,7 +997,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line97">line 97</a>
+        <a href="threading_Thread.js.html">threading/Thread.js</a>, <a href="threading_Thread.js.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -1016,6 +1048,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say our thread is runningconsole.log(myThread.running); // => true// Stop the threadmyThread.stop();console.log(myThread.running); // => false, the thread was terminated</code></pre>
+
+
 
 
 
@@ -1050,7 +1087,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:26 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

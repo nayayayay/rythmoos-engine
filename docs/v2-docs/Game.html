@@ -124,11 +124,11 @@
     
         <p class="code-caption">Overriding</p>
     
-    <pre class="prettyprint"><code>const game = new Game(500, 500, document.body);// Set scenesgame.scene = new SomeScene(game);// Override methodgame.create = () => {  console.log('game being created');}game.update = () => {  console.log('game updating!');}</code></pre>
+    <pre class="prettyprint"><code>const myGame = new Game(500, 500, document.body);// Set scenesmyGame.scene = new SomeScene(game);// Override methodmyGame.create = () => {  console.log('game being created');}myGame.update = () => {  console.log('game updating!');}</code></pre>
 
         <p class="code-caption">Extending</p>
     
-    <pre class="prettyprint"><code>import {Game} from 'rythmoos-engine';class AwesomeGame extends Game {  create() {    this.scene = new SomeScene(this);    console.log('game being created');  }  update() {    console.log('game updating!');  }}new AwesomeGame(500, 500, document.body);</code></pre>
+    <pre class="prettyprint"><code>import {Game} from 'rythmoos-engine';class AwesomeGame extends Game {  create() {    console.log('game being created');    this.scene = new SomeScene(this);  }  update() {    console.log('game updating!');  }}new AwesomeGame(500, 500, document.body);</code></pre>
 
 
 
@@ -271,7 +271,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line57">line 57</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -330,6 +330,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>myGame.canvas; // HTMLCanvasElement</code></pre>
+
+
 
         
             
@@ -344,7 +349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line64">line 64</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -403,10 +408,15 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>myGame.renderer; // Renderer instance</code></pre>
+
+
 
         
             
-<h4 class="name" id="scene"><span class="type-signature">(readonly) </span>scene<span class="type-signature"> :<a href="Scene.html">Scene</a></span></h4>
+<h4 class="name" id="scene"><span class="type-signature"></span>scene<span class="type-signature"> :<a href="Scene.html">Scene</a></span></h4>
 
 
 
@@ -417,7 +427,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line71">line 71</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line76">line 76</a>
     </li></ul></dd>
     
 
@@ -476,6 +486,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Assume we created a AwesomeScene class.myGame.scene = new AwesomeScene(this);</code></pre>
+
+
 
         
     
@@ -500,7 +515,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line186">line 186</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line191">line 191</a>
     </li></ul></dd>
     
 
@@ -589,7 +604,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line164">line 164</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -678,7 +693,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line145">line 145</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -767,7 +782,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line195">line 195</a>
+        <a href="containers_Game.js.html">containers/Game.js</a>, <a href="containers_Game.js.html#line208">line 208</a>
     </li></ul></dd>
     
 
@@ -818,6 +833,13 @@
 
 
 
+    <h5>Example</h5>
+    
+        <p class="code-caption">Overriding the update method</p>
+    
+    <pre class="prettyprint"><code>import {Game} from 'rythmoos-engine';class AwesomeGame extends Game {  update() {    // The code in here will run as long as your game is running.  }}</code></pre>
+
+
 
 
 
@@ -852,7 +874,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:26 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

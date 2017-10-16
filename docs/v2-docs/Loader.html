@@ -69,7 +69,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line6">line 6</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -114,6 +114,19 @@
 
 
 
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>import {Loader} from 'rythmoos-engine';</code></pre>
+
+        <p class="code-caption">Preloading assets</p>
+    
+    <pre class="prettyprint"><code>import {Game, Loader} from 'rythmoos-engine';// Create a gameconst game = new Game(500, 500, document.body);// Load assets before the game startsgame.load = () => {  Loader.load('some file', 'assets/some-file.png');  Loader.load('some other file', 'assets/some-other-file.mp3');};</code></pre>
+
+        <p class="code-caption">Loading assets on-the-fly</p>
+    
+    <pre class="prettyprint"><code>// Anywhere outside of the Game.load and Game.preload methodsLoader.load('an image', 'an-image.jpg').then(img => {  // Image loaded, also available at Loader.get('an image');});Loader.load('a video', 'a-video.mp4').then(video => {  // Video loaded, also available at Loader.get('a video');});</code></pre>
 
 
 
@@ -161,7 +174,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line219">line 219</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line291">line 291</a>
     </li></ul></dd>
     
 
@@ -225,6 +238,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say all our assets are in the assets folder, we dont want to specify// the assets directory in the path everytime we load an assetsLoader.basePath = 'assets';// We can now load, for example, `assets/my-image.png` as so:Loader.load('my image', 'my-image.png');</code></pre>
+
+
 
         
     
@@ -249,7 +267,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line13">line 13</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -298,6 +316,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Let's say we loaded a file that we named 'my sprite'Loader.get('my sprite'); // => An HTMLImageElement of our sprite// Getting a file that we did not loadLoader.get('a file that i did not load'); // => undefined</code></pre>
 
 
 
@@ -392,7 +415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line24">line 24</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line65">line 65</a>
     </li></ul></dd>
     
 
@@ -432,7 +455,7 @@
 
 
 <div class="description">
-    Load a file.
+    Load a file.<br>You can tell the Loader which type your file is, or let the Loader guess itfrom the extension.
 </div>
 
 
@@ -441,6 +464,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Load images/audios/videos or JSONLoader.load('a file', 'a-file.jpeg').then(myFile => {  // File is loaded, and also available from Loader.get('a file');});// Or load other typesLoader.load('an unknown type of file', 'unknown-type-of.file').then(myFile => {  // File is loaded, and also available from Loader.get('an unknown type of file');  // myFile is a Reponse object from the fetch() method});</code></pre>
 
 
 
@@ -633,7 +661,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line128">line 128</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -682,6 +710,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Loader.loadAudio('my audio', 'path/to/my/audio.mp3').then(audio => {  // Audio loaded, also available from Loader.get('my audio');});</code></pre>
 
 
 
@@ -799,7 +832,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line68">line 68</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line112">line 112</a>
     </li></ul></dd>
     
 
@@ -848,6 +881,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Loader.loadImage('my image', 'path/to/my/image.png').then(image => {  // Image loaded, also available from Loader.get('my image');});</code></pre>
 
 
 
@@ -965,7 +1003,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line158">line 158</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line211">line 211</a>
     </li></ul></dd>
     
 
@@ -1014,6 +1052,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Loader.loadJSON('my json', 'path/to/my/json.json').then(json => {  // JSON loaded, also available from Loader.get('my json');});</code></pre>
 
 
 
@@ -1131,7 +1174,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line98">line 98</a>
+        <a href="media_Loader.js.html">media/Loader.js</a>, <a href="media_Loader.js.html#line145">line 145</a>
     </li></ul></dd>
     
 
@@ -1180,6 +1223,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>Loader.loadVideo('my video', 'path/to/my/video.mp4').then(video => {  // Video loaded, also available from Loader.get('my video');});</code></pre>
 
 
 
@@ -1298,7 +1346,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Oct 15 2017 15:28:05 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Oct 16 2017 16:01:26 GMT+0200 (Romance Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
